@@ -2,11 +2,9 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, MapPin, User } from "lucide-react";
-import { format } from "date-fns";
-
 import { Order } from "@/types/index";
 
-const STATUS_COLORS = {
+const STATUS_COLORS: Record<string, string> = {
   pending: "bg-yellow-100 text-yellow-800",
   confirmed: "bg-blue-100 text-blue-800",
   preparing: "bg-purple-100 text-purple-800",
@@ -45,16 +43,16 @@ export default function ActiveOrders({ orders }: ActiveOrdersProps) {
                         <p className="text-sm text-gray-600">{order.customer_phone}</p>
                       </div>
                       <Badge className={STATUS_COLORS[order.status]}>
-                        {order.status?.replace(/_/g, ' ')}
+                        {order.status?.replace(/_/g, " ")}
                       </Badge>
                     </div>
-                    
+
                     <div className="space-y-1 text-sm">
                       <div className="flex items-center gap-2 text-gray-600">
                         <MapPin className="w-3 h-3" />
                         <span className="truncate">{order.delivery_zone}</span>
                       </div>
-                      
+
                       {order.estimated_delivery_time && (
                         <div className="flex items-center gap-2 text-gray-600">
                           <Clock className="w-3 h-3" />
@@ -62,14 +60,14 @@ export default function ActiveOrders({ orders }: ActiveOrdersProps) {
                         </div>
                       )}
                     </div>
-                    
+
                     <div className="flex justify-between items-center pt-2 border-t">
                       <span className="text-sm text-gray-600">
                         {order.items?.length || 0} items
                       </span>
                       <span className="font-bold">₹{order.total_amount}</span>
                     </div>
-                    
+
                     {order.surge_multiplier !== 1.0 && (
                       <Badge variant="outline" className="text-xs">
                         {order.surge_multiplier}x Surge Applied
