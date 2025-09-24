@@ -4,6 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, MapPin, User } from "lucide-react";
 import { format } from "date-fns";
 
+import { Order } from "@/types/index";
+
 const STATUS_COLORS = {
   pending: "bg-yellow-100 text-yellow-800",
   confirmed: "bg-blue-100 text-blue-800",
@@ -13,7 +15,11 @@ const STATUS_COLORS = {
   cancelled: "bg-red-100 text-red-800"
 };
 
-export default function ActiveOrders({ orders }) {
+interface ActiveOrdersProps {
+  orders: Order[];
+}
+
+export default function ActiveOrders({ orders }: ActiveOrdersProps) {
   const recentOrders = orders.slice(0, 6);
 
   return (

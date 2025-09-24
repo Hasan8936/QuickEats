@@ -22,7 +22,8 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["Components/*"],
-      "@/lib/*": ["lib/*"]
+      "@/lib/*": ["lib/*"],
+      "@/types": ["types"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
