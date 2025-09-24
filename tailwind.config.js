@@ -1,90 +1,33 @@
-/** @type {import('tailwindcss').Config} *//** @type {import('tailwindcss').Config} */ /** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */ /** @type {import('tailwindcss').Config} */ /** @type {import('tailwindcss').Config} */
 
 module.exports = {
 
-  content: [module.exports = {
-
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',    module.exports = {
-
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-
-    './app/**/*.{js,ts,jsx,tsx,mdx}',        content: [content: [
-
-  ],
-
-  theme: {            './app/**/*.{js,ts,jsx,tsx,mdx}', './app/**/*.{js,ts,jsx,tsx,mdx}',
-
-    extend: {},
-
-  },            './Components/**/*.{js,ts,jsx,tsx,mdx}', './Components/**/*.{js,ts,jsx,tsx,mdx}',
-
-  plugins: [],
-
-}            './components/**/*.{js,ts,jsx,tsx,mdx}', './components/**/*.{js,ts,jsx,tsx,mdx}',
-
-        ], ],
-
-        theme: {
-            theme: {
-
-                extend: {
-                    extend: {
-
-                        colors: {
-                            colors: {
-
-                                border: "hsl(var(--border))",
-                                border: "hsl(var(--border))",
-
-                                input: "hsl(var(--input))",
-                                input: "hsl(var(--input))",
-
-                                ring: "hsl(var(--ring))",
-                                ring: "hsl(var(--ring))",
-
-                                background: "hsl(var(--background))",
-                                background: "hsl(var(--background))",
-
-                                foreground: "hsl(var(--foreground))",
-                                foreground: "hsl(var(--foreground))",
-
-                                primary: {
-                                    primary: {
-
-                                        DEFAULT: "hsl(var(--primary))",
-                                        DEFAULT: "hsl(var(--primary))",
-
-                                        foreground: "hsl(var(--primary-foreground))",
-                                        foreground: "hsl(var(--primary-foreground))",
-
-                                    },
-                                },
-
-                                secondary: {
-                                    secondary: {
-
-                                        DEFAULT: "hsl(var(--secondary))",
-                                        DEFAULT: "hsl(var(--secondary))",
-
-                                        foreground: "hsl(var(--secondary-foreground))",
-                                        foreground: "hsl(var(--secondary-foreground))",
-
-                                    },
-                                },
-
-                            },
-                            destructive: {
-
-                            },
-                            DEFAULT: "hsl(var(--destructive))",
-
-                        },
-                        foreground: "hsl(var(--destructive-foreground))",
-
-                        plugins: [],
-                    },
-
-                }
+    content: [
+        "./app/**/*.{js,ts,jsx,tsx,mdx}",
+        "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+        "./components/**/*.{js,ts,jsx,tsx,mdx}",
+        "./Components/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    theme: {
+        extend: {
+            colors: {
+                border: "hsl(var(--border))",
+                input: "hsl(var(--input))",
+                ring: "hsl(var(--ring))",
+                background: "hsl(var(--background))",
+                foreground: "hsl(var(--foreground))",
+                primary: {
+                    DEFAULT: "hsl(var(--primary))",
+                    foreground: "hsl(var(--primary-foreground))",
+                },
+                secondary: {
+                    DEFAULT: "hsl(var(--secondary))",
+                    foreground: "hsl(var(--secondary-foreground))",
+                },
+                destructive: {
+                    DEFAULT: "hsl(var(--destructive))",
+                    foreground: "hsl(var(--destructive-foreground))",
+                },
                 muted: {
                     DEFAULT: "hsl(var(--muted))",
                     foreground: "hsl(var(--muted-foreground))",
@@ -110,10 +53,4 @@ module.exports = {
         },
     },
     plugins: [],
-}
-"accordion-up": "accordion-up 0.2s ease-out",
-},
-},
-},
-plugins: [],
 }
