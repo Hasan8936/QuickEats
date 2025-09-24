@@ -1,10 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
-        './app/**/*.{js,ts,jsx,tsx,mdx}',
-        './Pages/**/*.{js,ts,jsx,tsx,mdx}',
-        './Components/**/*.{js,ts,jsx,tsx,mdx}',
-        './components/**/*.{js,ts,jsx,tsx,mdx}'
+        "./app/**/*.{js,ts,jsx,tsx}",
+        "./Components/**/*.{js,ts,jsx,tsx}",
+        "./components/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
         extend: {
@@ -52,9 +51,9 @@ module.exports = {
     },
     plugins: [],
 }
-                "accordion-up": "accordion-up 0.2s ease-out",
-            },
-        },
-    },
-    plugins: [],
+"accordion-up": "accordion-up 0.2s ease-out",
+},
+},
+},
+plugins: [],
 }
