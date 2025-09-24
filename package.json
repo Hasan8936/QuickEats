@@ -1,43 +1,32 @@
 {
-    "name": "quickeats",
-    "version": "1.0.0",
-    "description": "QuickEats food delivery platform",
-    "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Hasan8936/QuickEats.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/Hasan8936/QuickEats/issues"
-    },
-    "homepage": "https://github.com/Hasan8936/QuickEats#readme",
-    "dependencies": {
-        "@radix-ui/react-separator": "^1.0.3",
-        "@radix-ui/react-slot": "^1.0.2",
-        "class-variance-authority": "^0.7.0",
-        "clsx": "^2.0.0",
-        "date-fns": "^2.30.0",
-        "lucide-react": "^0.284.0",
-        "next": "^13.5.4",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "tailwind-merge": "^1.14.0"
-    },
-    "devDependencies": {
-        "@types/node": "^20.8.4",
-        "@types/react": "^18.2.27",
-        "@types/react-dom": "^18.2.12",
-        "autoprefixer": "^10.4.14",
-        "postcss": "^8.4.14",
-        "tailwindcss": "^3.3.0",
-        "typescript": "^5.2.2"
-    }
+  "name": "quickeats",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-slot": "^1.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "date-fns": "^2.30.0",
+    "lucide-react": "^0.284.0",
+    "next": "^13.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^1.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.7",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.28",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2"
+  }
 }

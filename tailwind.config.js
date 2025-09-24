@@ -1,58 +1,91 @@
-/** @type {import('tailwindcss').Config} *//** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} *//** @type {import('tailwindcss').Config} */ /** @type {import('tailwindcss').Config} */
 
-module.exports = {module.exports = {
+module.exports = {
 
-  content: [  content: [
+  content: [module.exports = {
 
-    './app/**/*.{js,ts,jsx,tsx,mdx}',    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',    module.exports = {
 
-    './Components/**/*.{js,ts,jsx,tsx,mdx}',    './Components/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
 
-    './components/**/*.{js,ts,jsx,tsx,mdx}',    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',        content: [content: [
 
-  ],  ],
+  ],
 
-  theme: {    theme: {
+  theme: {            './app/**/*.{js,ts,jsx,tsx,mdx}', './app/**/*.{js,ts,jsx,tsx,mdx}',
 
-    extend: {        extend: {
+    extend: {},
 
-      colors: {            colors: {
+  },            './Components/**/*.{js,ts,jsx,tsx,mdx}', './Components/**/*.{js,ts,jsx,tsx,mdx}',
 
-        border: "hsl(var(--border))",                border: "hsl(var(--border))",
+  plugins: [],
 
-        input: "hsl(var(--input))",                input: "hsl(var(--input))",
+}            './components/**/*.{js,ts,jsx,tsx,mdx}', './components/**/*.{js,ts,jsx,tsx,mdx}',
 
-        ring: "hsl(var(--ring))",                ring: "hsl(var(--ring))",
+        ], ],
 
-        background: "hsl(var(--background))",                background: "hsl(var(--background))",
+        theme: {
+            theme: {
 
-        foreground: "hsl(var(--foreground))",                foreground: "hsl(var(--foreground))",
+                extend: {
+                    extend: {
 
-        primary: {                primary: {
+                        colors: {
+                            colors: {
 
-          DEFAULT: "hsl(var(--primary))",                    DEFAULT: "hsl(var(--primary))",
+                                border: "hsl(var(--border))",
+                                border: "hsl(var(--border))",
 
-          foreground: "hsl(var(--primary-foreground))",                    foreground: "hsl(var(--primary-foreground))",
+                                input: "hsl(var(--input))",
+                                input: "hsl(var(--input))",
 
-        },                },
+                                ring: "hsl(var(--ring))",
+                                ring: "hsl(var(--ring))",
 
-        secondary: {                secondary: {
+                                background: "hsl(var(--background))",
+                                background: "hsl(var(--background))",
 
-          DEFAULT: "hsl(var(--secondary))",                    DEFAULT: "hsl(var(--secondary))",
+                                foreground: "hsl(var(--foreground))",
+                                foreground: "hsl(var(--foreground))",
 
-          foreground: "hsl(var(--secondary-foreground))",                    foreground: "hsl(var(--secondary-foreground))",
+                                primary: {
+                                    primary: {
 
-        },                },
+                                        DEFAULT: "hsl(var(--primary))",
+                                        DEFAULT: "hsl(var(--primary))",
 
-      },                destructive: {
+                                        foreground: "hsl(var(--primary-foreground))",
+                                        foreground: "hsl(var(--primary-foreground))",
 
-    },                    DEFAULT: "hsl(var(--destructive))",
+                                    },
+                                },
 
-  },                    foreground: "hsl(var(--destructive-foreground))",
+                                secondary: {
+                                    secondary: {
 
-  plugins: [],                },
+                                        DEFAULT: "hsl(var(--secondary))",
+                                        DEFAULT: "hsl(var(--secondary))",
 
-}                muted: {
+                                        foreground: "hsl(var(--secondary-foreground))",
+                                        foreground: "hsl(var(--secondary-foreground))",
+
+                                    },
+                                },
+
+                            },
+                            destructive: {
+
+                            },
+                            DEFAULT: "hsl(var(--destructive))",
+
+                        },
+                        foreground: "hsl(var(--destructive-foreground))",
+
+                        plugins: [],
+                    },
+
+                }
+                muted: {
                     DEFAULT: "hsl(var(--muted))",
                     foreground: "hsl(var(--muted-foreground))",
                 },
