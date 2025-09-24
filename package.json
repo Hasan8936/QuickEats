@@ -1,0 +1,31 @@
+{
+  "name": "quickeats",
+  "version": "1.0.0",
+  "description": "QuickEats food delivery platform",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hasan8936/QuickEats.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hasan8936/QuickEats/issues"
+  },
+  "homepage": "https://github.com/Hasan8936/QuickEats#readme",
+  "dependencies": {
+    "@types/node": "^24.5.2",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "next": "^15.5.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "typescript": "^5.9.2"
+  }
+}
