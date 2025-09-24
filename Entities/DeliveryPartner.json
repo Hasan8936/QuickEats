@@ -1,0 +1,41 @@
+{
+    "name": "DeliveryPartner",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Full name of delivery partner"
+        },
+        "phone": {
+            "type": "string",
+            "description": "Phone number"
+        },
+        "vehicle_type": {
+            "type": "string",
+            "enum": [
+                "bike",
+                "scooter",
+                "bicycle"
+            ],
+            "description": "Type of delivery vehicle"
+        },
+        "current_location": {
+            "type": "string",
+            "description": "Current area/zone"
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "available",
+                "busy",
+                "offline"
+            ],
+            "default": "offline",
+            "description": "Current availability status"
+        },
+        "active_orders": {
+            "type": "number",
+            "default": 0,
+            "description": "Number of active orders"
+        },
+        "rating": {

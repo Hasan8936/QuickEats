@@ -1,0 +1,41 @@
+{
+    "name": "Order",
+    "type": "object",
+    "properties": {
+        "customer_name": {
+            "type": "string",
+            "description": "Customer name"
+        },
+        "customer_phone": {
+            "type": "string",
+            "description": "Customer phone"
+        },
+        "delivery_address": {
+            "type": "string",
+            "description": "Complete delivery address"
+        },
+        "delivery_zone": {
+            "type": "string",
+            "description": "Delivery zone/area"
+        },
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "quantity": {
+                        "type": "number"
+                    },
+                    "price": {
+                        "type": "number"
+                    }
+                }
+            },
+            "description": "Ordered items"
+        },
+        "subtotal": {
+            "type": "number",
+            "description": "Order subtotal"

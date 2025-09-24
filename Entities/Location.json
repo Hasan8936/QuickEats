@@ -1,0 +1,42 @@
+{
+    "name": "Location",
+    "type": "object",
+    "properties": {
+        "zone_name": {
+            "type": "string",
+            "description": "Name of the delivery zone in Lucknow"
+        },
+        "area_names": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of areas in this zone"
+        },
+        "base_delivery_fee": {
+            "type": "number",
+            "description": "Base delivery fee for this zone"
+        },
+        "current_surge_multiplier": {
+            "type": "number",
+            "default": 1,
+            "description": "Current surge pricing multiplier"
+        },
+        "coordinates": {
+            "type": "object",
+            "properties": {
+                "lat": {
+                    "type": "number"
+                },
+                "lng": {
+                    "type": "number"
+                }
+            }
+        }
+    },
+    "required": [
+        "zone_name",
+        "area_names",
+        "base_delivery_fee"
+    ]
+}
