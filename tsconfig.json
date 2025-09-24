@@ -23,7 +23,7 @@
     "paths": {
       "@/components/*": ["Components/*"],
       "@/lib/*": ["lib/*"],
-      "@/types": ["types"]
+      "@/types/*": ["types/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
