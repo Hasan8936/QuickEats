@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react'
-import { Card } from '@/Components/ui/card'
-import PartnerCard from '@/Components/partners/PartnerCard'
-import OrderAssignment from '@/Components/partners/OrderAssignment'
+import { Card } from '@/components/ui/card'
+import PartnerCard from '@/components/partners/PartnerCard'
+import OrderAssignment from '@/components/partners/OrderAssignment'
 
 export default function Partners() {
   return (

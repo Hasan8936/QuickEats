@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react'
-import { Card } from '@/Components/ui/card'
-import ActiveOrders from '@/Components/orders/ActiveOrders'
-import MenuItems from '@/Components/orders/MenuItems'
-import OrderForm from '@/Components/orders/OrderForm'
-import SurgeIndicator from '@/Components/orders/SurgeIndicator'
+import { Card } from '@/components/ui/card'
+import ActiveOrders from '@/components/orders/ActiveOrders'
+import MenuItems from '@/components/orders/MenuItems'
+import OrderForm from '@/components/orders/OrderForm'
+import SurgeIndicator from '@/components/orders/SurgeIndicator'
 
 export default function Orders() {
   return (

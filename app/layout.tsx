@@ -2,7 +2,7 @@ import React from 'react'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Metadata } from 'next'
-import { ErrorBoundary } from '@/Components/ErrorBoundary'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
 import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })

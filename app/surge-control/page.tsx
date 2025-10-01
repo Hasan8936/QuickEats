@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react'
-import { Card } from '@/Components/ui/card'
-import PricingControls from '@/Components/surge/PricingControls'
-import SimulateDemand from '@/Components/surge/SimulateDemand'
-import SurgePolicyCard from '@/Components/surge/SurgePolicyCard'
+import { Card } from '@/components/ui/card'
+import PricingControls from '@/components/surge/PricingControls'
+import SimulateDemand from '@/components/surge/SimulateDemand'
+import SurgePolicyCard from '@/components/surge/SurgePolicyCard'
 
 export default function SurgeControl() {
   return (
