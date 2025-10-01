@@ -5,17 +5,23 @@ const nextConfig = {
     compress: true,
     productionBrowserSourceMaps: false,
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-        config.resolve.alias = {
-            ...config.resolve.alias,
-            '@entities': './Entities'
-        };
+        // Handle JSON imports
         config.module.rules.push({
             test: /\.json$/,
-            type: 'javascript/auto',
-            resolve: {
-                fullySpecified: false
-            }
+            type: 'json',
+            use: 'json-loader'
         });
+
+        // Add resolve aliases
+        config.resolve = {
+            ...config.resolve,
+            alias: {
+                ...config.resolve.alias,
+                '@': '.',
+                '@entities': './Entities'
+            }
+        };
+
         return config;
     },
     // Optimize images
