@@ -8,19 +8,9 @@ const nextConfig = {
         // Handle JSON imports
         config.module.rules.push({
             test: /\.json$/,
-            type: 'json',
-            use: 'json-loader'
+            type: 'javascript/auto',
+            loader: require.resolve('json5-loader')
         });
-
-        // Add resolve aliases
-        config.resolve = {
-            ...config.resolve,
-            alias: {
-                ...config.resolve.alias,
-                '@': '.',
-                '@entities': './Entities'
-            }
-        };
 
         return config;
     },
