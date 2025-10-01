@@ -20,7 +20,13 @@ export default function Orders() {
         <Card className="p-6">
           <h2 className="text-2xl font-semibold mb-4">New Order</h2>
           <OrderForm 
-            selectedLocation={null}
+            selectedLocation={{
+              id: 'default',
+              name: 'Downtown',
+              zone: 'Central',
+              lat: 40.7128,
+              lng: -74.0060
+            }}
             cartItems={[]}
             subtotal={0}
             surgeMultiplier={1}

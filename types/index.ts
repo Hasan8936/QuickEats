@@ -7,6 +7,14 @@ export interface MenuItem {
   veg?: boolean;
 }
 
+export interface Location {
+  id: string;
+  name: string;
+  zone: string;
+  lat: number;
+  lng: number;
+}
+
 export interface Order {
   id: string;
   customer_name: string;
