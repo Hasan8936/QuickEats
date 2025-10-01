@@ -1,41 +1,15 @@
 {
-    "name": "SurgePolicy",
-    "type": "object",
-    "properties": {
-        "zone_name": {
-            "type": "string",
-            "description": "Zone this policy applies to"
+    "policies": [{
+        "id": "SP001",
+        "name": "Standard Surge",
+        "conditions": {
+            "demand_threshold": 1.5,
+            "time_window": 30
         },
-        "demand_threshold_low": {
-            "type": "number",
-            "default": 5,
-            "description": "Orders count for low demand"
+        "multiplier_range": {
+            "min": 1.0,
+            "max": 2.0
         },
-        "demand_threshold_high": {
-            "type": "number",
-            "default": 15,
-            "description": "Orders count for high demand"
-        },
-        "supply_threshold_low": {
-            "type": "number",
-            "default": 2,
-            "description": "Available partners count for low supply"
-        },
-        "max_surge_multiplier": {
-            "type": "number",
-            "default": 3,
-            "description": "Maximum surge multiplier allowed"
-        },
-        "min_surge_multiplier": {
-            "type": "number",
-            "default": 1,
-            "description": "Minimum surge multiplier"
-        },
-        "current_active_orders": {
-            "type": "number",
-            "default": 0,
-            "description": "Current active orders in this zone"
-        },
-        "available_partners": {
-            "type": "number",
-            "default": 0,
+        "active": true
+    }]
+}

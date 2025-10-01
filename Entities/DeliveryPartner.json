@@ -1,41 +1,12 @@
 {
-    "name": "DeliveryPartner",
-    "type": "object",
-    "properties": {
-        "name": {
-            "type": "string",
-            "description": "Full name of delivery partner"
-        },
-        "phone": {
-            "type": "string",
-            "description": "Phone number"
-        },
-        "vehicle_type": {
-            "type": "string",
-            "enum": [
-                "bike",
-                "scooter",
-                "bicycle"
-            ],
-            "description": "Type of delivery vehicle"
-        },
-        "current_location": {
-            "type": "string",
-            "description": "Current area/zone"
-        },
-        "status": {
-            "type": "string",
-            "enum": [
-                "available",
-                "busy",
-                "offline"
-            ],
-            "default": "offline",
-            "description": "Current availability status"
-        },
-        "active_orders": {
-            "type": "number",
-            "default": 0,
-            "description": "Number of active orders"
-        },
-        "rating": {
+    "deliveryPartners": [{
+        "id": "DP001",
+        "name": "John Doe",
+        "phone": "+1234567890",
+        "vehicle_type": "bike",
+        "current_location": "Downtown",
+        "status": "available",
+        "active_orders": 0,
+        "rating": 4.5
+    }]
+}
