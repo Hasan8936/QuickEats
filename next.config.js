@@ -4,6 +4,20 @@ const nextConfig = {
     poweredByHeader: false,
     compress: true,
     productionBrowserSourceMaps: false,
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+        config.resolve.alias = {
+            ...config.resolve.alias,
+            '@entities': './Entities'
+        };
+        config.module.rules.push({
+            test: /\.json$/,
+            type: 'javascript/auto',
+            resolve: {
+                fullySpecified: false
+            }
+        });
+        return config;
+    },
     // Optimize images
     images: {
         domains: [],
@@ -12,25 +26,22 @@ const nextConfig = {
     },
     // Add headers for security
     async headers() {
-        return [
-            {
-                source: '/:path*',
-                headers: [
-                    {
-                        key: 'X-Frame-Options',
-                        value: 'DENY',
-                    },
-                    {
-                        key: 'X-Content-Type-Options',
-                        value: 'nosniff',
-                    },
-                    {
-                        key: 'X-XSS-Protection',
-                        value: '1; mode=block',
-                    },
-                ],
-            },
-        ]
+        return [{
+            source: '/:path*',
+            headers: [{
+                    key: 'X-Frame-Options',
+                    value: 'DENY',
+                },
+                {
+                    key: 'X-Content-Type-Options',
+                    value: 'nosniff',
+                },
+                {
+                    key: 'X-XSS-Protection',
+                    value: '1; mode=block',
+                },
+            ],
+        }, ]
     },
 }
 

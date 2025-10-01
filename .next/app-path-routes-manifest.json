@@ -1,0 +1,6 @@
+{
+  "/page": "/",
+  "/api/partners/route": "/api/partners",
+  "/api/surge/route": "/api/surge",
+  "/api/orders/route": "/api/orders"
+}

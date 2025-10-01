@@ -23,7 +23,7 @@ const DeliveryPartner_namespaceObject = JSON.parse('{"deliveryPartners":[{"id":"
 ;// CONCATENATED MODULE: ./entities/Location.json
 const Location_namespaceObject = {};
 ;// CONCATENATED MODULE: ./entities/SurgePolicy.json
-const SurgePolicy_namespaceObject = JSON.parse('{"policies":[{"id":"SP001","name":"Standard Surge","conditions":{"demand_threshold":1.5,"time_window":30},"multiplier_range":{"min":1,"max":2},"active":true}]}');
+const SurgePolicy_namespaceObject = JSON.parse('{"policies":[{"id":"SP001","zone_name":"Downtown","demand_threshold_low":1.2,"demand_threshold_high":2,"supply_threshold_low":0.5,"max_surge_multiplier":2,"active":true},{"id":"SP002","zone_name":"Suburbs","demand_threshold_low":1.1,"demand_threshold_high":1.8,"supply_threshold_low":0.6,"max_surge_multiplier":1.8,"active":true},{"id":"SP003","zone_name":"Business District","demand_threshold_low":1.3,"demand_threshold_high":2.2,"supply_threshold_low":0.4,"max_surge_multiplier":2.2,"active":true}]}');
 ;// CONCATENATED MODULE: ./lib/data.ts
 
 

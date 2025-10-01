@@ -1,9 +1,10 @@
 {
-  "/CustomerOrders": "pages/CustomerOrders.js",
-  "/DeliveryPartners": "pages/DeliveryPartners.js",
-  "/LiveAnalytics": "pages/LiveAnalytics.js",
-  "/SurgeControl": "pages/SurgeControl.js",
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
+  "/CustomerOrders": "pages/CustomerOrders.html",
+  "/SurgeControl": "pages/SurgeControl.html",
+  "/DeliveryPartners": "pages/DeliveryPartners.html",
+  "/LiveAnalytics": "pages/LiveAnalytics.html",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
 }
