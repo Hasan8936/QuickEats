@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react'
 import { Card } from '@/Components/ui/card'
 import PartnerCard from '@/Components/partners/PartnerCard'
@@ -16,9 +18,9 @@ export default function Partners() {
                 id: '1',
                 name: 'John Doe',
                 status: 'available',
-                currentLocation: { lat: 40.7128, lng: -74.0060 },
+                current_location: { lat: 40.7128, lng: -74.0060 },
                 rating: 4.8,
-                totalDeliveries: 150
+                total_deliveries: 150
               }}
             />
             <PartnerCard 
@@ -26,9 +28,9 @@ export default function Partners() {
                 id: '2',
                 name: 'Jane Smith',
                 status: 'on_delivery',
-                currentLocation: { lat: 40.7580, lng: -73.9855 },
+                current_location: { lat: 40.7580, lng: -73.9855 },
                 rating: 4.9,
-                totalDeliveries: 200
+                total_deliveries: 200
               }}
             />
           </div>
@@ -36,7 +38,12 @@ export default function Partners() {
         
         <Card className="p-6">
           <h2 className="text-2xl font-semibold mb-4">Order Assignments</h2>
-          <OrderAssignment />
+          <OrderAssignment 
+            orders={[]}
+            partners={[]}
+            selectedPartner={null}
+            onAssignOrder={() => {}}
+          />
         </Card>
       </div>
     </div>

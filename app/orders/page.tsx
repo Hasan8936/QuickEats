@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react'
 import { Card } from '@/Components/ui/card'
 import ActiveOrders from '@/Components/orders/ActiveOrders'
@@ -12,22 +14,29 @@ export default function Orders() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card className="p-6">
           <h2 className="text-2xl font-semibold mb-4">Active Orders</h2>
-          <ActiveOrders />
+          <ActiveOrders orders={[]} />
         </Card>
         
         <Card className="p-6">
           <h2 className="text-2xl font-semibold mb-4">New Order</h2>
-          <OrderForm />
+          <OrderForm 
+            selectedLocation={null}
+            cartItems={[]}
+            subtotal={0}
+            surgeMultiplier={1}
+            onLocationSelect={() => {}}
+            onSubmit={() => {}}
+          />
         </Card>
         
         <Card className="p-6">
           <h2 className="text-2xl font-semibold mb-4">Menu Items</h2>
-          <MenuItems />
+          <MenuItems onAddToCart={() => {}} />
         </Card>
         
         <Card className="p-6">
           <h2 className="text-2xl font-semibold mb-4">Surge Status</h2>
-          <SurgeIndicator />
+          <SurgeIndicator multiplier={1} />
         </Card>
       </div>
     </div>

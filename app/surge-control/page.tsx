@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react'
 import { Card } from '@/Components/ui/card'
 import PricingControls from '@/Components/surge/PricingControls'
@@ -15,14 +17,14 @@ export default function SurgeControl() {
             <SurgePolicyCard 
               policy={{
                 id: '1',
-                name: 'Standard Surge',
+                title: 'Standard Surge',
                 description: 'Automatically adjusts prices based on demand',
                 thresholds: [
                   { demand: 1.5, multiplier: 1.2 },
                   { demand: 2.0, multiplier: 1.5 },
                   { demand: 3.0, multiplier: 2.0 }
                 ],
-                isActive: true
+                is_active: true
               }}
             />
           </div>
@@ -30,12 +32,20 @@ export default function SurgeControl() {
         
         <Card className="p-6">
           <h2 className="text-2xl font-semibold mb-4">Price Controls</h2>
-          <PricingControls />
+          <PricingControls 
+            policies={[]}
+            realTimeData={{}}
+            onPolicyUpdate={() => {}}
+          />
         </Card>
         
         <Card className="p-6">
           <h2 className="text-2xl font-semibold mb-4">Demand Simulation</h2>
-          <SimulateDemand />
+          <SimulateDemand 
+            locations={[]}
+            onSimulate={() => {}}
+            isSimulating={false}
+          />
         </Card>
       </div>
     </div>
