@@ -2,7 +2,8 @@ import React from 'react'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Metadata } from 'next'
-import { ErrorBoundary } from '@/components/ErrorBoundary'
+import { ErrorBoundary } from '@/Components/ErrorBoundary'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   publisher: 'QuickEats',
   robots: {
     index: true,
-    follow: true,
+    follow: true
   },
   openGraph: {
     type: 'website',
@@ -45,11 +46,7 @@ export const metadata: Metadata = {
   viewport: {
     width: 'device-width',
     initialScale: 1,
-    maximumScale: 1,
-  },
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    maximumScale: 1
   }
 }
 
@@ -59,11 +56,39 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body className={inter.className}>
+    <html lang="en" className={inter.className}>
+      <body className="bg-gray-50">
         <ErrorBoundary>
-          {children}
+          <div className="min-h-screen">
+            <nav className="bg-white shadow-sm">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between h-16">
+                  <div className="flex">
+                    <Link href="/" className="flex items-center">
+                      <span className="text-2xl font-bold text-gray-900">QuickEats</span>
+                    </Link>
+                  </div>
+                  <div className="flex space-x-8">
+                    <Link href="/CustomerOrders" className="inline-flex items-center px-1 pt-1 text-gray-900 hover:text-gray-600">
+                      Orders
+                    </Link>
+                    <Link href="/DeliveryPartners" className="inline-flex items-center px-1 pt-1 text-gray-900 hover:text-gray-600">
+                      Partners
+                    </Link>
+                    <Link href="/SurgeControl" className="inline-flex items-center px-1 pt-1 text-gray-900 hover:text-gray-600">
+                      Surge Control
+                    </Link>
+                    <Link href="/LiveAnalytics" className="inline-flex items-center px-1 pt-1 text-gray-900 hover:text-gray-600">
+                      Analytics
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </nav>
+            <main className="container mx-auto py-10 px-4">
+              {children}
+            </main>
+          </div>
         </ErrorBoundary>
       </body>
     </html>
