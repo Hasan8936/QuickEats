@@ -69,16 +69,16 @@ export default function RootLayout({
                     </Link>
                   </div>
                   <div className="flex space-x-8">
-                    <Link href="/CustomerOrders" className="inline-flex items-center px-1 pt-1 text-gray-900 hover:text-gray-600">
+                    <Link href="/orders" className="inline-flex items-center px-1 pt-1 text-gray-900 hover:text-gray-600">
                       Orders
                     </Link>
-                    <Link href="/DeliveryPartners" className="inline-flex items-center px-1 pt-1 text-gray-900 hover:text-gray-600">
+                    <Link href="/partners" className="inline-flex items-center px-1 pt-1 text-gray-900 hover:text-gray-600">
                       Partners
                     </Link>
-                    <Link href="/SurgeControl" className="inline-flex items-center px-1 pt-1 text-gray-900 hover:text-gray-600">
+                    <Link href="/surge-control" className="inline-flex items-center px-1 pt-1 text-gray-900 hover:text-gray-600">
                       Surge Control
                     </Link>
-                    <Link href="/LiveAnalytics" className="inline-flex items-center px-1 pt-1 text-gray-900 hover:text-gray-600">
+                    <Link href="/analytics" className="inline-flex items-center px-1 pt-1 text-gray-900 hover:text-gray-600">
                       Analytics
                     </Link>
                   </div>
