@@ -5,7 +5,7 @@ exports.id = 453;
 exports.ids = [453,888,660];
 exports.modules = {
 
-/***/ 9015:
+/***/ 6590:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -50,28 +50,10 @@ var _app_default = /*#__PURE__*/__webpack_require__.n(_app);
 var jsx_runtime = __webpack_require__(5893);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(6689);
-// EXTERNAL MODULE: ./entities/all.ts + 4 modules
-var entities_all = __webpack_require__(3007);
+// EXTERNAL MODULE: ./lib/data.ts + 4 modules
+var data = __webpack_require__(1849);
 // EXTERNAL MODULE: ./Components/ui/button.tsx
 var ui_button = __webpack_require__(8125);
-// EXTERNAL MODULE: ./Components/ui/card.tsx
-var card = __webpack_require__(3451);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/shopping-cart.js
-var shopping_cart = __webpack_require__(9539);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/clock.js
-var clock = __webpack_require__(5077);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/map-pin.js
-var map_pin = __webpack_require__(4976);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/trending-up.js
-var trending_up = __webpack_require__(9858);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/users.js
-var users = __webpack_require__(9525);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/star.js
-var star = __webpack_require__(9560);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/zap.js
-var zap = __webpack_require__(9461);
-// EXTERNAL MODULE: external "framer-motion"
-var external_framer_motion_ = __webpack_require__(9034);
 // EXTERNAL MODULE: ./Components/ui/input.tsx
 var input = __webpack_require__(6817);
 // EXTERNAL MODULE: ./Components/ui/label.tsx
@@ -111,7 +93,7 @@ Separator.displayName = react_separator_namespaceObject.Root.displayName;
 
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/loader-2.js
 var loader_2 = __webpack_require__(3217);
-;// CONCATENATED MODULE: ./components/orders/OrderForm.tsx
+;// CONCATENATED MODULE: ./Components/orders/OrderForm.tsx
 
 
 
@@ -321,9 +303,11 @@ function OrderForm({ selectedLocation, cartItems, subtotal, surgeMultiplier, onP
 
 // EXTERNAL MODULE: ./Components/ui/badge.tsx
 var badge = __webpack_require__(6115);
+// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/trending-up.js
+var trending_up = __webpack_require__(9858);
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/trending-down.js
 var trending_down = __webpack_require__(4672);
-;// CONCATENATED MODULE: ./components/orders/SurgeIndicator.tsx
+;// CONCATENATED MODULE: ./Components/orders/SurgeIndicator.tsx
 
 
 
@@ -379,9 +363,15 @@ function SurgeIndicator({ multiplier, size = "md" }) {
     });
 }
 
+// EXTERNAL MODULE: ./Components/ui/card.tsx
+var card = __webpack_require__(3451);
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/plus.js
 var plus = __webpack_require__(1012);
-;// CONCATENATED MODULE: ./components/orders/MenuItems.tsx
+// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/star.js
+var star = __webpack_require__(9560);
+// EXTERNAL MODULE: external "framer-motion"
+var external_framer_motion_ = __webpack_require__(9034);
+;// CONCATENATED MODULE: ./Components/orders/MenuItems.tsx
 
 
 
@@ -594,9 +584,13 @@ function MenuItems({ onAddToCart }) {
     });
 }
 
+// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/clock.js
+var clock = __webpack_require__(5077);
+// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/map-pin.js
+var map_pin = __webpack_require__(4976);
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/user.js
 var user = __webpack_require__(4933);
-;// CONCATENATED MODULE: ./components/orders/ActiveOrders.tsx
+;// CONCATENATED MODULE: ./Components/orders/ActiveOrders.tsx
 
 
 
@@ -739,497 +733,46 @@ function ActiveOrders({ orders }) {
 
 
 
-
-
-
-
-
-
-
-
-
-
 function CustomerOrders() {
-    const [locations, setLocations] = (0,external_react_.useState)([]);
-    const [orders, setOrders] = (0,external_react_.useState)([]);
-    const [selectedLocation, setSelectedLocation] = (0,external_react_.useState)(null);
-    const [cartItems, setCartItems] = (0,external_react_.useState)([]);
-    const [isPlacingOrder, setIsPlacingOrder] = (0,external_react_.useState)(false);
-    const [realTimeSurge, setRealTimeSurge] = (0,external_react_.useState)({});
-    const [liveStats, setLiveStats] = (0,external_react_.useState)({
-        totalOrders: 0,
-        activePartners: 0
-    });
-    (0,external_react_.useEffect)(()=>{
-        loadInitialData();
-        const interval = setInterval(updateRealTimeData, 5000);
-        return ()=>clearInterval(interval);
-    }, []);
-    const loadInitialData = async ()=>{
-        const [locationsData, ordersData] = await Promise.all([
-            entities_all.Location.list(),
-            entities_all.Order.list("-created_date", 20)
-        ]);
-        setLocations(locationsData);
-        setOrders(ordersData);
-        if (locationsData.length > 0) {
-            setSelectedLocation(locationsData[0]);
-        }
-    };
-    const updateRealTimeData = async ()=>{
-        try {
-            // Get current surge data
-            const policies = await entities_all.SurgePolicy.list();
-            const partners = await entities_all.DeliveryPartner.list();
-            const recentOrders = await entities_all.Order.list("-created_date", 50);
-            const newSurgeData = {};
-            let totalActiveOrders = 0;
-            let activePartners = 0;
-            for (const policy of policies){
-                const zoneOrders = recentOrders.filter((order)=>order.delivery_zone === policy.zone_name && [
-                        "pending",
-                        "confirmed",
-                        "preparing",
-                        "out_for_delivery"
-                    ].includes(order.status)).length;
-                const availablePartners = partners.filter((partner)=>partner.current_location === policy.zone_name && partner.status === "available").length;
-                // Calculate surge multiplier
-                let surgeMultiplier = 1.0;
-                if (zoneOrders > policy.demand_threshold_high || availablePartners < policy.supply_threshold_low) {
-                    surgeMultiplier = Math.min(2.5, 1 + zoneOrders / 10 - availablePartners / 5);
-                } else if (zoneOrders < policy.demand_threshold_low && availablePartners > 5) {
-                    surgeMultiplier = Math.max(0.8, 1 - (availablePartners - zoneOrders) / 20);
-                }
-                newSurgeData[policy.zone_name] = {
-                    multiplier: Math.round(surgeMultiplier * 100) / 100,
-                    activeOrders: zoneOrders,
-                    availablePartners
-                };
-                totalActiveOrders += zoneOrders;
-            }
-            activePartners = partners.filter((p)=>p.status === "available").length;
-            setRealTimeSurge(newSurgeData);
-            setLiveStats({
-                totalOrders: totalActiveOrders,
-                activePartners
-            });
-        } catch (error) {
-            console.error("Error updating real-time data:", error);
-        }
-    };
-    const addToCart = (item)=>{
-        setCartItems((prev)=>{
-            const existing = prev.find((p)=>p.name === item.name);
-            if (existing) {
-                return prev.map((p)=>p.name === item.name ? {
-                        ...p,
-                        quantity: p.quantity + 1
-                    } : p);
-            }
-            return [
-                ...prev,
-                {
-                    ...item,
-                    quantity: 1
-                }
-            ];
-        });
-    };
-    const updateCartItem = (itemName, quantity)=>{
-        if (quantity <= 0) {
-            setCartItems((prev)=>prev.filter((item)=>item.name !== itemName));
-        } else {
-            setCartItems((prev)=>prev.map((item)=>item.name === itemName ? {
-                        ...item,
-                        quantity
-                    } : item));
-        }
-    };
-    const calculateSubtotal = ()=>{
-        return cartItems.reduce((sum, item)=>sum + item.price * item.quantity, 0);
-    };
-    const placeOrder = async (customerData)=>{
-        setIsPlacingOrder(true);
-        try {
-            const subtotal = calculateSubtotal();
-            const location = locations.find((loc)=>loc.zone_name === selectedLocation.zone_name);
-            const baseFee = location?.base_delivery_fee || 30;
-            const surgeData = realTimeSurge[selectedLocation.zone_name];
-            const surgeMultiplier = surgeData?.multiplier || 1.0;
-            const finalDeliveryFee = Math.round(baseFee * surgeMultiplier);
-            const orderData = {
-                ...customerData,
-                delivery_zone: selectedLocation.zone_name,
-                items: cartItems,
-                subtotal,
-                base_delivery_fee: baseFee,
-                surge_multiplier: surgeMultiplier,
-                final_delivery_fee: finalDeliveryFee,
-                total_amount: subtotal + finalDeliveryFee,
-                estimated_delivery_time: 25 + Math.round(Math.random() * 15)
-            };
-            await entities_all.Order.create(orderData);
-            setCartItems([]);
-            loadInitialData();
-        } catch (error) {
-            console.error("Error placing order:", error);
-        }
-        setIsPlacingOrder(false);
-    };
+    const orders = (0,data/* getAllOrders */.zk)();
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-        className: "min-h-screen bg-gradient-to-br from-orange-50 to-gray-50",
+        className: "container mx-auto px-4 py-8",
         children: [
-            /*#__PURE__*/ jsx_runtime.jsx("section", {
-                className: "bg-gradient-to-r from-orange-500 to-red-500 text-white",
-                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                    className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16",
-                    children: [
-                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                            className: "text-center",
-                            children: [
-                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("h1", {
-                                    className: "text-4xl md:text-6xl font-bold mb-4",
-                                    children: [
-                                        "Delicious Food, ",
-                                        /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                            className: "text-yellow-300",
-                                            children: "Smart Pricing"
-                                        })
-                                    ]
-                                }),
-                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                    className: "text-xl md:text-2xl mb-8 text-orange-100",
-                                    children: "Experience dynamic delivery pricing that adapts to real-time demand across Lucknow"
-                                }),
-                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                    className: "flex flex-wrap justify-center gap-6 mb-8",
-                                    children: [
-                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                            className: "bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2",
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime.jsx(zap/* default */.Z, {
-                                                    className: "w-5 h-5 text-yellow-300"
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                    className: "font-semibold",
-                                                    children: "Real-time Pricing"
-                                                })
-                                            ]
-                                        }),
-                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                            className: "bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2",
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime.jsx(clock/* default */.Z, {
-                                                    className: "w-5 h-5 text-yellow-300"
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                    className: "font-semibold",
-                                                    children: "Fast Delivery"
-                                                })
-                                            ]
-                                        }),
-                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                            className: "bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-2",
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime.jsx(star/* default */.Z, {
-                                                    className: "w-5 h-5 text-yellow-300"
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                    className: "font-semibold",
-                                                    children: "Quality Food"
-                                                })
-                                            ]
-                                        })
-                                    ]
-                                })
-                            ]
-                        }),
-                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                            className: "grid md:grid-cols-2 gap-6 max-w-md mx-auto",
-                            children: [
-                                /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
-                                    className: "bg-white/10 backdrop-blur-sm border-white/20 text-white",
-                                    children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardContent */.aY, {
-                                        className: "p-4 text-center",
-                                        children: [
-                                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                className: "flex items-center justify-center gap-2 mb-2",
-                                                children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx(shopping_cart/* default */.Z, {
-                                                        className: "w-5 h-5 text-yellow-300"
-                                                    }),
-                                                    /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                        className: "font-semibold",
-                                                        children: "Active Orders"
-                                                    })
-                                                ]
-                                            }),
-                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                className: "text-2xl font-bold",
-                                                children: liveStats.totalOrders
-                                            })
-                                        ]
-                                    })
-                                }),
-                                /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
-                                    className: "bg-white/10 backdrop-blur-sm border-white/20 text-white",
-                                    children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardContent */.aY, {
-                                        className: "p-4 text-center",
-                                        children: [
-                                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                className: "flex items-center justify-center gap-2 mb-2",
-                                                children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx(users/* default */.Z, {
-                                                        className: "w-5 h-5 text-yellow-300"
-                                                    }),
-                                                    /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                        className: "font-semibold",
-                                                        children: "Available Partners"
-                                                    })
-                                                ]
-                                            }),
-                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                className: "text-2xl font-bold",
-                                                children: liveStats.activePartners
-                                            })
-                                        ]
-                                    })
-                                })
-                            ]
-                        })
-                    ]
-                })
+            /*#__PURE__*/ jsx_runtime.jsx("h1", {
+                className: "text-3xl font-bold mb-6",
+                children: "Customer Orders"
             }),
             /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12",
+                className: "grid lg:grid-cols-2 gap-6",
                 children: [
                     /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                        className: "grid lg:grid-cols-3 gap-8",
+                        className: "space-y-6",
                         children: [
-                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                className: "lg:col-span-2 space-y-8",
-                                children: [
-                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
-                                        className: "shadow-lg border-0",
-                                        children: [
-                                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
-                                                className: "bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-t-lg",
-                                                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardTitle */.ll, {
-                                                    className: "flex items-center gap-2",
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime.jsx(map_pin/* default */.Z, {
-                                                            className: "w-5 h-5"
-                                                        }),
-                                                        "Select Your Delivery Location"
-                                                    ]
-                                                })
-                                            }),
-                                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
-                                                className: "p-6",
-                                                children: /*#__PURE__*/ jsx_runtime.jsx("div", {
-                                                    className: "grid md:grid-cols-2 gap-4",
-                                                    children: locations.map((location)=>/*#__PURE__*/ (0,jsx_runtime.jsxs)(external_framer_motion_.motion.div, {
-                                                            whileHover: {
-                                                                scale: 1.02
-                                                            },
-                                                            className: `p-4 rounded-xl border-2 cursor-pointer transition-all ${selectedLocation?.id === location.id ? "border-orange-500 bg-orange-50" : "border-gray-200 hover:border-orange-300"}`,
-                                                            onClick: ()=>setSelectedLocation(location),
-                                                            children: [
-                                                                /*#__PURE__*/ jsx_runtime.jsx("h3", {
-                                                                    className: "font-semibold text-lg",
-                                                                    children: location.zone_name
-                                                                }),
-                                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                    className: "text-sm text-gray-600 mb-2",
-                                                                    children: location.area_names?.join(", ")
-                                                                }),
-                                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                                    className: "flex justify-between items-center",
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("span", {
-                                                                            className: "text-sm",
-                                                                            children: [
-                                                                                "Base Fee: ₹",
-                                                                                location.base_delivery_fee
-                                                                            ]
-                                                                        }),
-                                                                        realTimeSurge[location.zone_name] && /*#__PURE__*/ jsx_runtime.jsx(SurgeIndicator, {
-                                                                            multiplier: realTimeSurge[location.zone_name].multiplier,
-                                                                            size: "sm"
-                                                                        })
-                                                                    ]
-                                                                })
-                                                            ]
-                                                        }, location.id))
-                                                })
-                                            })
-                                        ]
-                                    }),
-                                    selectedLocation && /*#__PURE__*/ jsx_runtime.jsx(MenuItems, {
-                                        onAddToCart: addToCart
-                                    })
-                                ]
+                            /*#__PURE__*/ jsx_runtime.jsx(ActiveOrders, {
+                                orders: orders
                             }),
-                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                className: "space-y-6",
-                                children: [
-                                    selectedLocation && realTimeSurge[selectedLocation.zone_name] && /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
-                                        className: "shadow-lg border-0",
-                                        children: [
-                                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
-                                                className: "pb-4",
-                                                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardTitle */.ll, {
-                                                    className: "flex items-center gap-2 text-lg",
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime.jsx(trending_up/* default */.Z, {
-                                                            className: "w-5 h-5 text-orange-500"
-                                                        }),
-                                                        "Live Pricing"
-                                                    ]
-                                                })
-                                            }),
-                                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
-                                                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                    className: "space-y-4",
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime.jsx(SurgeIndicator, {
-                                                            multiplier: realTimeSurge[selectedLocation.zone_name].multiplier,
-                                                            size: "lg"
-                                                        }),
-                                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                            className: "grid grid-cols-2 gap-4 text-sm",
-                                                            children: [
-                                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                                    children: [
-                                                                        /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                            className: "text-gray-500",
-                                                                            children: "Active Orders"
-                                                                        }),
-                                                                        /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                            className: "font-semibold",
-                                                                            children: realTimeSurge[selectedLocation.zone_name].activeOrders
-                                                                        })
-                                                                    ]
-                                                                }),
-                                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                                    children: [
-                                                                        /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                            className: "text-gray-500",
-                                                                            children: "Available Partners"
-                                                                        }),
-                                                                        /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                            className: "font-semibold",
-                                                                            children: realTimeSurge[selectedLocation.zone_name].availablePartners
-                                                                        })
-                                                                    ]
-                                                                })
-                                                            ]
-                                                        })
-                                                    ]
-                                                })
-                                            })
-                                        ]
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
-                                        className: "shadow-lg border-0",
-                                        children: [
-                                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
-                                                className: "pb-4",
-                                                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardTitle */.ll, {
-                                                    className: "flex items-center gap-2",
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime.jsx(shopping_cart/* default */.Z, {
-                                                            className: "w-5 h-5"
-                                                        }),
-                                                        "Your Order (",
-                                                        cartItems.length,
-                                                        " items)"
-                                                    ]
-                                                })
-                                            }),
-                                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
-                                                children: cartItems.length === 0 ? /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                    className: "text-center py-8",
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime.jsx(shopping_cart/* default */.Z, {
-                                                            className: "w-12 h-12 text-gray-300 mx-auto mb-4"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                            className: "text-gray-500",
-                                                            children: "Your cart is empty"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                            className: "text-sm text-gray-400",
-                                                            children: "Add some delicious items to get started"
-                                                        })
-                                                    ]
-                                                }) : /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                    className: "space-y-4",
-                                                    children: [
-                                                        cartItems.map((item)=>/*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                                className: "flex items-center justify-between p-3 bg-gray-50 rounded-lg",
-                                                                children: [
-                                                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                                        children: [
-                                                                            /*#__PURE__*/ jsx_runtime.jsx("h4", {
-                                                                                className: "font-medium",
-                                                                                children: item.name
-                                                                            }),
-                                                                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("p", {
-                                                                                className: "text-sm text-gray-600",
-                                                                                children: [
-                                                                                    "₹",
-                                                                                    item.price,
-                                                                                    " each"
-                                                                                ]
-                                                                            })
-                                                                        ]
-                                                                    }),
-                                                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                                        className: "flex items-center gap-2",
-                                                                        children: [
-                                                                            /*#__PURE__*/ jsx_runtime.jsx(ui_button/* Button */.z, {
-                                                                                size: "sm",
-                                                                                variant: "outline",
-                                                                                onClick: ()=>updateCartItem(item.name, item.quantity - 1),
-                                                                                children: "-"
-                                                                            }),
-                                                                            /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                                                className: "font-medium",
-                                                                                children: item.quantity
-                                                                            }),
-                                                                            /*#__PURE__*/ jsx_runtime.jsx(ui_button/* Button */.z, {
-                                                                                size: "sm",
-                                                                                variant: "outline",
-                                                                                onClick: ()=>updateCartItem(item.name, item.quantity + 1),
-                                                                                children: "+"
-                                                                            })
-                                                                        ]
-                                                                    })
-                                                                ]
-                                                            }, item.name)),
-                                                        selectedLocation && /*#__PURE__*/ jsx_runtime.jsx(OrderForm, {
-                                                            selectedLocation: selectedLocation,
-                                                            cartItems: cartItems,
-                                                            subtotal: calculateSubtotal(),
-                                                            surgeMultiplier: realTimeSurge[selectedLocation.zone_name]?.multiplier || 1.0,
-                                                            onPlaceOrder: placeOrder,
-                                                            isLoading: isPlacingOrder
-                                                        })
-                                                    ]
-                                                })
-                                            })
-                                        ]
-                                    })
-                                ]
+                            /*#__PURE__*/ jsx_runtime.jsx(SurgeIndicator, {
+                                multiplier: 1.2
                             })
                         ]
                     }),
-                    /*#__PURE__*/ jsx_runtime.jsx("div", {
-                        className: "mt-12",
-                        children: /*#__PURE__*/ jsx_runtime.jsx(ActiveOrders, {
-                            orders: orders
-                        })
+                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                        className: "space-y-6",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime.jsx(OrderForm, {
+                                selectedLocation: {
+                                    base_delivery_fee: 30
+                                },
+                                cartItems: [],
+                                subtotal: 0,
+                                surgeMultiplier: 1.2,
+                                onPlaceOrder: async ()=>{},
+                                isLoading: false
+                            }),
+                            /*#__PURE__*/ jsx_runtime.jsx(MenuItems, {
+                                onAddToCart: ()=>{}
+                            })
+                        ]
                     })
                 ]
             })
@@ -1405,7 +948,7 @@ module.exports = require("tailwind-merge");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [259,624,855,325,304,227,706,125,255], () => (__webpack_exec__(9015)));
+var __webpack_exports__ = __webpack_require__.X(0, [259,624,855,893,297,829,933,444,676,255], () => (__webpack_exec__(6590)));
 module.exports = __webpack_exports__;
 
 })();

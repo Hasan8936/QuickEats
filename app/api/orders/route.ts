@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import { orders } from '@/entities/Order.json';
+import { getAllOrders, getOrderById } from '@/lib/data';
 import { type Order } from '@/types';
 
 export async function GET() {
-  return NextResponse.json(orders);
+  return NextResponse.json(getAllOrders());
 }
 
 export async function POST(request: Request) {

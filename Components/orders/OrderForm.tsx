@@ -5,6 +5,26 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { Loader2 } from "lucide-react";
+import { MenuItem } from "@/types";
+
+interface Location {
+  base_delivery_fee?: number;
+}
+
+interface CustomerData {
+  customer_name: string;
+  customer_phone: string;
+  delivery_address: string;
+}
+
+interface OrderFormProps {
+  selectedLocation: Location;
+  cartItems: MenuItem[];
+  subtotal: number;
+  surgeMultiplier: number;
+  onPlaceOrder: (customerData: CustomerData) => void;
+  isLoading: boolean;
+}
 
 export default function OrderForm({ 
   selectedLocation, 
@@ -13,7 +33,7 @@ export default function OrderForm({
   surgeMultiplier, 
   onPlaceOrder, 
   isLoading 
-}) {
+}: OrderFormProps) {
   const [customerData, setCustomerData] = useState({
     customer_name: "",
     customer_phone: "",
@@ -24,7 +44,7 @@ export default function OrderForm({
   const finalDeliveryFee = Math.round(baseFee * surgeMultiplier);
   const totalAmount = subtotal + finalDeliveryFee;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (customerData.customer_name && customerData.customer_phone && customerData.delivery_address) {
       onPlaceOrder(customerData);

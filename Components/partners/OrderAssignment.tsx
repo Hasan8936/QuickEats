@@ -3,9 +3,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingBag, MapPin, Clock, User } from "lucide-react";
+import { Order, DeliveryPartner } from "@/types";
 
-export default function OrderAssignment({ orders, partners, selectedPartner, onAssignOrder }) {
-  const availablePartners = partners.filter(p => p.status === 'available');
+interface OrderAssignmentProps {
+  orders: Order[];
+  partners: DeliveryPartner[];
+  selectedPartner: DeliveryPartner | null;
+  onAssignOrder: (order: Order, partner: DeliveryPartner) => void;
+}
+
+export default function OrderAssignment({ orders, partners, selectedPartner, onAssignOrder }: OrderAssignmentProps) {
+  const availablePartners = partners.filter((p: DeliveryPartner) => p.status === 'available');
 
   return (
     <div className="space-y-6">
@@ -59,7 +67,7 @@ export default function OrderAssignment({ orders, partners, selectedPartner, onA
                         <Button
                           size="sm"
                           className="w-full bg-green-500 hover:bg-green-600"
-                          onClick={() => onAssignOrder(order.id, selectedPartner.id)}
+                          onClick={() => onAssignOrder(order, selectedPartner)}
                         >
                           Assign to {selectedPartner.name}
                         </Button>

@@ -1,13 +1,28 @@
 import React, { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "../ui/card";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+import { Badge } from "../ui/badge";
 import { TrendingUp, Users, ShoppingBag, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function SurgePolicyCard({ policy, realTimeData, onUpdate }) {
+import { SurgePolicy } from "@/types";
+
+interface RealTimeData {
+  demandLevel: 'low' | 'medium' | 'high';
+  currentSurge: number;
+  activeOrders: number;
+  availablePartners: number;
+}
+
+interface SurgePolicyCardProps {
+  policy: SurgePolicy;
+  realTimeData?: RealTimeData;
+  onUpdate: (data: Partial<SurgePolicy>) => Promise<void>;
+}
+
+export default function SurgePolicyCard({ policy, realTimeData, onUpdate }: SurgePolicyCardProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({
     demand_threshold_low: policy.demand_threshold_low,
@@ -21,14 +36,14 @@ export default function SurgePolicyCard({ policy, realTimeData, onUpdate }) {
     setIsEditing(false);
   };
 
-  const getSurgeColor = (surge) => {
+  const getSurgeColor = (surge: number): string => {
     if (surge >= 2.0) return "bg-red-500 text-white";
     if (surge >= 1.5) return "bg-orange-500 text-white";
     if (surge >= 1.2) return "bg-yellow-500 text-white";
     return "bg-green-500 text-white";
   };
 
-  const getDemandColor = (level) => {
+  const getDemandColor = (level: 'low' | 'medium' | 'high'): string => {
     switch (level) {
       case 'high': return "bg-red-100 text-red-800";
       case 'medium': return "bg-yellow-100 text-yellow-800";
@@ -150,4 +165,13 @@ export default function SurgePolicyCard({ policy, realTimeData, onUpdate }) {
                   Save Changes
                 </Button>
                 <Button variant="outline" onClick={() => setIsEditing(false)}>
- 
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </CardContent>
+    </Card>
+  );
+}

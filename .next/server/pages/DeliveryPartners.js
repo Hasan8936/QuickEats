@@ -5,7 +5,7 @@ exports.id = 49;
 exports.ids = [49,888,660];
 exports.modules = {
 
-/***/ 3435:
+/***/ 4193:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -50,33 +50,27 @@ var _app_default = /*#__PURE__*/__webpack_require__.n(_app);
 var jsx_runtime = __webpack_require__(5893);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(6689);
-// EXTERNAL MODULE: ./entities/all.ts + 4 modules
-var entities_all = __webpack_require__(3007);
+// EXTERNAL MODULE: ./lib/data.ts + 4 modules
+var data = __webpack_require__(1849);
 // EXTERNAL MODULE: ./Components/ui/card.tsx
 var card = __webpack_require__(3451);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/users.js
-var users = __webpack_require__(9525);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/star.js
-var star = __webpack_require__(9560);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/bike.js
-var bike = __webpack_require__(7013);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/trending-up.js
-var trending_up = __webpack_require__(9858);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/clock.js
-var clock = __webpack_require__(5077);
 // EXTERNAL MODULE: ./Components/ui/button.tsx
 var ui_button = __webpack_require__(8125);
 // EXTERNAL MODULE: ./Components/ui/badge.tsx
 var badge = __webpack_require__(6115);
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/map-pin.js
 var map_pin = __webpack_require__(4976);
+// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/star.js
+var star = __webpack_require__(9560);
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/phone.js
 var phone = __webpack_require__(9769);
+// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/bike.js
+var bike = __webpack_require__(7013);
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/zap.js
 var zap = __webpack_require__(9461);
 // EXTERNAL MODULE: external "framer-motion"
 var external_framer_motion_ = __webpack_require__(9034);
-;// CONCATENATED MODULE: ./components/partners/PartnerCard.tsx
+;// CONCATENATED MODULE: ./Components/partners/PartnerCard.tsx
 
 
 
@@ -117,7 +111,7 @@ function PartnerCard({ partner, onStatusUpdate, onSelect, isSelected }) {
             scale: 1.02
         },
         className: `cursor-pointer ${isSelected ? "ring-2 ring-blue-500" : ""}`,
-        onClick: onSelect,
+        onClick: ()=>onSelect(partner),
         children: /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
             className: "border hover:shadow-md transition-all",
             children: /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
@@ -189,8 +183,8 @@ function PartnerCard({ partner, onStatusUpdate, onSelect, isSelected }) {
                                             children: [
                                                 partner.rating,
                                                 " (",
-                                                partner.total_deliveries,
-                                                " deliveries)"
+                                                partner.active_orders,
+                                                " active orders)"
                                             ]
                                         })
                                     ]
@@ -231,9 +225,11 @@ function PartnerCard({ partner, onStatusUpdate, onSelect, isSelected }) {
 
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/shopping-bag.js
 var shopping_bag = __webpack_require__(4349);
+// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/clock.js
+var clock = __webpack_require__(5077);
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/user.js
 var user = __webpack_require__(4933);
-;// CONCATENATED MODULE: ./components/partners/OrderAssignment.tsx
+;// CONCATENATED MODULE: ./Components/partners/OrderAssignment.tsx
 
 
 
@@ -350,7 +346,7 @@ function OrderAssignment({ orders, partners, selectedPartner, onAssignOrder }) {
                                                 selectedPartner && selectedPartner.status === "available" && /*#__PURE__*/ (0,jsx_runtime.jsxs)(ui_button/* Button */.z, {
                                                     size: "sm",
                                                     className: "w-full bg-green-500 hover:bg-green-600",
-                                                    onClick: ()=>onAssignOrder(order.id, selectedPartner.id),
+                                                    onClick: ()=>onAssignOrder(order, selectedPartner),
                                                     children: [
                                                         "Assign to ",
                                                         selectedPartner.name
@@ -525,318 +521,48 @@ function OrderAssignment({ orders, partners, selectedPartner, onAssignOrder }) {
 
 
 
-
-
-
-
-
 function DeliveryPartners() {
-    const [partners, setPartners] = (0,external_react_.useState)([]);
-    const [availableOrders, setAvailableOrders] = (0,external_react_.useState)([]);
-    const [selectedPartner, setSelectedPartner] = (0,external_react_.useState)(null);
-    (0,external_react_.useEffect)(()=>{
-        loadData();
-        const interval = setInterval(loadData, 10000);
-        return ()=>clearInterval(interval);
-    }, []);
-    const loadData = async ()=>{
-        const [partnersData, ordersData] = await Promise.all([
-            entities_all.DeliveryPartner.list(),
-            entities_all.Order.filter({
-                status: "confirmed"
-            }, "-created_date", 20)
-        ]);
-        setPartners(partnersData);
-        setAvailableOrders(ordersData);
-    };
-    const updatePartnerStatus = async (partnerId, status)=>{
-        await entities_all.DeliveryPartner.update(partnerId, {
-            status
-        });
-        loadData();
-    };
-    const assignOrder = async (orderId, partnerId)=>{
-        await entities_all.Order.update(orderId, {
-            assigned_partner: partnerId,
-            status: "preparing"
-        });
-        const partner = partners.find((p)=>p.id === partnerId);
-        await entities_all.DeliveryPartner.update(partnerId, {
-            active_orders: (partner.active_orders || 0) + 1,
-            status: "busy"
-        });
-        loadData();
-    };
-    const getStatusStats = ()=>{
-        const available = partners.filter((p)=>p.status === "available").length;
-        const busy = partners.filter((p)=>p.status === "busy").length;
-        const offline = partners.filter((p)=>p.status === "offline").length;
-        return {
-            available,
-            busy,
-            offline
-        };
-    };
-    const stats = getStatusStats();
+    const partners = (0,data/* getAllPartners */.cF)();
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-        className: "min-h-screen bg-gradient-to-br from-blue-50 to-gray-50",
+        className: "container mx-auto px-4 py-8",
         children: [
-            /*#__PURE__*/ jsx_runtime.jsx("section", {
-                className: "bg-gradient-to-r from-blue-600 to-purple-600 text-white",
-                children: /*#__PURE__*/ jsx_runtime.jsx("div", {
-                    className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16",
-                    children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                        className: "text-center",
-                        children: [
-                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("h1", {
-                                className: "text-4xl md:text-5xl font-bold mb-4",
-                                children: [
-                                    "Delivery ",
-                                    /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                        className: "text-blue-200",
-                                        children: "Partners"
-                                    })
-                                ]
-                            }),
-                            /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                className: "text-xl text-blue-100 mb-8",
-                                children: "Manage delivery partner availability and optimize order assignments"
-                            }),
-                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                className: "grid md:grid-cols-3 gap-6 max-w-2xl mx-auto",
-                                children: [
-                                    /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
-                                        className: "bg-white/10 backdrop-blur-sm border-white/20 text-white",
-                                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardContent */.aY, {
-                                            className: "p-4 text-center",
-                                            children: [
-                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                    className: "flex items-center justify-center gap-2 mb-2",
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime.jsx("div", {
-                                                            className: "w-3 h-3 bg-green-400 rounded-full"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                            className: "font-semibold",
-                                                            children: "Available"
-                                                        })
-                                                    ]
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                    className: "text-2xl font-bold",
-                                                    children: stats.available
-                                                })
-                                            ]
-                                        })
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
-                                        className: "bg-white/10 backdrop-blur-sm border-white/20 text-white",
-                                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardContent */.aY, {
-                                            className: "p-4 text-center",
-                                            children: [
-                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                    className: "flex items-center justify-center gap-2 mb-2",
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime.jsx("div", {
-                                                            className: "w-3 h-3 bg-orange-400 rounded-full"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                            className: "font-semibold",
-                                                            children: "Busy"
-                                                        })
-                                                    ]
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                    className: "text-2xl font-bold",
-                                                    children: stats.busy
-                                                })
-                                            ]
-                                        })
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
-                                        className: "bg-white/10 backdrop-blur-sm border-white/20 text-white",
-                                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardContent */.aY, {
-                                            className: "p-4 text-center",
-                                            children: [
-                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                    className: "flex items-center justify-center gap-2 mb-2",
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime.jsx("div", {
-                                                            className: "w-3 h-3 bg-gray-400 rounded-full"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                            className: "font-semibold",
-                                                            children: "Offline"
-                                                        })
-                                                    ]
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                    className: "text-2xl font-bold",
-                                                    children: stats.offline
-                                                })
-                                            ]
-                                        })
-                                    })
-                                ]
-                            })
-                        ]
-                    })
-                })
+            /*#__PURE__*/ jsx_runtime.jsx("h1", {
+                className: "text-3xl font-bold mb-6",
+                children: "Delivery Partners"
             }),
-            /*#__PURE__*/ jsx_runtime.jsx("div", {
-                className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12",
-                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                    className: "grid lg:grid-cols-3 gap-8",
-                    children: [
-                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                            className: "lg:col-span-2 space-y-6",
+            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                className: "grid lg:grid-cols-2 gap-6",
+                children: [
+                    /*#__PURE__*/ jsx_runtime.jsx("div", {
+                        className: "space-y-6",
+                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
                             children: [
-                                /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
-                                    className: "shadow-lg border-0",
-                                    children: [
-                                        /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
-                                            className: "bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-t-lg",
-                                            children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardTitle */.ll, {
-                                                className: "flex items-center gap-2",
-                                                children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx(users/* default */.Z, {
-                                                        className: "w-5 h-5"
-                                                    }),
-                                                    "All Delivery Partners (",
-                                                    partners.length,
-                                                    ")"
-                                                ]
-                                            })
-                                        }),
-                                        /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
-                                            className: "p-6",
-                                            children: partners.length === 0 ? /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                className: "text-center py-12",
-                                                children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx(users/* default */.Z, {
-                                                        className: "w-16 h-16 text-gray-300 mx-auto mb-4"
-                                                    }),
-                                                    /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                        className: "text-gray-500 text-lg",
-                                                        children: "No delivery partners found"
-                                                    }),
-                                                    /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                        className: "text-gray-400",
-                                                        children: "Partners will appear here once they register"
-                                                    })
-                                                ]
-                                            }) : /*#__PURE__*/ jsx_runtime.jsx("div", {
-                                                className: "grid md:grid-cols-2 gap-4",
-                                                children: partners.map((partner)=>/*#__PURE__*/ jsx_runtime.jsx(PartnerCard, {
-                                                        partner: partner,
-                                                        onStatusUpdate: updatePartnerStatus,
-                                                        onSelect: ()=>setSelectedPartner(partner),
-                                                        isSelected: selectedPartner?.id === partner.id
-                                                    }, partner.id))
-                                            })
-                                        })
-                                    ]
+                                /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
+                                    children: /*#__PURE__*/ jsx_runtime.jsx(card/* CardTitle */.ll, {
+                                        children: "Active Partners"
+                                    })
                                 }),
-                                /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
-                                    className: "shadow-lg border-0",
-                                    children: [
-                                        /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
-                                            children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardTitle */.ll, {
-                                                className: "flex items-center gap-2",
-                                                children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx(trending_up/* default */.Z, {
-                                                        className: "w-5 h-5 text-green-500"
-                                                    }),
-                                                    "Performance Overview"
-                                                ]
-                                            })
-                                        }),
-                                        /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
-                                            children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                className: "grid md:grid-cols-4 gap-4",
-                                                children: [
-                                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                        className: "text-center p-4 bg-green-50 rounded-lg",
-                                                        children: [
-                                                            /*#__PURE__*/ jsx_runtime.jsx(clock/* default */.Z, {
-                                                                className: "w-8 h-8 text-green-500 mx-auto mb-2"
-                                                            }),
-                                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                className: "font-bold text-2xl text-green-600",
-                                                                children: partners.length > 0 ? Math.round(partners.reduce((sum, p)=>sum + (p.total_deliveries || 0), 0) / partners.length) : 0
-                                                            }),
-                                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                className: "text-sm text-gray-600",
-                                                                children: "Avg Deliveries"
-                                                            })
-                                                        ]
-                                                    }),
-                                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                        className: "text-center p-4 bg-blue-50 rounded-lg",
-                                                        children: [
-                                                            /*#__PURE__*/ jsx_runtime.jsx(star/* default */.Z, {
-                                                                className: "w-8 h-8 text-blue-500 mx-auto mb-2"
-                                                            }),
-                                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                className: "font-bold text-2xl text-blue-600",
-                                                                children: partners.length > 0 ? (partners.reduce((sum, p)=>sum + (p.rating || 0), 0) / partners.length).toFixed(1) : 0
-                                                            }),
-                                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                className: "text-sm text-gray-600",
-                                                                children: "Avg Rating"
-                                                            })
-                                                        ]
-                                                    }),
-                                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                        className: "text-center p-4 bg-orange-50 rounded-lg",
-                                                        children: [
-                                                            /*#__PURE__*/ jsx_runtime.jsx(users/* default */.Z, {
-                                                                className: "w-8 h-8 text-orange-500 mx-auto mb-2"
-                                                            }),
-                                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                className: "font-bold text-2xl text-orange-600",
-                                                                children: stats.available
-                                                            }),
-                                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                className: "text-sm text-gray-600",
-                                                                children: "Ready to Deliver"
-                                                            })
-                                                        ]
-                                                    }),
-                                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                        className: "text-center p-4 bg-purple-50 rounded-lg",
-                                                        children: [
-                                                            /*#__PURE__*/ jsx_runtime.jsx(bike/* default */.Z, {
-                                                                className: "w-8 h-8 text-purple-500 mx-auto mb-2"
-                                                            }),
-                                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                className: "font-bold text-2xl text-purple-600",
-                                                                children: stats.busy
-                                                            }),
-                                                            /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                className: "text-sm text-gray-600",
-                                                                children: "Currently Busy"
-                                                            })
-                                                        ]
-                                                    })
-                                                ]
-                                            })
-                                        })
-                                    ]
+                                /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
+                                    children: /*#__PURE__*/ jsx_runtime.jsx("div", {
+                                        className: "grid gap-4",
+                                        children: partners.map((partner)=>/*#__PURE__*/ jsx_runtime.jsx(PartnerCard, {
+                                                partner: partner,
+                                                onStatusUpdate: ()=>{},
+                                                onSelect: ()=>{},
+                                                isSelected: false
+                                            }, partner.id))
+                                    })
                                 })
                             ]
-                        }),
-                        /*#__PURE__*/ jsx_runtime.jsx("div", {
-                            className: "space-y-6",
-                            children: /*#__PURE__*/ jsx_runtime.jsx(OrderAssignment, {
-                                orders: availableOrders,
-                                partners: partners,
-                                selectedPartner: selectedPartner,
-                                onAssignOrder: assignOrder
-                            })
                         })
-                    ]
-                })
+                    }),
+                    /*#__PURE__*/ jsx_runtime.jsx(OrderAssignment, {
+                        partners: partners,
+                        orders: [],
+                        selectedPartner: null,
+                        onAssignOrder: ()=>{}
+                    })
+                ]
             })
         ]
     });
@@ -1003,7 +729,7 @@ module.exports = require("tailwind-merge");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [259,624,855,325,304,94,706,125], () => (__webpack_exec__(3435)));
+var __webpack_exports__ = __webpack_require__.X(0, [259,624,855,893,297,829,397,444,676], () => (__webpack_exec__(4193)));
 module.exports = __webpack_exports__;
 
 })();

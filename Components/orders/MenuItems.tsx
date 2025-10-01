@@ -4,6 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Plus, Star } from "lucide-react";
 import { motion } from "framer-motion";
+import { MenuItem } from "@/types";
+
+interface MenuItemsProps {
+  onAddToCart: (item: MenuItem) => void;
+}
 
 const MENU_ITEMS = [
   {
@@ -33,7 +38,7 @@ const MENU_ITEMS = [
   }
 ];
 
-export default function MenuItems({ onAddToCart }) {
+export default function MenuItems({ onAddToCart }: MenuItemsProps) {
   return (
     <Card className="shadow-lg border-0">
       <CardHeader className="bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-t-lg">

@@ -3,13 +3,34 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, AlertTriangle } from "lucide-react";
+import { SurgePolicy } from "@/types";
 
-export default function PricingControls({ policies, realTimeData, onPolicyUpdate }) {
+type DemandLevel = 'low' | 'medium' | 'high';
+
+interface RealTimeData {
+  [zone: string]: {
+    currentSurge: number;
+    demandLevel: DemandLevel;
+  };
+}
+
+interface PolicyUpdate {
+  max_surge_multiplier: number;
+  demand_threshold_high: number;
+}
+
+interface PricingControlsProps {
+  policies: SurgePolicy[];
+  realTimeData: RealTimeData;
+  onPolicyUpdate: (policyId: string, update: PolicyUpdate) => Promise<void>;
+}
+
+export default function PricingControls({ policies, realTimeData, onPolicyUpdate }: PricingControlsProps) {
   const getHighSurgeZones = () => {
     return Object.entries(realTimeData).filter(([zone, data]) => data.currentSurge >= 2.0);
   };
 
-  const emergencyReset = async (policyId) => {
+  const emergencyReset = async (policyId: string) => {
     await onPolicyUpdate(policyId, {
       max_surge_multiplier: 1.5,
       demand_threshold_high: 20

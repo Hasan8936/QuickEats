@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { deliveryPartners } from '@/entities/DeliveryPartner.json';
+import { getAllPartners, getPartnerById } from '@/lib/data';
 
 export async function GET() {
-  return NextResponse.json(deliveryPartners);
+  return NextResponse.json(getAllPartners());
 }
 
 export async function PATCH(request: Request) {

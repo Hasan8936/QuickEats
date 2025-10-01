@@ -23,8 +23,9 @@
     "paths": {
       "@/components/*": ["Components/*"],
       "@/lib/*": ["lib/*"],
+      "@/types": ["types"],
       "@/types/*": ["types/*"],
-      "@/entities/*": ["entities/*"]
+      "@/entities/*": ["Entities/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

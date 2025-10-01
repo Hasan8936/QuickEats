@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { policies } from '@/entities/SurgePolicy.json';
+import { getAllSurgePolicies, getSurgePolicyById } from '@/lib/data';
 
 export async function GET() {
-  return NextResponse.json(policies);
+  return NextResponse.json(getAllSurgePolicies());
 }
 
 export async function POST(request: Request) {

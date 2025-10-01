@@ -4,20 +4,32 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Star, Phone, Bike, Zap } from "lucide-react";
 import { motion } from "framer-motion";
+import { DeliveryPartner } from "@/types";
 
-const STATUS_COLORS = {
+interface PartnerCardProps {
+  partner: DeliveryPartner;
+  onStatusUpdate: (id: string | number, status: string) => void;
+  onSelect: (partner: DeliveryPartner) => void;
+  isSelected: boolean;
+}
+
+type PartnerStatus = string;
+
+const STATUS_COLORS: Record<string, string> = {
   available: "bg-green-500 text-white",
   busy: "bg-orange-500 text-white",
   offline: "bg-gray-500 text-white"
 };
 
-const VEHICLE_ICONS = {
+type VehicleType = string;
+
+const VEHICLE_ICONS: Record<string, React.ElementType> = {
   bike: Bike,
   scooter: Zap,
   bicycle: Bike
 };
 
-export default function PartnerCard({ partner, onStatusUpdate, onSelect, isSelected }) {
+export default function PartnerCard({ partner, onStatusUpdate, onSelect, isSelected }: PartnerCardProps) {
   const VehicleIcon = VEHICLE_ICONS[partner.vehicle_type] || Bike;
 
   const getNextStatus = () => {
@@ -33,7 +45,7 @@ export default function PartnerCard({ partner, onStatusUpdate, onSelect, isSelec
     <motion.div
       whileHover={{ scale: 1.02 }}
       className={`cursor-pointer ${isSelected ? 'ring-2 ring-blue-500' : ''}`}
-      onClick={onSelect}
+      onClick={() => onSelect(partner)}
     >
       <Card className="border hover:shadow-md transition-all">
         <CardContent className="p-4">
@@ -66,7 +78,7 @@ export default function PartnerCard({ partner, onStatusUpdate, onSelect, isSelec
               
               <div className="flex items-center gap-2">
                 <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                <span>{partner.rating} ({partner.total_deliveries} deliveries)</span>
+                <span>{partner.rating} ({partner.active_orders} active orders)</span>
               </div>
             </div>
 

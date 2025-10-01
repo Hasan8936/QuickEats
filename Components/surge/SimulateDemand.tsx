@@ -5,8 +5,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Zap, Loader2 } from "lucide-react";
+import { Location } from "@/types";
 
-export default function SimulateDemand({ locations, onSimulate, isSimulating }) {
+interface SimulateDemandProps {
+  locations: Location[];
+  onSimulate: (zone: string, count: number) => void;
+  isSimulating: boolean;
+}
+
+export default function SimulateDemand({ locations, onSimulate, isSimulating }: SimulateDemandProps) {
   const [selectedZone, setSelectedZone] = useState("");
   const [orderCount, setOrderCount] = useState(10);
 
@@ -34,8 +41,8 @@ export default function SimulateDemand({ locations, onSimulate, isSimulating }) 
               </SelectTrigger>
               <SelectContent>
                 {locations.map((location) => (
-                  <SelectItem key={location.id} value={location.zone_name}>
-                    {location.zone_name}
+                  <SelectItem key={location.id} value={location.name}>
+                    {location.name}
                   </SelectItem>
                 ))}
               </SelectContent>

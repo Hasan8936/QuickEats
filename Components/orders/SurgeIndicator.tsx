@@ -2,7 +2,12 @@ import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, TrendingDown } from "lucide-react";
 
-export default function SurgeIndicator({ multiplier, size = "md" }) {
+interface SurgeIndicatorProps {
+  multiplier: number;
+  size?: "sm" | "md" | "lg";
+}
+
+export default function SurgeIndicator({ multiplier, size = "md" }: SurgeIndicatorProps) {
   const getSurgeColor = () => {
     if (multiplier >= 2.0) return "bg-red-500 text-white";
     if (multiplier >= 1.5) return "bg-orange-500 text-white";

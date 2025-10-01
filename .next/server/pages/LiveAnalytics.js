@@ -50,584 +50,189 @@ var _app_default = /*#__PURE__*/__webpack_require__.n(_app);
 var jsx_runtime = __webpack_require__(5893);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(6689);
-// EXTERNAL MODULE: ./entities/all.ts + 4 modules
-var entities_all = __webpack_require__(3007);
+// EXTERNAL MODULE: ./lib/data.ts + 4 modules
+var data = __webpack_require__(1849);
 // EXTERNAL MODULE: ./Components/ui/card.tsx
 var card = __webpack_require__(3451);
-// EXTERNAL MODULE: ./Components/ui/badge.tsx
-var badge = __webpack_require__(6115);
 ;// CONCATENATED MODULE: external "recharts"
 const external_recharts_namespaceObject = require("recharts");
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/trending-up.js
-var trending_up = __webpack_require__(9858);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/map-pin.js
-var map_pin = __webpack_require__(4976);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/clock.js
-var clock = __webpack_require__(5077);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/dollar-sign.js
-var dollar_sign = __webpack_require__(6942);
-// EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/activity.js
-var activity = __webpack_require__(9062);
 ;// CONCATENATED MODULE: ./pages/LiveAnalytics.tsx
 
 
 
 
 
-
-
-
-
-
-
 function LiveAnalytics() {
-    const [analyticsData, setAnalyticsData] = (0,external_react_.useState)({
-        zoneStats: [],
-        hourlyOrders: [],
-        surgeHistory: [],
-        revenueData: []
-    });
-    const [isLoading, setIsLoading] = (0,external_react_.useState)(true);
-    (0,external_react_.useEffect)(()=>{
-        loadAnalytics();
-        const interval = setInterval(loadAnalytics, 10000);
-        return ()=>clearInterval(interval);
-    }, []);
-    const loadAnalytics = async ()=>{
-        try {
-            const [orders, partners, locations, policies] = await Promise.all([
-                entities_all.Order.list("-created_date", 200),
-                entities_all.DeliveryPartner.list(),
-                entities_all.Location.list(),
-                entities_all.SurgePolicy.list()
-            ]);
-            // Zone Statistics
-            const zoneStats = locations.map((location)=>{
-                const zoneOrders = orders.filter((order)=>order.delivery_zone === location.zone_name);
-                const activeOrders = zoneOrders.filter((order)=>[
-                        "pending",
-                        "confirmed",
-                        "preparing",
-                        "out_for_delivery"
-                    ].includes(order.status)).length;
-                const availablePartners = partners.filter((partner)=>partner.current_location === location.zone_name && partner.status === "available").length;
-                const revenue = zoneOrders.reduce((sum, order)=>sum + (order.total_amount || 0), 0);
-                const avgDeliveryFee = zoneOrders.length > 0 ? zoneOrders.reduce((sum, order)=>sum + (order.final_delivery_fee || 0), 0) / zoneOrders.length : 0;
-                return {
-                    zone: location.zone_name,
-                    totalOrders: zoneOrders.length,
-                    activeOrders,
-                    availablePartners,
-                    revenue,
-                    currentSurge: location.current_surge_multiplier || 1.0,
-                    avgDeliveryFee: Math.round(avgDeliveryFee)
-                };
-            });
-            // Hourly Orders (last 24 hours simulation)
-            const hourlyOrders = Array.from({
-                length: 24
-            }, (_, i)=>({
-                    hour: `${23 - i}:00`,
-                    orders: Math.floor(Math.random() * 20) + 5,
-                    avgSurge: (Math.random() * 1.5 + 0.8).toFixed(1)
-                })).reverse();
-            // Revenue data
-            const revenueData = zoneStats.map((zone)=>({
-                    zone: zone.zone,
-                    revenue: zone.revenue,
-                    deliveryRevenue: zone.totalOrders * zone.avgDeliveryFee
-                }));
-            setAnalyticsData({
-                zoneStats,
-                hourlyOrders,
-                revenueData
-            });
-        } catch (error) {
-            console.error("Error loading analytics:", error);
-        } finally{
-            setIsLoading(false);
-        }
+    const orders = (0,data/* getAllOrders */.zk)();
+    const partners = (0,data/* getAllPartners */.cF)();
+    // Calculate analytics data
+    const analyticsData = {
+        totalOrders: orders.length,
+        activePartners: partners.filter((p)=>p.status === "available").length,
+        avgDeliveryTime: orders.reduce((acc, order)=>acc + (order.estimated_delivery_time || 0), 0) / orders.length || 0,
+        surgeZones: orders.filter((order)=>(order.surge_multiplier || 1) > 1).length
     };
-    const totalRevenue = analyticsData.zoneStats.reduce((sum, zone)=>sum + zone.revenue, 0);
-    const totalOrders = analyticsData.zoneStats.reduce((sum, zone)=>sum + zone.totalOrders, 0);
-    const avgSurge = analyticsData.zoneStats.length > 0 ? analyticsData.zoneStats.reduce((sum, zone)=>sum + zone.currentSurge, 0) / analyticsData.zoneStats.length : 1.0;
+    // Prepare chart data
+    const ordersByHour = Array.from({
+        length: 24
+    }, (_, hour)=>({
+            hour: `${hour}:00`,
+            orders: Math.floor(Math.random() * 20),
+            partners: Math.floor(Math.random() * 10)
+        }));
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-        className: "min-h-screen bg-gradient-to-br from-indigo-50 to-gray-50",
+        className: "container mx-auto px-4 py-8",
         children: [
-            /*#__PURE__*/ jsx_runtime.jsx("section", {
-                className: "bg-gradient-to-r from-indigo-600 to-purple-600 text-white",
-                children: /*#__PURE__*/ jsx_runtime.jsx("div", {
-                    className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16",
-                    children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                        className: "text-center",
-                        children: [
-                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("h1", {
-                                className: "text-4xl md:text-5xl font-bold mb-4",
-                                children: [
-                                    "Live ",
-                                    /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                        className: "text-indigo-200",
-                                        children: "Analytics"
-                                    })
-                                ]
-                            }),
-                            /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                className: "text-xl text-indigo-100 mb-8",
-                                children: "Real-time insights into surge pricing performance and operational metrics"
-                            }),
-                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                className: "grid md:grid-cols-3 gap-6 max-w-2xl mx-auto",
-                                children: [
-                                    /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
-                                        className: "bg-white/10 backdrop-blur-sm border-white/20 text-white",
-                                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardContent */.aY, {
-                                            className: "p-4 text-center",
-                                            children: [
-                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                    className: "flex items-center justify-center gap-2 mb-2",
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime.jsx(dollar_sign/* default */.Z, {
-                                                            className: "w-5 h-5 text-green-300"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                            className: "font-semibold",
-                                                            children: "Total Revenue"
-                                                        })
-                                                    ]
-                                                }),
-                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("p", {
-                                                    className: "text-2xl font-bold",
-                                                    children: [
-                                                        "₹",
-                                                        totalRevenue.toLocaleString()
-                                                    ]
-                                                })
-                                            ]
-                                        })
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
-                                        className: "bg-white/10 backdrop-blur-sm border-white/20 text-white",
-                                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardContent */.aY, {
-                                            className: "p-4 text-center",
-                                            children: [
-                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                    className: "flex items-center justify-center gap-2 mb-2",
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime.jsx(activity/* default */.Z, {
-                                                            className: "w-5 h-5 text-purple-300"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                            className: "font-semibold",
-                                                            children: "Total Orders"
-                                                        })
-                                                    ]
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                    className: "text-2xl font-bold",
-                                                    children: totalOrders
-                                                })
-                                            ]
-                                        })
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
-                                        className: "bg-white/10 backdrop-blur-sm border-white/20 text-white",
-                                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardContent */.aY, {
-                                            className: "p-4 text-center",
-                                            children: [
-                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                    className: "flex items-center justify-center gap-2 mb-2",
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime.jsx(trending_up/* default */.Z, {
-                                                            className: "w-5 h-5 text-yellow-300"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                            className: "font-semibold",
-                                                            children: "Avg Surge"
-                                                        })
-                                                    ]
-                                                }),
-                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("p", {
-                                                    className: "text-2xl font-bold",
-                                                    children: [
-                                                        avgSurge.toFixed(1),
-                                                        "x"
-                                                    ]
-                                                })
-                                            ]
-                                        })
-                                    })
-                                ]
-                            })
-                        ]
-                    })
-                })
+            /*#__PURE__*/ jsx_runtime.jsx("h1", {
+                className: "text-3xl font-bold mb-6",
+                children: "Live Analytics"
             }),
             /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8",
+                className: "grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8",
                 children: [
                     /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
-                        className: "shadow-lg border-0",
                         children: [
                             /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
-                                className: "bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-t-lg",
-                                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardTitle */.ll, {
-                                    className: "flex items-center gap-2",
-                                    children: [
-                                        /*#__PURE__*/ jsx_runtime.jsx(map_pin/* default */.Z, {
-                                            className: "w-5 h-5"
-                                        }),
-                                        "Zone Performance Dashboard"
-                                    ]
+                                children: /*#__PURE__*/ jsx_runtime.jsx(card/* CardTitle */.ll, {
+                                    children: "Total Orders"
                                 })
                             }),
                             /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
-                                className: "p-6",
-                                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                    className: "grid lg:grid-cols-2 gap-8",
+                                children: /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                    className: "text-4xl font-bold",
+                                    children: analyticsData.totalOrders
+                                })
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
+                        children: [
+                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
+                                children: /*#__PURE__*/ jsx_runtime.jsx(card/* CardTitle */.ll, {
+                                    children: "Active Partners"
+                                })
+                            }),
+                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
+                                children: /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                    className: "text-4xl font-bold",
+                                    children: analyticsData.activePartners
+                                })
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
+                        children: [
+                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
+                                children: /*#__PURE__*/ jsx_runtime.jsx(card/* CardTitle */.ll, {
+                                    children: "Avg Delivery Time"
+                                })
+                            }),
+                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
+                                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("p", {
+                                    className: "text-4xl font-bold",
                                     children: [
-                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                            className: "space-y-4",
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime.jsx("h3", {
-                                                    className: "text-lg font-semibold",
-                                                    children: "Current Zone Status"
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime.jsx("div", {
-                                                    className: "space-y-3",
-                                                    children: analyticsData.zoneStats.map((zone)=>/*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
-                                                            className: "p-4 border-l-4 border-indigo-500",
-                                                            children: [
-                                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                                    className: "flex justify-between items-start mb-3",
-                                                                    children: [
-                                                                        /*#__PURE__*/ jsx_runtime.jsx("h4", {
-                                                                            className: "font-semibold",
-                                                                            children: zone.zone
-                                                                        }),
-                                                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)(badge/* Badge */.C, {
-                                                                            className: zone.currentSurge >= 2.0 ? "bg-red-500 text-white" : zone.currentSurge >= 1.5 ? "bg-orange-500 text-white" : zone.currentSurge >= 1.2 ? "bg-yellow-500 text-white" : "bg-green-500 text-white",
-                                                                            children: [
-                                                                                zone.currentSurge,
-                                                                                "x"
-                                                                            ]
-                                                                        })
-                                                                    ]
-                                                                }),
-                                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                                    className: "grid grid-cols-2 gap-4 text-sm",
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                                            children: [
-                                                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                                    className: "text-gray-500",
-                                                                                    children: "Total Orders"
-                                                                                }),
-                                                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                                    className: "font-bold",
-                                                                                    children: zone.totalOrders
-                                                                                })
-                                                                            ]
-                                                                        }),
-                                                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                                            children: [
-                                                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                                    className: "text-gray-500",
-                                                                                    children: "Active Orders"
-                                                                                }),
-                                                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                                    className: "font-bold",
-                                                                                    children: zone.activeOrders
-                                                                                })
-                                                                            ]
-                                                                        }),
-                                                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                                            children: [
-                                                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                                    className: "text-gray-500",
-                                                                                    children: "Available Partners"
-                                                                                }),
-                                                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                                    className: "font-bold",
-                                                                                    children: zone.availablePartners
-                                                                                })
-                                                                            ]
-                                                                        }),
-                                                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                                            children: [
-                                                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                                                    className: "text-gray-500",
-                                                                                    children: "Revenue"
-                                                                                }),
-                                                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("p", {
-                                                                                    className: "font-bold",
-                                                                                    children: [
-                                                                                        "₹",
-                                                                                        zone.revenue.toLocaleString()
-                                                                                    ]
-                                                                                })
-                                                                            ]
-                                                                        })
-                                                                    ]
-                                                                })
-                                                            ]
-                                                        }, zone.zone))
-                                                })
-                                            ]
-                                        }),
-                                        /*#__PURE__*/ jsx_runtime.jsx("div", {
-                                            className: "space-y-6",
-                                            children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx("h3", {
-                                                        className: "text-lg font-semibold mb-4",
-                                                        children: "Orders by Zone"
-                                                    }),
-                                                    /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.ResponsiveContainer, {
-                                                        width: "100%",
-                                                        height: 300,
-                                                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(external_recharts_namespaceObject.BarChart, {
-                                                            data: analyticsData.zoneStats,
-                                                            children: [
-                                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.CartesianGrid, {
-                                                                    strokeDasharray: "3 3"
-                                                                }),
-                                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.XAxis, {
-                                                                    dataKey: "zone"
-                                                                }),
-                                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.YAxis, {}),
-                                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Tooltip, {}),
-                                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Bar, {
-                                                                    dataKey: "totalOrders",
-                                                                    fill: "#6366f1"
-                                                                })
-                                                            ]
-                                                        })
-                                                    })
-                                                ]
-                                            })
-                                        })
+                                        analyticsData.avgDeliveryTime.toFixed(0),
+                                        " min"
                                     ]
                                 })
                             })
                         ]
                     }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                        className: "grid lg:grid-cols-2 gap-8",
+                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
                         children: [
-                            /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
-                                className: "shadow-lg border-0",
-                                children: [
-                                    /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
-                                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardTitle */.ll, {
-                                            className: "flex items-center gap-2",
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime.jsx(clock/* default */.Z, {
-                                                    className: "w-5 h-5 text-blue-500"
-                                                }),
-                                                "24-Hour Order Trend"
-                                            ]
-                                        })
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
-                                        children: /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.ResponsiveContainer, {
-                                            width: "100%",
-                                            height: 300,
-                                            children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(external_recharts_namespaceObject.LineChart, {
-                                                data: analyticsData.hourlyOrders,
-                                                children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.CartesianGrid, {
-                                                        strokeDasharray: "3 3"
-                                                    }),
-                                                    /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.XAxis, {
-                                                        dataKey: "hour"
-                                                    }),
-                                                    /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.YAxis, {}),
-                                                    /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Tooltip, {}),
-                                                    /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Line, {
-                                                        type: "monotone",
-                                                        dataKey: "orders",
-                                                        stroke: "#3b82f6",
-                                                        strokeWidth: 2
-                                                    })
-                                                ]
-                                            })
-                                        })
-                                    })
-                                ]
+                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
+                                children: /*#__PURE__*/ jsx_runtime.jsx(card/* CardTitle */.ll, {
+                                    children: "Surge Zones"
+                                })
                             }),
-                            /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
-                                className: "shadow-lg border-0",
-                                children: [
-                                    /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
-                                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardTitle */.ll, {
-                                            className: "flex items-center gap-2",
+                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
+                                children: /*#__PURE__*/ jsx_runtime.jsx("p", {
+                                    className: "text-4xl font-bold",
+                                    children: analyticsData.surgeZones
+                                })
+                            })
+                        ]
+                    })
+                ]
+            }),
+            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                className: "grid lg:grid-cols-2 gap-6",
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
+                        children: [
+                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
+                                children: /*#__PURE__*/ jsx_runtime.jsx(card/* CardTitle */.ll, {
+                                    children: "Orders by Hour"
+                                })
+                            }),
+                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
+                                children: /*#__PURE__*/ jsx_runtime.jsx("div", {
+                                    style: {
+                                        width: "100%",
+                                        height: 300
+                                    },
+                                    children: /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.ResponsiveContainer, {
+                                        width: "100%",
+                                        height: 300,
+                                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(external_recharts_namespaceObject.LineChart, {
+                                            data: ordersByHour,
                                             children: [
-                                                /*#__PURE__*/ jsx_runtime.jsx(dollar_sign/* default */.Z, {
-                                                    className: "w-5 h-5 text-green-500"
+                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.CartesianGrid, {
+                                                    strokeDasharray: "3 3"
                                                 }),
-                                                "Revenue Distribution"
+                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.XAxis, {
+                                                    dataKey: "hour"
+                                                }),
+                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.YAxis, {}),
+                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Tooltip, {}),
+                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Legend, {}),
+                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Line, {
+                                                    type: "monotone",
+                                                    dataKey: "orders",
+                                                    stroke: "#8884d8"
+                                                })
                                             ]
                                         })
-                                    }),
-                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* CardContent */.aY, {
-                                        children: [
-                                            /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.ResponsiveContainer, {
-                                                width: "100%",
-                                                height: 300,
-                                                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(external_recharts_namespaceObject.BarChart, {
-                                                    data: analyticsData.revenueData,
-                                                    children: [
-                                                        /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.CartesianGrid, {
-                                                            strokeDasharray: "3 3"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.XAxis, {
-                                                            dataKey: "zone"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.YAxis, {}),
-                                                        /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Tooltip, {}),
-                                                        /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Bar, {
-                                                            dataKey: "revenue",
-                                                            fill: "#10b981"
-                                                        }),
-                                                        /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Bar, {
-                                                            dataKey: "deliveryRevenue",
-                                                            fill: "#f59e0b"
-                                                        })
-                                                    ]
-                                                })
-                                            }),
-                                            /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                className: "flex justify-center gap-4 mt-4 text-sm",
-                                                children: [
-                                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                        className: "flex items-center gap-2",
-                                                        children: [
-                                                            /*#__PURE__*/ jsx_runtime.jsx("div", {
-                                                                className: "w-3 h-3 bg-green-500 rounded"
-                                                            }),
-                                                            /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                                children: "Food Revenue"
-                                                            })
-                                                        ]
-                                                    }),
-                                                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                                        className: "flex items-center gap-2",
-                                                        children: [
-                                                            /*#__PURE__*/ jsx_runtime.jsx("div", {
-                                                                className: "w-3 h-3 bg-yellow-500 rounded"
-                                                            }),
-                                                            /*#__PURE__*/ jsx_runtime.jsx("span", {
-                                                                children: "Delivery Revenue"
-                                                            })
-                                                        ]
-                                                    })
-                                                ]
-                                            })
-                                        ]
                                     })
-                                ]
+                                })
                             })
                         ]
                     }),
-                    /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                        className: "grid md:grid-cols-4 gap-6",
+                    /*#__PURE__*/ (0,jsx_runtime.jsxs)(card/* Card */.Zb, {
                         children: [
-                            /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
-                                className: "p-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white",
-                                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                    className: "flex items-center justify-between",
-                                    children: [
-                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                    className: "text-blue-100",
-                                                    children: "Total Orders"
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                    className: "text-2xl font-bold",
-                                                    children: totalOrders
-                                                })
-                                            ]
-                                        }),
-                                        /*#__PURE__*/ jsx_runtime.jsx(activity/* default */.Z, {
-                                            className: "w-8 h-8 text-blue-200"
-                                        })
-                                    ]
+                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardHeader */.Ol, {
+                                children: /*#__PURE__*/ jsx_runtime.jsx(card/* CardTitle */.ll, {
+                                    children: "Partner Availability"
                                 })
                             }),
-                            /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
-                                className: "p-6 bg-gradient-to-r from-green-500 to-green-600 text-white",
-                                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                    className: "flex items-center justify-between",
-                                    children: [
-                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
+                            /*#__PURE__*/ jsx_runtime.jsx(card/* CardContent */.aY, {
+                                children: /*#__PURE__*/ jsx_runtime.jsx("div", {
+                                    style: {
+                                        width: "100%",
+                                        height: 300
+                                    },
+                                    children: /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.ResponsiveContainer, {
+                                        width: "100%",
+                                        height: 300,
+                                        children: /*#__PURE__*/ (0,jsx_runtime.jsxs)(external_recharts_namespaceObject.BarChart, {
+                                            data: ordersByHour,
                                             children: [
-                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                    className: "text-green-100",
-                                                    children: "Revenue"
+                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.CartesianGrid, {
+                                                    strokeDasharray: "3 3"
                                                 }),
-                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("p", {
-                                                    className: "text-2xl font-bold",
-                                                    children: [
-                                                        "₹",
-                                                        totalRevenue.toLocaleString()
-                                                    ]
+                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.XAxis, {
+                                                    dataKey: "hour"
+                                                }),
+                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.YAxis, {}),
+                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Tooltip, {}),
+                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Legend, {}),
+                                                /*#__PURE__*/ jsx_runtime.jsx(external_recharts_namespaceObject.Bar, {
+                                                    dataKey: "partners",
+                                                    fill: "#82ca9d"
                                                 })
                                             ]
-                                        }),
-                                        /*#__PURE__*/ jsx_runtime.jsx(dollar_sign/* default */.Z, {
-                                            className: "w-8 h-8 text-green-200"
                                         })
-                                    ]
-                                })
-                            }),
-                            /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
-                                className: "p-6 bg-gradient-to-r from-purple-500 to-purple-600 text-white",
-                                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                    className: "flex items-center justify-between",
-                                    children: [
-                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                    className: "text-purple-100",
-                                                    children: "Avg Surge"
-                                                }),
-                                                /*#__PURE__*/ (0,jsx_runtime.jsxs)("p", {
-                                                    className: "text-2xl font-bold",
-                                                    children: [
-                                                        avgSurge.toFixed(1),
-                                                        "x"
-                                                    ]
-                                                })
-                                            ]
-                                        }),
-                                        /*#__PURE__*/ jsx_runtime.jsx(trending_up/* default */.Z, {
-                                            className: "w-8 h-8 text-purple-200"
-                                        })
-                                    ]
-                                })
-                            }),
-                            /*#__PURE__*/ jsx_runtime.jsx(card/* Card */.Zb, {
-                                className: "p-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white",
-                                children: /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                    className: "flex items-center justify-between",
-                                    children: [
-                                        /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                    className: "text-orange-100",
-                                                    children: "Active Zones"
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime.jsx("p", {
-                                                    className: "text-2xl font-bold",
-                                                    children: analyticsData.zoneStats.length
-                                                })
-                                            ]
-                                        }),
-                                        /*#__PURE__*/ jsx_runtime.jsx(map_pin/* default */.Z, {
-                                            className: "w-8 h-8 text-orange-200"
-                                        })
-                                    ]
+                                    })
                                 })
                             })
                         ]
@@ -684,13 +289,6 @@ const routeModule = new PagesRouteModule({
 });
 
 //# sourceMappingURL=pages.js.map
-
-/***/ }),
-
-/***/ 1169:
-/***/ ((module) => {
-
-module.exports = require("class-variance-authority");
 
 /***/ }),
 
@@ -785,7 +383,7 @@ module.exports = require("tailwind-merge");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [259,624,855,325,695,706], () => (__webpack_exec__(2266)));
+var __webpack_exports__ = __webpack_require__.X(0, [259,624,855,893,444], () => (__webpack_exec__(2266)));
 module.exports = __webpack_exports__;
 
 })();
