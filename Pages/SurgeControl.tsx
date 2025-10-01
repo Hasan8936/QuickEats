@@ -38,8 +38,31 @@ export default function SurgeControl() {
 
         {/* Controls */}
         <div className="space-y-6">
-          <PricingControls />
-          <SimulateDemand />
+          <PricingControls 
+            policies={policies}
+            realTimeData={realTimeData.reduce((acc, data) => ({
+              ...acc,
+              [data.zoneId]: {
+                demandLevel: data.demandLevel,
+                currentSurge: data.currentSurge
+              }
+            }), {})}
+            onPolicyUpdate={async (policyId, update) => {
+              // Handle policy update
+              console.log('Policy update:', policyId, update);
+            }}
+          />
+          <SimulateDemand 
+            locations={[
+              { id: '1', name: 'Downtown', coordinates: { lat: 0, lng: 0 } },
+              { id: '2', name: 'Suburbs', coordinates: { lat: 0, lng: 0 } }
+            ]}
+            onSimulate={(zone, count) => {
+              // Handle demand simulation
+              console.log('Simulating demand:', zone, count);
+            }}
+            isSimulating={false}
+          />
         </div>
       </div>
     </div>
