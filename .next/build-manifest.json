@@ -1,19 +1,39 @@
 {
   "polyfillFiles": [
-    "static/chunks/polyfills.js"
+    "static/chunks/polyfills-78c92fac7aa8fdd8.js"
   ],
-  "devFiles": [
-    "static/chunks/webpack.js",
-    "static/chunks/react-refresh.js"
-  ],
+  "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/development/_buildManifest.js",
-    "static/development/_ssgManifest.js"
+    "static/ehH1GkmCVMySlPfXxJDzM/_buildManifest.js",
+    "static/ehH1GkmCVMySlPfXxJDzM/_ssgManifest.js"
   ],
-  "rootMainFiles": [],
+  "rootMainFiles": [
+    "static/chunks/webpack-8c6fce568ef19a00.js",
+    "static/chunks/fd9d1056-828e77a11ad50db3.js",
+    "static/chunks/596-c4b6c2a5b07e7dba.js",
+    "static/chunks/main-app-7e09fd72db56818e.js"
+  ],
   "pages": {
-    "/_app": []
+    "/SurgeControl": [
+      "static/chunks/webpack-8c6fce568ef19a00.js",
+      "static/chunks/framework-163397d569b037fc.js",
+      "static/chunks/main-edfe41388de039e4.js",
+      "static/chunks/712-d5eee68d248b61eb.js",
+      "static/chunks/pages/SurgeControl-ed2b603436b08ddb.js"
+    ],
+    "/_app": [
+      "static/chunks/webpack-8c6fce568ef19a00.js",
+      "static/chunks/framework-163397d569b037fc.js",
+      "static/chunks/main-edfe41388de039e4.js",
+      "static/chunks/pages/_app-52924524f99094ab.js"
+    ],
+    "/_error": [
+      "static/chunks/webpack-8c6fce568ef19a00.js",
+      "static/chunks/framework-163397d569b037fc.js",
+      "static/chunks/main-edfe41388de039e4.js",
+      "static/chunks/pages/_error-c92d5c4bb2b49926.js"
+    ]
   },
   "ampFirstPages": []
 }

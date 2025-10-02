@@ -11,8 +11,10 @@ export interface Location {
   id: string;
   name: string;
   zone: string;
-  lat: number;
-  lng: number;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
 }
 
 export interface Order {
@@ -36,15 +38,6 @@ export interface DeliveryPartner {
   status: string;
   active_orders: number;
   rating: number;
-}
-
-export interface Location {
-  id: string;
-  name: string;
-  coordinates: {
-    lat: number;
-    lng: number;
-  };
 }
 
 export interface SurgePolicy {
