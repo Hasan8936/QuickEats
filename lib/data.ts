@@ -1,7 +1,7 @@
-import ordersData from '../entities/Order.json';
-import partnersData from '../entities/DeliveryPartner.json';
-import locationsData from '../entities/Location.json';
-import surgePoliciesData from '../entities/SurgePolicy.json';
+import ordersData from '@/entities/Order.json';
+import partnersData from '@/entities/DeliveryPartner.json';
+import locationsData from '@/entities/Location.json';
+import surgePoliciesData from '@/entities/SurgePolicy.json';
 import { Order, DeliveryPartner, Location, SurgePolicy } from '@/types';
 
 // Type safe data exports
