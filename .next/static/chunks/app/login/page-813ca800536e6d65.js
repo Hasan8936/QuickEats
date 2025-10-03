@@ -1,9 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[626],{7667:function(e,n,t){Promise.resolve().then(t.bind(t,7997))},7997:function(e,n,t){"use strict";t.r(n),t.d(n,{default:function(){return o}});var r=t(7437);function o(){return(0,r.jsx)("div",{className:"min-h-screen flex items-center justify-center",children:(0,r.jsxs)("div",{className:"max-w-md w-full p-6 bg-white rounded shadow",children:[(0,r.jsx)("h1",{className:"text-2xl font-bold mb-4",children:"Sign in to QuickEats"}),(0,r.jsx)("p",{className:"mb-6",children:"You need to sign in with Google to continue."}),(0,r.jsx)("button",{onClick:()=>{window.location.href="/api/auth/google/start"},className:"btn w-full",children:"Sign in with Google"}),(0,r.jsx)("p",{className:"text-xs text-gray-500 mt-4",children:"This app requires GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET set in your environment."})]})})}t(2265)},622:function(e,n,t){"use strict";/**
- * @license React
- * react-jsx-runtime.production.min.js
- *
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */var r=t(2265),o=Symbol.for("react.element"),s=Symbol.for("react.fragment"),i=Object.prototype.hasOwnProperty,c=r.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,l={key:!0,ref:!0,__self:!0,__source:!0};function a(e,n,t){var r,s={},a=null,u=null;for(r in void 0!==t&&(a=""+t),void 0!==n.key&&(a=""+n.key),void 0!==n.ref&&(u=n.ref),n)i.call(n,r)&&!l.hasOwnProperty(r)&&(s[r]=n[r]);if(e&&e.defaultProps)for(r in n=e.defaultProps)void 0===s[r]&&(s[r]=n[r]);return{$$typeof:o,type:e,key:a,ref:u,props:s,_owner:c.current}}n.Fragment=s,n.jsx=a,n.jsxs=a},7437:function(e,n,t){"use strict";e.exports=t(622)}},function(e){e.O(0,[971,596,744],function(){return e(e.s=7667)}),_N_E=e.O()}]);
