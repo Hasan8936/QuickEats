@@ -236,7 +236,7 @@ const tree = {
       ]
       },
         {
-        'layout': [() => Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 1754)), "C:\\Users\\hasan\\Downloads\\Quickeats\\app\\layout.tsx"],
+        'layout': [() => Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 1921)), "C:\\Users\\hasan\\Downloads\\Quickeats\\app\\layout.tsx"],
 'not-found': [() => Promise.resolve(/* import() eager */).then(__webpack_require__.t.bind(__webpack_require__, 5493, 23)), "next/dist/client/components/not-found-error"],
         
       }
@@ -277,11 +277,11 @@ const routeModule = new AppPageRouteModule({
 /***/ 2459:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 1341))
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 5781))
 
 /***/ }),
 
-/***/ 1341:
+/***/ 5781:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -299,10 +299,82 @@ var jsx_runtime_ = __webpack_require__(6786);
 var react_ = __webpack_require__(8038);
 // EXTERNAL MODULE: ./components/ui/card.tsx
 var card = __webpack_require__(737);
-// EXTERNAL MODULE: ./components/ui/button.tsx
-var ui_button = __webpack_require__(4368);
-// EXTERNAL MODULE: ./components/ui/badge.tsx
-var badge = __webpack_require__(646);
+// EXTERNAL MODULE: ./node_modules/@radix-ui/react-slot/dist/index.mjs
+var dist = __webpack_require__(1085);
+// EXTERNAL MODULE: ./node_modules/class-variance-authority/dist/index.mjs
+var class_variance_authority_dist = __webpack_require__(1971);
+// EXTERNAL MODULE: ./lib/utils.ts
+var utils = __webpack_require__(2857);
+;// CONCATENATED MODULE: ./components/ui/button.tsx
+
+
+
+
+
+const buttonVariants = (0,class_variance_authority_dist/* cva */.j)("inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
+    variants: {
+        variant: {
+            default: "bg-primary text-primary-foreground hover:bg-primary/90",
+            destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+            outline: "border border-input hover:bg-accent hover:text-accent-foreground",
+            secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+            ghost: "hover:bg-accent hover:text-accent-foreground",
+            link: "underline-offset-4 hover:underline text-primary"
+        },
+        size: {
+            default: "h-10 py-2 px-4",
+            sm: "h-9 px-3 rounded-md",
+            lg: "h-11 px-8 rounded-md"
+        }
+    },
+    defaultVariants: {
+        variant: "default",
+        size: "default"
+    }
+});
+const Button = /*#__PURE__*/ react_.forwardRef(({ className, variant, size, asChild = false, ...props }, ref)=>{
+    const Comp = asChild ? dist/* Slot */.g7 : "button";
+    return /*#__PURE__*/ jsx_runtime_.jsx(Comp, {
+        className: (0,utils.cn)(buttonVariants({
+            variant,
+            size,
+            className
+        })),
+        ref: ref,
+        ...props
+    });
+});
+Button.displayName = "Button";
+
+
+;// CONCATENATED MODULE: ./components/ui/badge.tsx
+
+
+
+
+const badgeVariants = (0,class_variance_authority_dist/* cva */.j)("inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2", {
+    variants: {
+        variant: {
+            default: "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+            secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+            destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
+            outline: "text-foreground"
+        }
+    },
+    defaultVariants: {
+        variant: "default"
+    }
+});
+function Badge({ className, variant, ...props }) {
+    return /*#__PURE__*/ jsx_runtime_.jsx("div", {
+        className: (0,utils.cn)(badgeVariants({
+            variant
+        }), className),
+        ...props
+    });
+}
+
+
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/trending-up.js
 var trending_up = __webpack_require__(7);
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/alert-triangle.js
@@ -368,7 +440,7 @@ function PricingControls({ policies, realTimeData, onPolicyUpdate }) {
                                                     className: "text-sm",
                                                     children: zone
                                                 }),
-                                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)(badge/* Badge */.C, {
+                                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)(Badge, {
                                                     className: "bg-red-500 text-white",
                                                     children: [
                                                         data.currentSurge,
@@ -397,7 +469,7 @@ function PricingControls({ policies, realTimeData, onPolicyUpdate }) {
                                             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                                 className: "flex items-center gap-2",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime_.jsx(badge/* Badge */.C, {
+                                                    /*#__PURE__*/ jsx_runtime_.jsx(Badge, {
                                                         variant: "outline",
                                                         className: data.demandLevel === "high" ? "border-red-500 text-red-700" : data.demandLevel === "medium" ? "border-yellow-500 text-yellow-700" : "border-green-500 text-green-700",
                                                         children: data.demandLevel
@@ -424,7 +496,7 @@ function PricingControls({ policies, realTimeData, onPolicyUpdate }) {
                                 }),
                                 highSurgeZones.map(([zone, data])=>{
                                     const policy = policies.find((p)=>p.zone_name === zone);
-                                    return policy ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)(ui_button/* Button */.z, {
+                                    return policy ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)(Button, {
                                         variant: "outline",
                                         size: "sm",
                                         className: "w-full text-red-600 border-red-200 hover:bg-red-50",
@@ -495,14 +567,38 @@ function PricingControls({ policies, realTimeData, onPolicyUpdate }) {
     });
 }
 
-// EXTERNAL MODULE: ./components/ui/input.tsx
-var input = __webpack_require__(5538);
-// EXTERNAL MODULE: ./components/ui/label.tsx
-var label = __webpack_require__(1396);
+;// CONCATENATED MODULE: ./components/ui/input.tsx
+
+
+
+const Input = /*#__PURE__*/ react_.forwardRef(({ className, type, ...props }, ref)=>{
+    return /*#__PURE__*/ jsx_runtime_.jsx("input", {
+        type: type,
+        className: (0,utils.cn)("flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50", className),
+        ref: ref,
+        ...props
+    });
+});
+Input.displayName = "Input";
+
+
+// EXTERNAL MODULE: ./node_modules/@radix-ui/react-label/dist/index.mjs
+var react_label_dist = __webpack_require__(3618);
+;// CONCATENATED MODULE: ./components/ui/label.tsx
+
+
+
+
+const Label = /*#__PURE__*/ react_.forwardRef(({ className, ...props }, ref)=>/*#__PURE__*/ jsx_runtime_.jsx(react_label_dist/* Root */.f, {
+        ref: ref,
+        className: (0,utils.cn)("text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70", className),
+        ...props
+    }));
+Label.displayName = react_label_dist/* Root */.f.displayName;
+
+
 // EXTERNAL MODULE: ./node_modules/@radix-ui/react-select/dist/index.mjs + 24 modules
-var dist = __webpack_require__(7946);
-// EXTERNAL MODULE: ./lib/utils.ts
-var utils = __webpack_require__(2857);
+var react_select_dist = __webpack_require__(7946);
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/check.js
 var check = __webpack_require__(1264);
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/chevron-down.js
@@ -514,10 +610,10 @@ var chevron_down = __webpack_require__(9458);
 
 
 
-const Select = dist/* Root */.fC;
-const SelectGroup = dist/* Group */.ZA;
-const SelectValue = dist/* Value */.B4;
-const SelectTrigger = /*#__PURE__*/ react_.forwardRef(({ className, children, ...props }, ref)=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)(dist/* Trigger */.xz, {
+const Select = react_select_dist/* Root */.fC;
+const SelectGroup = react_select_dist/* Group */.ZA;
+const SelectValue = react_select_dist/* Value */.B4;
+const SelectTrigger = /*#__PURE__*/ react_.forwardRef(({ className, children, ...props }, ref)=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)(react_select_dist/* Trigger */.xz, {
         ref: ref,
         className: (0,utils.cn)("flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50", className),
         ...props,
@@ -528,51 +624,51 @@ const SelectTrigger = /*#__PURE__*/ react_.forwardRef(({ className, children, ..
             })
         ]
     }));
-SelectTrigger.displayName = dist/* Trigger */.xz.displayName;
-const SelectContent = /*#__PURE__*/ react_.forwardRef(({ className, children, position = "popper", ...props }, ref)=>/*#__PURE__*/ jsx_runtime_.jsx(dist/* Portal */.h_, {
-        children: /*#__PURE__*/ jsx_runtime_.jsx(dist/* Content */.VY, {
+SelectTrigger.displayName = react_select_dist/* Trigger */.xz.displayName;
+const SelectContent = /*#__PURE__*/ react_.forwardRef(({ className, children, position = "popper", ...props }, ref)=>/*#__PURE__*/ jsx_runtime_.jsx(react_select_dist/* Portal */.h_, {
+        children: /*#__PURE__*/ jsx_runtime_.jsx(react_select_dist/* Content */.VY, {
             ref: ref,
             className: (0,utils.cn)("relative z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2", position === "popper" && "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1", className),
             position: position,
             ...props,
-            children: /*#__PURE__*/ jsx_runtime_.jsx(dist/* Viewport */.l_, {
+            children: /*#__PURE__*/ jsx_runtime_.jsx(react_select_dist/* Viewport */.l_, {
                 className: (0,utils.cn)("p-1", position === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"),
                 children: children
             })
         })
     }));
-SelectContent.displayName = dist/* Content */.VY.displayName;
-const SelectLabel = /*#__PURE__*/ react_.forwardRef(({ className, ...props }, ref)=>/*#__PURE__*/ jsx_runtime_.jsx(dist/* Label */.__, {
+SelectContent.displayName = react_select_dist/* Content */.VY.displayName;
+const SelectLabel = /*#__PURE__*/ react_.forwardRef(({ className, ...props }, ref)=>/*#__PURE__*/ jsx_runtime_.jsx(react_select_dist/* Label */.__, {
         ref: ref,
         className: (0,utils.cn)("py-1.5 pl-8 pr-2 text-sm font-semibold", className),
         ...props
     }));
-SelectLabel.displayName = dist/* Label */.__.displayName;
-const SelectItem = /*#__PURE__*/ react_.forwardRef(({ className, children, ...props }, ref)=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)(dist/* Item */.ck, {
+SelectLabel.displayName = react_select_dist/* Label */.__.displayName;
+const SelectItem = /*#__PURE__*/ react_.forwardRef(({ className, children, ...props }, ref)=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)(react_select_dist/* Item */.ck, {
         ref: ref,
         className: (0,utils.cn)("relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50", className),
         ...props,
         children: [
             /*#__PURE__*/ jsx_runtime_.jsx("span", {
                 className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center",
-                children: /*#__PURE__*/ jsx_runtime_.jsx(dist/* ItemIndicator */.wU, {
+                children: /*#__PURE__*/ jsx_runtime_.jsx(react_select_dist/* ItemIndicator */.wU, {
                     children: /*#__PURE__*/ jsx_runtime_.jsx(check/* default */.Z, {
                         className: "h-4 w-4"
                     })
                 })
             }),
-            /*#__PURE__*/ jsx_runtime_.jsx(dist/* ItemText */.eT, {
+            /*#__PURE__*/ jsx_runtime_.jsx(react_select_dist/* ItemText */.eT, {
                 children: children
             })
         ]
     }));
-SelectItem.displayName = dist/* Item */.ck.displayName;
-const SelectSeparator = /*#__PURE__*/ react_.forwardRef(({ className, ...props }, ref)=>/*#__PURE__*/ jsx_runtime_.jsx(dist/* Separator */.Z0, {
+SelectItem.displayName = react_select_dist/* Item */.ck.displayName;
+const SelectSeparator = /*#__PURE__*/ react_.forwardRef(({ className, ...props }, ref)=>/*#__PURE__*/ jsx_runtime_.jsx(react_select_dist/* Separator */.Z0, {
         ref: ref,
         className: (0,utils.cn)("-mx-1 my-1 h-px bg-muted", className),
         ...props
     }));
-SelectSeparator.displayName = dist/* Separator */.Z0.displayName;
+SelectSeparator.displayName = react_select_dist/* Separator */.Z0.displayName;
 
 
 // EXTERNAL MODULE: ./node_modules/lucide-react/dist/esm/icons/zap.js
@@ -619,7 +715,7 @@ function SimulateDemand({ locations, onSimulate, isSimulating }) {
                     children: [
                         /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                             children: [
-                                /*#__PURE__*/ jsx_runtime_.jsx(label/* Label */._, {
+                                /*#__PURE__*/ jsx_runtime_.jsx(Label, {
                                     children: "Select Zone"
                                 }),
                                 /*#__PURE__*/ (0,jsx_runtime_.jsxs)(Select, {
@@ -643,11 +739,11 @@ function SimulateDemand({ locations, onSimulate, isSimulating }) {
                         }),
                         /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                             children: [
-                                /*#__PURE__*/ jsx_runtime_.jsx(label/* Label */._, {
+                                /*#__PURE__*/ jsx_runtime_.jsx(Label, {
                                     htmlFor: "order-count",
                                     children: "Number of Orders"
                                 }),
-                                /*#__PURE__*/ jsx_runtime_.jsx(input/* Input */.I, {
+                                /*#__PURE__*/ jsx_runtime_.jsx(Input, {
                                     id: "order-count",
                                     type: "number",
                                     min: "1",
@@ -657,7 +753,7 @@ function SimulateDemand({ locations, onSimulate, isSimulating }) {
                                 })
                             ]
                         }),
-                        /*#__PURE__*/ jsx_runtime_.jsx(ui_button/* Button */.z, {
+                        /*#__PURE__*/ jsx_runtime_.jsx(Button, {
                             onClick: handleSimulate,
                             disabled: !selectedZone || orderCount <= 0 || isSimulating,
                             className: "w-full bg-orange-500 hover:bg-orange-600",
@@ -764,14 +860,14 @@ function SurgePolicyCard({ policy, realTimeData, onUpdate }) {
                                     realTimeData && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                         className: "flex items-center gap-2 mt-2",
                                         children: [
-                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)(badge/* Badge */.C, {
+                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)(Badge, {
                                                 className: getDemandColor(realTimeData.demandLevel),
                                                 children: [
                                                     realTimeData.demandLevel,
                                                     " demand"
                                                 ]
                                             }),
-                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)(badge/* Badge */.C, {
+                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)(Badge, {
                                                 className: getSurgeColor(realTimeData.currentSurge),
                                                 children: [
                                                     realTimeData.currentSurge,
@@ -782,7 +878,7 @@ function SurgePolicyCard({ policy, realTimeData, onUpdate }) {
                                     })
                                 ]
                             }),
-                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)(ui_button/* Button */.z, {
+                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)(Button, {
                                 variant: "outline",
                                 size: "sm",
                                 onClick: ()=>setIsEditing(!isEditing),
@@ -848,11 +944,11 @@ function SurgePolicyCard({ policy, realTimeData, onUpdate }) {
                                 children: [
                                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                         children: [
-                                            /*#__PURE__*/ jsx_runtime_.jsx(label/* Label */._, {
+                                            /*#__PURE__*/ jsx_runtime_.jsx(Label, {
                                                 htmlFor: `low-${policy.id}`,
                                                 children: "Low Demand Threshold"
                                             }),
-                                            /*#__PURE__*/ jsx_runtime_.jsx(input/* Input */.I, {
+                                            /*#__PURE__*/ jsx_runtime_.jsx(Input, {
                                                 id: `low-${policy.id}`,
                                                 type: "number",
                                                 min: "0",
@@ -866,11 +962,11 @@ function SurgePolicyCard({ policy, realTimeData, onUpdate }) {
                                     }),
                                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                         children: [
-                                            /*#__PURE__*/ jsx_runtime_.jsx(label/* Label */._, {
+                                            /*#__PURE__*/ jsx_runtime_.jsx(Label, {
                                                 htmlFor: `high-${policy.id}`,
                                                 children: "High Demand Threshold"
                                             }),
-                                            /*#__PURE__*/ jsx_runtime_.jsx(input/* Input */.I, {
+                                            /*#__PURE__*/ jsx_runtime_.jsx(Input, {
                                                 id: `high-${policy.id}`,
                                                 type: "number",
                                                 min: "0",
@@ -884,11 +980,11 @@ function SurgePolicyCard({ policy, realTimeData, onUpdate }) {
                                     }),
                                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                         children: [
-                                            /*#__PURE__*/ jsx_runtime_.jsx(label/* Label */._, {
+                                            /*#__PURE__*/ jsx_runtime_.jsx(Label, {
                                                 htmlFor: `supply-${policy.id}`,
                                                 children: "Supply Threshold"
                                             }),
-                                            /*#__PURE__*/ jsx_runtime_.jsx(input/* Input */.I, {
+                                            /*#__PURE__*/ jsx_runtime_.jsx(Input, {
                                                 id: `supply-${policy.id}`,
                                                 type: "number",
                                                 min: "0",
@@ -902,11 +998,11 @@ function SurgePolicyCard({ policy, realTimeData, onUpdate }) {
                                     }),
                                     /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                         children: [
-                                            /*#__PURE__*/ jsx_runtime_.jsx(label/* Label */._, {
+                                            /*#__PURE__*/ jsx_runtime_.jsx(Label, {
                                                 htmlFor: `max-${policy.id}`,
                                                 children: "Max Surge Multiplier"
                                             }),
-                                            /*#__PURE__*/ jsx_runtime_.jsx(input/* Input */.I, {
+                                            /*#__PURE__*/ jsx_runtime_.jsx(Input, {
                                                 id: `max-${policy.id}`,
                                                 type: "number",
                                                 min: "1",
@@ -925,12 +1021,12 @@ function SurgePolicyCard({ policy, realTimeData, onUpdate }) {
                             /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                 className: "flex gap-2",
                                 children: [
-                                    /*#__PURE__*/ jsx_runtime_.jsx(ui_button/* Button */.z, {
+                                    /*#__PURE__*/ jsx_runtime_.jsx(Button, {
                                         onClick: handleSave,
                                         className: "bg-blue-500 hover:bg-blue-600",
                                         children: "Save Changes"
                                     }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx(ui_button/* Button */.z, {
+                                    /*#__PURE__*/ jsx_runtime_.jsx(Button, {
                                         variant: "outline",
                                         onClick: ()=>setIsEditing(false),
                                         children: "Cancel"
@@ -1088,7 +1184,7 @@ const __default__ = proxy.default;
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [478,744,528,371,640,516,737,646,963], () => (__webpack_exec__(1749)));
+var __webpack_exports__ = __webpack_require__.X(0, [478,1,584,586,229,737], () => (__webpack_exec__(1749)));
 module.exports = __webpack_exports__;
 
 })();

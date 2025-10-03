@@ -8,7 +8,6 @@ import SimulateDemand from "@/components/surge/SimulateDemand";
 export default function SurgeControl() {
   const policies = getAllSurgePolicies();
 
-  // Simulated real-time data for each zone
   const realTimeData = policies.map(policy => ({
     zoneId: policy.id,
     demandLevel: ['low', 'medium', 'high'][Math.floor(Math.random() * 3)] as 'low' | 'medium' | 'high',
@@ -22,21 +21,17 @@ export default function SurgeControl() {
       <h1 className="text-3xl font-bold mb-6">Surge Control</h1>
 
       <div className="grid lg:grid-cols-2 gap-6">
-        {/* Surge Policies */}
         <div className="space-y-6">
           {policies.map((policy, index) => (
             <SurgePolicyCard
               key={policy.id}
               policy={policy}
               realTimeData={realTimeData[index]}
-              onUpdate={async () => {
-                // Handle policy update
-              }}
+              onUpdate={async () => {}}
             />
           ))}
         </div>
 
-        {/* Controls */}
         <div className="space-y-6">
           <PricingControls 
             policies={policies}
@@ -48,29 +43,15 @@ export default function SurgeControl() {
               }
             }), {})}
             onPolicyUpdate={async (policyId, update) => {
-              // Handle policy update
               console.log('Policy update:', policyId, update);
             }}
           />
           <SimulateDemand 
             locations={[
-              { 
-                id: '1', 
-                name: 'Downtown', 
-                zone: 'Central',
-                lat: 40.7128,
-                lng: -74.0060
-              },
-              { 
-                id: '2', 
-                name: 'Suburbs', 
-                zone: 'North',
-                lat: 40.7829,
-                lng: -73.9654
-              }
+              { id: '1', name: 'Downtown', zone: 'downtown', lat: 0, lng: 0 },
+              { id: '2', name: 'Suburbs', zone: 'suburbs', lat: 0, lng: 0 }
             ]}
             onSimulate={(zone, count) => {
-              // Handle demand simulation
               console.log('Simulating demand:', zone, count);
             }}
             isSimulating={false}
