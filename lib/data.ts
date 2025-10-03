@@ -7,7 +7,21 @@ import { Order, DeliveryPartner, Location, SurgePolicy } from '@/types';
 // Type safe data exports
 export const orders: { orders: Order[] } = ordersData;
 export const partners: { deliveryPartners: DeliveryPartner[] } = partnersData;
-export const locations: { zones: Location[] } = locationsData;
+// Normalize/validate JSON at import time so TypeScript sees the correct shape
+const normalizedLocations = {
+    zones: (locationsData?.zones || []).map((z: any) => ({
+        id: String(z.id),
+        name: String(z.name),
+        // ensure 'zone' exists; fallback to a slug of the name or empty string
+        zone: z.zone ?? (typeof z.name === 'string' ? z.name.toLowerCase().replace(/\s+/g, '-') : ''),
+        coordinates: {
+            lat: Number(z.coordinates?.lat ?? 0),
+            lng: Number(z.coordinates?.lng ?? 0)
+        }
+    }))
+};
+
+export const locations: { zones: Location[] } = normalizedLocations as { zones: Location[] };
 export const surgePolicies: { policies: SurgePolicy[] } = surgePoliciesData;
 
 // Helper functions
