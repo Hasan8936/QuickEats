@@ -14,13 +14,14 @@ export type SessionPayload = {
 
 export function signSession(payload: SessionPayload, expiresIn = '7d') {
   if (!SECRET) throw new Error('COOKIE_SECRET environment variable is not set');
-  return jwt.sign(payload, SECRET, { expiresIn });
+  // jsonwebtoken types have incompatibilities; cast to any for now
+  return jwt.sign(payload as any, SECRET as any, { expiresIn } as any);
 }
 
 export function verifySession(token: string): SessionPayload | null {
   try {
-    if (!SECRET) return null;
-    const decoded = jwt.verify(token, SECRET) as SessionPayload;
+  if (!SECRET) return null;
+  const decoded = jwt.verify(token, SECRET as any) as SessionPayload;
     return decoded;
   } catch (e) {
     return null;
