@@ -5,14 +5,14 @@ exports.id = 564;
 exports.ids = [564];
 exports.modules = {
 
-/***/ 2037:
+/***/ 22037:
 /***/ ((module) => {
 
 module.exports = require("os");
 
 /***/ }),
 
-/***/ 7448:
+/***/ 37448:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -38,15 +38,15 @@ __webpack_require__.d(route_namespaceObject, {
 });
 
 // EXTERNAL MODULE: ./node_modules/next/dist/server/node-polyfill-headers.js
-var node_polyfill_headers = __webpack_require__(2394);
+var node_polyfill_headers = __webpack_require__(42394);
 // EXTERNAL MODULE: ./node_modules/next/dist/server/future/route-modules/app-route/module.js
-var app_route_module = __webpack_require__(9692);
+var app_route_module = __webpack_require__(69692);
 // EXTERNAL MODULE: ./node_modules/next/dist/server/future/route-kind.js
-var route_kind = __webpack_require__(9513);
+var route_kind = __webpack_require__(19513);
 // EXTERNAL MODULE: ./node_modules/next/dist/server/web/exports/next-response.js
-var next_response = __webpack_require__(9335);
+var next_response = __webpack_require__(89335);
 // EXTERNAL MODULE: ./lib/data.ts + 4 modules
-var data = __webpack_require__(7998);
+var data = __webpack_require__(17998);
 ;// CONCATENATED MODULE: ./app/api/partners/route.ts
 
 
@@ -111,7 +111,7 @@ const originalPathname = "/api/partners/route";
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [478,778,998], () => (__webpack_exec__(7448)));
+var __webpack_exports__ = __webpack_require__.X(0, [916,501,335,998], () => (__webpack_exec__(37448)));
 module.exports = __webpack_exports__;
 
 })();

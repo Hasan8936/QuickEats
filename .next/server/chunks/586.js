@@ -2,7 +2,7 @@ exports.id = 586;
 exports.ids = [586];
 exports.modules = {
 
-/***/ 4348:
+/***/ 94348:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -185,7 +185,7 @@ __webpack_unused_export__ = suppressOthers;
 
 /***/ }),
 
-/***/ 882:
+/***/ 70882:
 /***/ ((module) => {
 
 // Only Node.JS has a process variable that is of [[Class]] process
@@ -194,7 +194,7 @@ module.exports.isNode = Object.prototype.toString.call(typeof process !== 'undef
 
 /***/ }),
 
-/***/ 7643:
+/***/ 57643:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -230,7 +230,7 @@ __webpack_require__.d(__webpack_exports__, {
 // UNUSED EXPORTS: toKebabCase
 
 // EXTERNAL MODULE: external "next/dist/compiled/react"
-var react_ = __webpack_require__(8038);
+var react_ = __webpack_require__(18038);
 ;// CONCATENATED MODULE: ./node_modules/lucide-react/dist/esm/defaultAttributes.js
 /**
  * lucide-react v0.284.0 - ISC
@@ -290,7 +290,7 @@ const createLucideIcon = (iconName, iconNode) => {
 
 /***/ }),
 
-/***/ 4409:
+/***/ 94409:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -346,7 +346,7 @@ const Check = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"]
 
 /***/ }),
 
-/***/ 9458:
+/***/ 19458:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -370,7 +370,7 @@ const ChevronDown = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__/* ["def
 
 /***/ }),
 
-/***/ 87:
+/***/ 80087:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -425,7 +425,7 @@ const Settings = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__/* ["defaul
 
 /***/ }),
 
-/***/ 4478:
+/***/ 54478:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -454,7 +454,7 @@ const ShoppingBag = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__/* ["def
 
 /***/ }),
 
-/***/ 7:
+/***/ 50007:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -479,7 +479,7 @@ const TrendingUp = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__/* ["defa
 
 /***/ }),
 
-/***/ 1672:
+/***/ 91672:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -506,7 +506,7 @@ const Users = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"]
 
 /***/ }),
 
-/***/ 6494:
+/***/ 76494:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -533,18 +533,18 @@ const Zap = (0,_createLucideIcon_js__WEBPACK_IMPORTED_MODULE_0__/* ["default"] *
 
 /***/ }),
 
-/***/ 4626:
+/***/ 44626:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.RemoveScrollBar = exports.useLockAttribute = exports.lockAttribute = void 0;
-var tslib_1 = __webpack_require__(6158);
-var React = tslib_1.__importStar(__webpack_require__(8038));
-var react_style_singleton_1 = __webpack_require__(7034);
-var constants_1 = __webpack_require__(1683);
-var utils_1 = __webpack_require__(2989);
+var tslib_1 = __webpack_require__(16158);
+var React = tslib_1.__importStar(__webpack_require__(18038));
+var react_style_singleton_1 = __webpack_require__(17034);
+var constants_1 = __webpack_require__(19461);
+var utils_1 = __webpack_require__(42989);
 var Style = (0, react_style_singleton_1.styleSingleton)();
 exports.lockAttribute = 'data-scroll-locked';
 // important tip - once we measure scrollBar width and remove them
@@ -600,7 +600,7 @@ exports.RemoveScrollBar = RemoveScrollBar;
 
 /***/ }),
 
-/***/ 1683:
+/***/ 19461:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -626,20 +626,20 @@ exports.removedBarSizeVariable = '--removed-body-scroll-bar-size';
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getGapWidth = exports.removedBarSizeVariable = exports.noScrollbarsClassName = exports.fullWidthClassName = exports.zeroRightClassName = exports.RemoveScrollBar = void 0;
-var component_1 = __webpack_require__(4626);
+var component_1 = __webpack_require__(44626);
 Object.defineProperty(exports, "RemoveScrollBar", ({ enumerable: true, get: function () { return component_1.RemoveScrollBar; } }));
-var constants_1 = __webpack_require__(1683);
+var constants_1 = __webpack_require__(19461);
 Object.defineProperty(exports, "zeroRightClassName", ({ enumerable: true, get: function () { return constants_1.zeroRightClassName; } }));
 Object.defineProperty(exports, "fullWidthClassName", ({ enumerable: true, get: function () { return constants_1.fullWidthClassName; } }));
 Object.defineProperty(exports, "noScrollbarsClassName", ({ enumerable: true, get: function () { return constants_1.noScrollbarsClassName; } }));
 Object.defineProperty(exports, "removedBarSizeVariable", ({ enumerable: true, get: function () { return constants_1.removedBarSizeVariable; } }));
-var utils_1 = __webpack_require__(2989);
+var utils_1 = __webpack_require__(42989);
 Object.defineProperty(exports, "getGapWidth", ({ enumerable: true, get: function () { return utils_1.getGapWidth; } }));
 
 
 /***/ }),
 
-/***/ 2989:
+/***/ 42989:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -680,16 +680,16 @@ exports.getGapWidth = getGapWidth;
 
 /***/ }),
 
-/***/ 840:
+/***/ 70840:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-var tslib_1 = __webpack_require__(6158);
-var React = tslib_1.__importStar(__webpack_require__(8038));
-var UI_1 = __webpack_require__(3254);
-var sidecar_1 = tslib_1.__importDefault(__webpack_require__(902));
+var tslib_1 = __webpack_require__(16158);
+var React = tslib_1.__importStar(__webpack_require__(18038));
+var UI_1 = __webpack_require__(33254);
+var sidecar_1 = tslib_1.__importDefault(__webpack_require__(20902));
 var ReactRemoveScroll = React.forwardRef(function (props, ref) { return (React.createElement(UI_1.RemoveScroll, tslib_1.__assign({}, props, { ref: ref, sideCar: sidecar_1.default }))); });
 ReactRemoveScroll.classNames = UI_1.RemoveScroll.classNames;
 exports["default"] = ReactRemoveScroll;
@@ -697,19 +697,19 @@ exports["default"] = ReactRemoveScroll;
 
 /***/ }),
 
-/***/ 5320:
+/***/ 35320:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.RemoveScrollSideCar = exports.getDeltaXY = exports.getTouchXY = void 0;
-var tslib_1 = __webpack_require__(6158);
-var React = tslib_1.__importStar(__webpack_require__(8038));
+var tslib_1 = __webpack_require__(16158);
+var React = tslib_1.__importStar(__webpack_require__(18038));
 var react_remove_scroll_bar_1 = __webpack_require__(2786);
-var react_style_singleton_1 = __webpack_require__(7034);
-var aggresiveCapture_1 = __webpack_require__(3731);
-var handleScroll_1 = __webpack_require__(7557);
+var react_style_singleton_1 = __webpack_require__(17034);
+var aggresiveCapture_1 = __webpack_require__(73731);
+var handleScroll_1 = __webpack_require__(87557);
 var getTouchXY = function (event) {
     return 'changedTouches' in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
 };
@@ -868,18 +868,18 @@ function getOutermostShadowParent(node) {
 
 /***/ }),
 
-/***/ 3254:
+/***/ 33254:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.RemoveScroll = void 0;
-var tslib_1 = __webpack_require__(6158);
-var React = tslib_1.__importStar(__webpack_require__(8038));
-var constants_1 = __webpack_require__(1683);
-var use_callback_ref_1 = __webpack_require__(3609);
-var medium_1 = __webpack_require__(5210);
+var tslib_1 = __webpack_require__(16158);
+var React = tslib_1.__importStar(__webpack_require__(18038));
+var constants_1 = __webpack_require__(19461);
+var use_callback_ref_1 = __webpack_require__(33609);
+var medium_1 = __webpack_require__(35210);
 var nothing = function () {
     return;
 };
@@ -915,7 +915,7 @@ RemoveScroll.classNames = {
 
 /***/ }),
 
-/***/ 3731:
+/***/ 73731:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -945,7 +945,7 @@ exports.nonPassive = passiveSupported ? { passive: false } : false;
 
 /***/ }),
 
-/***/ 7557:
+/***/ 87557:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -1066,7 +1066,7 @@ exports.handleScroll = handleScroll;
 
 /***/ }),
 
-/***/ 2864:
+/***/ 32864:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -1074,48 +1074,48 @@ var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.f = void 0;
-var tslib_1 = __webpack_require__(6158);
-var Combination_1 = tslib_1.__importDefault(__webpack_require__(840));
+var tslib_1 = __webpack_require__(16158);
+var Combination_1 = tslib_1.__importDefault(__webpack_require__(70840));
 exports.f = Combination_1.default;
 
 
 /***/ }),
 
-/***/ 5210:
+/***/ 35210:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.effectCar = void 0;
-var use_sidecar_1 = __webpack_require__(8221);
+var use_sidecar_1 = __webpack_require__(88221);
 exports.effectCar = (0, use_sidecar_1.createSidecarMedium)();
 
 
 /***/ }),
 
-/***/ 902:
+/***/ 20902:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-var use_sidecar_1 = __webpack_require__(8221);
-var SideEffect_1 = __webpack_require__(5320);
-var medium_1 = __webpack_require__(5210);
+var use_sidecar_1 = __webpack_require__(88221);
+var SideEffect_1 = __webpack_require__(35320);
+var medium_1 = __webpack_require__(35210);
 exports["default"] = (0, use_sidecar_1.exportSidecar)(medium_1.effectCar, SideEffect_1.RemoveScrollSideCar);
 
 
 /***/ }),
 
-/***/ 200:
+/***/ 10200:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.styleSingleton = void 0;
-var hook_1 = __webpack_require__(9812);
+var hook_1 = __webpack_require__(49812);
 /**
  * create a Component to add styles on demand
  * - styles are added when first instance is mounted
@@ -1136,16 +1136,16 @@ exports.styleSingleton = styleSingleton;
 
 /***/ }),
 
-/***/ 9812:
+/***/ 49812:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.styleHookSingleton = void 0;
-var tslib_1 = __webpack_require__(6158);
-var React = tslib_1.__importStar(__webpack_require__(8038));
-var singleton_1 = __webpack_require__(1995);
+var tslib_1 = __webpack_require__(16158);
+var React = tslib_1.__importStar(__webpack_require__(18038));
+var singleton_1 = __webpack_require__(91995);
 /**
  * creates a hook to control style singleton
  * @see {@link styleSingleton} for a safer component version
@@ -1171,31 +1171,31 @@ exports.styleHookSingleton = styleHookSingleton;
 
 /***/ }),
 
-/***/ 7034:
+/***/ 17034:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.styleHookSingleton = exports.stylesheetSingleton = exports.styleSingleton = void 0;
-var component_1 = __webpack_require__(200);
+var component_1 = __webpack_require__(10200);
 Object.defineProperty(exports, "styleSingleton", ({ enumerable: true, get: function () { return component_1.styleSingleton; } }));
-var singleton_1 = __webpack_require__(1995);
+var singleton_1 = __webpack_require__(91995);
 Object.defineProperty(exports, "stylesheetSingleton", ({ enumerable: true, get: function () { return singleton_1.stylesheetSingleton; } }));
-var hook_1 = __webpack_require__(9812);
+var hook_1 = __webpack_require__(49812);
 Object.defineProperty(exports, "styleHookSingleton", ({ enumerable: true, get: function () { return hook_1.styleHookSingleton; } }));
 
 
 /***/ }),
 
-/***/ 1995:
+/***/ 91995:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.stylesheetSingleton = void 0;
-var get_nonce_1 = __webpack_require__(7643);
+var get_nonce_1 = __webpack_require__(57643);
 function makeStyleTag() {
     if (!document)
         return null;
@@ -1248,7 +1248,7 @@ exports.stylesheetSingleton = stylesheetSingleton;
 
 /***/ }),
 
-/***/ 1859:
+/***/ 91859:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -1282,7 +1282,7 @@ exports.assignRef = assignRef;
 
 /***/ }),
 
-/***/ 319:
+/***/ 70319:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -1317,47 +1317,47 @@ exports.createCallbackRef = createCallbackRef;
 
 /***/ }),
 
-/***/ 3609:
+/***/ 33609:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.useRefToCallback = exports.refToCallback = exports.transformRef = exports.useTransformRef = exports.useMergeRefs = exports.mergeRefs = exports.createCallbackRef = exports.useCallbackRef = exports.assignRef = void 0;
-var assignRef_1 = __webpack_require__(1859);
+var assignRef_1 = __webpack_require__(91859);
 Object.defineProperty(exports, "assignRef", ({ enumerable: true, get: function () { return assignRef_1.assignRef; } }));
 // callback ref
-var useRef_1 = __webpack_require__(9308);
+var useRef_1 = __webpack_require__(19308);
 Object.defineProperty(exports, "useCallbackRef", ({ enumerable: true, get: function () { return useRef_1.useCallbackRef; } }));
-var createRef_1 = __webpack_require__(319);
+var createRef_1 = __webpack_require__(70319);
 Object.defineProperty(exports, "createCallbackRef", ({ enumerable: true, get: function () { return createRef_1.createCallbackRef; } }));
 // merge ref
-var mergeRef_1 = __webpack_require__(6256);
+var mergeRef_1 = __webpack_require__(16256);
 Object.defineProperty(exports, "mergeRefs", ({ enumerable: true, get: function () { return mergeRef_1.mergeRefs; } }));
-var useMergeRef_1 = __webpack_require__(233);
+var useMergeRef_1 = __webpack_require__(60233);
 Object.defineProperty(exports, "useMergeRefs", ({ enumerable: true, get: function () { return useMergeRef_1.useMergeRefs; } }));
 // transform ref
-var useTransformRef_1 = __webpack_require__(8750);
+var useTransformRef_1 = __webpack_require__(18750);
 Object.defineProperty(exports, "useTransformRef", ({ enumerable: true, get: function () { return useTransformRef_1.useTransformRef; } }));
-var transformRef_1 = __webpack_require__(1461);
+var transformRef_1 = __webpack_require__(11461);
 Object.defineProperty(exports, "transformRef", ({ enumerable: true, get: function () { return transformRef_1.transformRef; } }));
 // refToCallback
-var refToCallback_1 = __webpack_require__(5601);
+var refToCallback_1 = __webpack_require__(15601);
 Object.defineProperty(exports, "refToCallback", ({ enumerable: true, get: function () { return refToCallback_1.refToCallback; } }));
 Object.defineProperty(exports, "useRefToCallback", ({ enumerable: true, get: function () { return refToCallback_1.useRefToCallback; } }));
 
 
 /***/ }),
 
-/***/ 6256:
+/***/ 16256:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.mergeRefs = void 0;
-var assignRef_1 = __webpack_require__(1859);
-var createRef_1 = __webpack_require__(319);
+var assignRef_1 = __webpack_require__(91859);
+var createRef_1 = __webpack_require__(70319);
 /**
  * Merges two or more refs together providing a single interface to set their value
  * @param {RefObject|Ref} refs
@@ -1379,7 +1379,7 @@ exports.mergeRefs = mergeRefs;
 
 /***/ }),
 
-/***/ 5601:
+/***/ 15601:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -1440,15 +1440,15 @@ exports.useRefToCallback = useRefToCallback;
 
 /***/ }),
 
-/***/ 1461:
+/***/ 11461:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.transformRef = void 0;
-var assignRef_1 = __webpack_require__(1859);
-var createRef_1 = __webpack_require__(319);
+var assignRef_1 = __webpack_require__(91859);
+var createRef_1 = __webpack_require__(70319);
 /**
  * Transforms one ref to another
  * @example
@@ -1466,17 +1466,17 @@ exports.transformRef = transformRef;
 
 /***/ }),
 
-/***/ 233:
+/***/ 60233:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.useMergeRefs = void 0;
-var tslib_1 = __webpack_require__(6158);
-var React = tslib_1.__importStar(__webpack_require__(8038));
-var assignRef_1 = __webpack_require__(1859);
-var useRef_1 = __webpack_require__(9308);
+var tslib_1 = __webpack_require__(16158);
+var React = tslib_1.__importStar(__webpack_require__(18038));
+var assignRef_1 = __webpack_require__(91859);
+var useRef_1 = __webpack_require__(19308);
 var useIsomorphicLayoutEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
 var currentValues = new WeakMap();
 /**
@@ -1524,14 +1524,14 @@ exports.useMergeRefs = useMergeRefs;
 
 /***/ }),
 
-/***/ 9308:
+/***/ 19308:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.useCallbackRef = void 0;
-var react_1 = __webpack_require__(8038);
+var react_1 = __webpack_require__(18038);
 /**
  * creates a MutableRef with ref change callback
  * @param initialValue - initial ref value
@@ -1575,15 +1575,15 @@ exports.useCallbackRef = useCallbackRef;
 
 /***/ }),
 
-/***/ 8750:
+/***/ 18750:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.useTransformRef = void 0;
-var assignRef_1 = __webpack_require__(1859);
-var useRef_1 = __webpack_require__(9308);
+var assignRef_1 = __webpack_require__(91859);
+var useRef_1 = __webpack_require__(19308);
 /**
  * Create a _lense_ on Ref, making it possible to transform ref value
  * @param {ReactRef} ref
@@ -1605,7 +1605,7 @@ exports.useTransformRef = useTransformRef;
 
 /***/ }),
 
-/***/ 3164:
+/***/ 43164:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -1623,14 +1623,14 @@ exports.setConfig = setConfig;
 
 /***/ }),
 
-/***/ 2059:
+/***/ 24614:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.env = void 0;
-var detect_node_es_1 = __webpack_require__(882);
+var detect_node_es_1 = __webpack_require__(70882);
 exports.env = {
     isNode: detect_node_es_1.isNode,
     forceCache: false,
@@ -1639,15 +1639,15 @@ exports.env = {
 
 /***/ }),
 
-/***/ 1183:
+/***/ 11183:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.exportSidecar = void 0;
-var tslib_1 = __webpack_require__(6158);
-var React = tslib_1.__importStar(__webpack_require__(8038));
+var tslib_1 = __webpack_require__(16158);
+var React = tslib_1.__importStar(__webpack_require__(18038));
 var SideCar = function (_a) {
     var sideCar = _a.sideCar, rest = tslib_1.__rest(_a, ["sideCar"]);
     if (!sideCar) {
@@ -1676,9 +1676,9 @@ exports.exportSidecar = exportSidecar;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.sidecar = void 0;
-var tslib_1 = __webpack_require__(6158);
-var React = tslib_1.__importStar(__webpack_require__(8038));
-var hook_1 = __webpack_require__(3421);
+var tslib_1 = __webpack_require__(16158);
+var React = tslib_1.__importStar(__webpack_require__(18038));
+var hook_1 = __webpack_require__(13421);
 // eslint-disable-next-line @typescript-eslint/ban-types
 function sidecar(importer, errorComponent) {
     var ErrorCase = function () { return errorComponent; };
@@ -1696,15 +1696,15 @@ exports.sidecar = sidecar;
 
 /***/ }),
 
-/***/ 3421:
+/***/ 13421:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.useSidecar = void 0;
-var react_1 = __webpack_require__(8038);
-var env_1 = __webpack_require__(2059);
+var react_1 = __webpack_require__(18038);
+var env_1 = __webpack_require__(24614);
 var cache = new WeakMap();
 var NO_OPTIONS = {};
 function useSidecar(importer, effect) {
@@ -1749,7 +1749,7 @@ function useRealSidecar(importer, effect) {
 
 /***/ }),
 
-/***/ 8221:
+/***/ 88221:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -1758,29 +1758,29 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.exportSidecar = exports.renderCar = exports.createSidecarMedium = exports.createMedium = exports.setConfig = exports.useSidecar = exports.sidecar = void 0;
 var hoc_1 = __webpack_require__(3711);
 Object.defineProperty(exports, "sidecar", ({ enumerable: true, get: function () { return hoc_1.sidecar; } }));
-var hook_1 = __webpack_require__(3421);
+var hook_1 = __webpack_require__(13421);
 Object.defineProperty(exports, "useSidecar", ({ enumerable: true, get: function () { return hook_1.useSidecar; } }));
-var config_1 = __webpack_require__(3164);
+var config_1 = __webpack_require__(43164);
 Object.defineProperty(exports, "setConfig", ({ enumerable: true, get: function () { return config_1.setConfig; } }));
-var medium_1 = __webpack_require__(8626);
+var medium_1 = __webpack_require__(28626);
 Object.defineProperty(exports, "createMedium", ({ enumerable: true, get: function () { return medium_1.createMedium; } }));
 Object.defineProperty(exports, "createSidecarMedium", ({ enumerable: true, get: function () { return medium_1.createSidecarMedium; } }));
-var renderProp_1 = __webpack_require__(5919);
+var renderProp_1 = __webpack_require__(95919);
 Object.defineProperty(exports, "renderCar", ({ enumerable: true, get: function () { return renderProp_1.renderCar; } }));
-var exports_1 = __webpack_require__(1183);
+var exports_1 = __webpack_require__(11183);
 Object.defineProperty(exports, "exportSidecar", ({ enumerable: true, get: function () { return exports_1.exportSidecar; } }));
 
 
 /***/ }),
 
-/***/ 8626:
+/***/ 28626:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createSidecarMedium = exports.createMedium = void 0;
-var tslib_1 = __webpack_require__(6158);
+var tslib_1 = __webpack_require__(16158);
 function ItoI(a) {
     return a;
 }
@@ -1864,16 +1864,16 @@ exports.createSidecarMedium = createSidecarMedium;
 
 /***/ }),
 
-/***/ 5919:
+/***/ 95919:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.renderCar = void 0;
-var tslib_1 = __webpack_require__(6158);
-var React = tslib_1.__importStar(__webpack_require__(8038));
-var react_1 = __webpack_require__(8038);
+var tslib_1 = __webpack_require__(16158);
+var React = tslib_1.__importStar(__webpack_require__(18038));
+var react_1 = __webpack_require__(18038);
 function renderCar(WrappedComponent, defaults) {
     function State(_a) {
         var stateRef = _a.stateRef, props = _a.props;
@@ -1911,7 +1911,7 @@ exports.renderCar = renderCar;
 
 /***/ }),
 
-/***/ 880:
+/***/ 80880:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1919,7 +1919,7 @@ exports.renderCar = renderCar;
 /* harmony export */   F: () => (/* binding */ composeRefs),
 /* harmony export */   e: () => (/* binding */ useComposedRefs)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8038);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(18038);
 // packages/react/compose-refs/src/compose-refs.tsx
 
 function setRef(ref, value) {
@@ -1962,7 +1962,7 @@ function useComposedRefs(...refs) {
 
 /***/ }),
 
-/***/ 3618:
+/***/ 43618:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -1970,9 +1970,9 @@ function useComposedRefs(...refs) {
 /* harmony export */   f: () => (/* binding */ Root)
 /* harmony export */ });
 /* unused harmony export Label */
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8038);
-/* harmony import */ var _radix_ui_react_primitive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3979);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6786);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(18038);
+/* harmony import */ var _radix_ui_react_primitive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(43979);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(56786);
 "use client";
 
 // src/label.tsx
@@ -2003,7 +2003,7 @@ var Root = Label;
 
 /***/ }),
 
-/***/ 3979:
+/***/ 43979:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2012,10 +2012,10 @@ var Root = Label;
 /* harmony export */   jH: () => (/* binding */ dispatchDiscreteCustomEvent)
 /* harmony export */ });
 /* unused harmony export Root */
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8038);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8704);
-/* harmony import */ var _radix_ui_react_slot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1085);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6786);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(18038);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(98704);
+/* harmony import */ var _radix_ui_react_slot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(71085);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(56786);
 // src/primitive.tsx
 
 
@@ -2063,7 +2063,7 @@ var Root = (/* unused pure expression or super */ null && (Primitive));
 
 /***/ }),
 
-/***/ 7946:
+/***/ 67946:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2087,10 +2087,10 @@ __webpack_require__.d(__webpack_exports__, {
 // UNUSED EXPORTS: Arrow, Icon, ScrollDownButton, ScrollUpButton, Select, SelectArrow, SelectContent, SelectGroup, SelectIcon, SelectItem, SelectItemIndicator, SelectItemText, SelectLabel, SelectPortal, SelectScrollDownButton, SelectScrollUpButton, SelectSeparator, SelectTrigger, SelectValue, SelectViewport, createSelectScope
 
 // EXTERNAL MODULE: external "next/dist/compiled/react"
-var react_ = __webpack_require__(8038);
+var react_ = __webpack_require__(18038);
 var react_namespaceObject = /*#__PURE__*/__webpack_require__.t(react_, 2);
 // EXTERNAL MODULE: external "next/dist/compiled/react-dom/server-rendering-stub"
-var server_rendering_stub_ = __webpack_require__(8704);
+var server_rendering_stub_ = __webpack_require__(98704);
 ;// CONCATENATED MODULE: ./node_modules/@radix-ui/number/dist/index.mjs
 // packages/core/number/src/number.ts
 function clamp(value, [min, max]) {
@@ -2148,7 +2148,7 @@ function isFrame(element) {
 //# sourceMappingURL=index.mjs.map
 
 // EXTERNAL MODULE: external "next/dist/compiled/react/jsx-runtime"
-var jsx_runtime_ = __webpack_require__(6786);
+var jsx_runtime_ = __webpack_require__(56786);
 ;// CONCATENATED MODULE: ./node_modules/@radix-ui/react-context/dist/index.mjs
 // packages/react/context/src/create-context.tsx
 
@@ -2230,9 +2230,9 @@ function composeContextScopes(...scopes) {
 //# sourceMappingURL=index.mjs.map
 
 // EXTERNAL MODULE: ./node_modules/@radix-ui/react-compose-refs/dist/index.mjs
-var dist = __webpack_require__(880);
+var dist = __webpack_require__(80880);
 // EXTERNAL MODULE: ./node_modules/@radix-ui/react-slot/dist/index.mjs
-var react_slot_dist = __webpack_require__(1085);
+var react_slot_dist = __webpack_require__(71085);
 ;// CONCATENATED MODULE: ./node_modules/@radix-ui/react-collection/dist/index.mjs
 "use client";
 
@@ -2795,7 +2795,7 @@ var Provider = (/* unused pure expression or super */ null && (DirectionProvider
 //# sourceMappingURL=index.mjs.map
 
 // EXTERNAL MODULE: ./node_modules/@radix-ui/react-primitive/dist/index.mjs
-var react_primitive_dist = __webpack_require__(3979);
+var react_primitive_dist = __webpack_require__(43979);
 ;// CONCATENATED MODULE: ./node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
 // packages/react/use-callback-ref/src/use-callback-ref.tsx
 
@@ -6392,9 +6392,9 @@ var react_visually_hidden_dist_Root = (/* unused pure expression or super */ nul
 //# sourceMappingURL=index.mjs.map
 
 // EXTERNAL MODULE: ./node_modules/aria-hidden/dist/es5/index.js
-var es5 = __webpack_require__(4348);
+var es5 = __webpack_require__(94348);
 // EXTERNAL MODULE: ./node_modules/react-remove-scroll/dist/es5/index.js
-var dist_es5 = __webpack_require__(2864);
+var dist_es5 = __webpack_require__(32864);
 ;// CONCATENATED MODULE: ./node_modules/@radix-ui/react-select/dist/index.mjs
 "use client";
 
@@ -7562,7 +7562,7 @@ var Arrow2 = (/* unused pure expression or super */ null && (SelectArrow));
 
 /***/ }),
 
-/***/ 1085:
+/***/ 71085:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7571,9 +7571,9 @@ var Arrow2 = (/* unused pure expression or super */ null && (SelectArrow));
 /* harmony export */   g7: () => (/* binding */ Slot)
 /* harmony export */ });
 /* unused harmony exports Root, Slottable, createSlottable */
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8038);
-/* harmony import */ var _radix_ui_react_compose_refs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(880);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6786);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(18038);
+/* harmony import */ var _radix_ui_react_compose_refs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(80880);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(56786);
 // src/slot.tsx
 
 
@@ -7677,7 +7677,7 @@ function getElementRef(element) {
 
 /***/ }),
 
-/***/ 1971:
+/***/ 91971:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7685,7 +7685,7 @@ function getElementRef(element) {
 /* harmony export */   j: () => (/* binding */ cva)
 /* harmony export */ });
 /* unused harmony export cx */
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(566);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10566);
 /**
  * Copyright 2022 Joe Bell. All rights reserved.
  *
@@ -7746,7 +7746,7 @@ const cva = (base, config)=>(props)=>{
 
 /***/ }),
 
-/***/ 6158:
+/***/ 16158:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
