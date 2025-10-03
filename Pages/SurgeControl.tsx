@@ -48,8 +48,8 @@ export default function SurgeControl() {
           />
           <SimulateDemand 
             locations={[
-              { id: '1', name: 'Downtown', zone: 'downtown', lat: 0, lng: 0 },
-              { id: '2', name: 'Suburbs', zone: 'suburbs', lat: 0, lng: 0 }
+              { id: '1', name: 'Downtown', zone: 'downtown', coordinates: { lat: 0, lng: 0 } },
+              { id: '2', name: 'Suburbs', zone: 'suburbs', coordinates: { lat: 0, lng: 0 } }
             ]}
             onSimulate={(zone, count) => {
               console.log('Simulating demand:', zone, count);
