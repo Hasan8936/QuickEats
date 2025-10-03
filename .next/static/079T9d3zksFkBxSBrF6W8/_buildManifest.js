@@ -1,1 +1,0 @@
-self.__BUILD_MANIFEST={__rewrites:{afterFiles:[],beforeFiles:[],fallback:[]},"/SurgeControl":["static/chunks/712-d5eee68d248b61eb.js","static/chunks/pages/SurgeControl-f37c926a96000f87.js"],"/_error":["static/chunks/pages/_error-c92d5c4bb2b49926.js"],sortedPages:["/SurgeControl","/_app","/_error"]},self.__BUILD_MANIFEST_CB&&self.__BUILD_MANIFEST_CB();
