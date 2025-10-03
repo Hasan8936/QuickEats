@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Metadata } from 'next'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
+import AuthGate from '@/components/AuthGate'
 import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -59,7 +60,8 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body className="bg-gray-50">
         <ErrorBoundary>
-          <div className="min-h-screen">
+          <AuthGate>
+            <div className="min-h-screen">
             <nav className="bg-white shadow-sm">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
@@ -85,10 +87,11 @@ export default function RootLayout({
                 </div>
               </div>
             </nav>
-            <main className="container mx-auto py-10 px-4">
-              {children}
-            </main>
-          </div>
+              <main className="container mx-auto py-10 px-4">
+                {children}
+              </main>
+            </div>
+          </AuthGate>
         </ErrorBoundary>
       </body>
     </html>
