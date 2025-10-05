@@ -4,8 +4,8 @@ const config = {
     key: process.env.API_KEY,
   },
   auth: {
-    secret: process.env.NEXTAUTH_SECRET,
-    url: process.env.NEXTAUTH_URL,
+  // secret: process.env.NEXTAUTH_SECRET, // removed
+  // url: process.env.NEXTAUTH_URL, // removed
   },
   services: {
     maps: {

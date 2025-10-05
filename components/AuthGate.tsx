@@ -7,26 +7,44 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
   const router = useRouter()
 
   useEffect(() => {
-    try {
-      const flag = localStorage.getItem('quickeats_authenticated')
-      if (flag === 'true') {
-        setAuthed(true)
-        return
+    let cancelled = false
+    ;(async () => {
+      try {
+        const res = await fetch('/api/auth/session')
+        if (!res.ok) {
+          // Try localStorage fallback for the demo callback flow
+          let fallback = false
+          try { fallback = localStorage.getItem('quickeats_authenticated') === 'true' } catch (e) {}
+          if (!cancelled) setAuthed(fallback)
+          return
+        }
+        const data = await res.json()
+        if (!cancelled) setAuthed(!!data.authenticated)
+      } catch (e) {
+        // network error or server error: fallback to localStorage demo flag
+        let fallback = false
+        try { fallback = localStorage.getItem('quickeats_authenticated') === 'true' } catch (e) {}
+        if (!cancelled) setAuthed(fallback)
       }
-    } catch (e) {
-      // ignore
-    }
-    setAuthed(false)
+    })()
+    return () => { cancelled = true }
   }, [])
 
   useEffect(() => {
     if (authed === false) {
-      // redirect to login page
       router.replace('/login')
     }
   }, [authed, router])
 
-  if (authed === null) return null
-  if (!authed) return null
+  if (authed === null) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="p-4">Loading...</div>
+    </div>
+  )
+  if (!authed) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="p-4">Redirecting to sign in...</div>
+    </div>
+  )
   return <>{children}</>
 }

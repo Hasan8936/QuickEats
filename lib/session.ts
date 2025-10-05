@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { cookies } from 'next/headers';
 
 const COOKIE_NAME = 'quickeats_session';
-const SECRET = process.env.COOKIE_SECRET || process.env.NEXTAUTH_SECRET || '';
+const SECRET = process.env.COOKIE_SECRET || '';
 
 export type SessionPayload = {
   sub: string;

@@ -1,0 +1,17 @@
+{
+  "/page": "app/page.js",
+  "/analytics/page": "app/analytics/page.js",
+  "/orders/page": "app/orders/page.js",
+  "/login/page": "app/login/page.js",
+  "/partners/page": "app/partners/page.js",
+  "/surge-control/page": "app/surge-control/page.js",
+  "/api/health/route": "app/api/health/route.js",
+  "/api/partners/route": "app/api/partners/route.js",
+  "/api/orders/route": "app/api/orders/route.js",
+  "/api/surge/route": "app/api/surge/route.js",
+  "/auth/callback/page": "app/auth/callback/page.js",
+  "/api/auth/session/route": "app/api/auth/session/route.js",
+  "/api/auth/test-login/route": "app/api/auth/test-login/route.js",
+  "/api/auth/google/callback/route": "app/api/auth/google/callback/route.js",
+  "/api/auth/google/start/route": "app/api/auth/google/start/route.js"
+}
