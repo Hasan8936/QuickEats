@@ -3,9 +3,11 @@ import React from 'react'
 
 export default function OrderForm(props: any) {
   return (
-    <form onSubmit={(e) => { e.preventDefault(); props.onSubmit && props.onSubmit({}) }}>
-      <p className="text-sm text-gray-500">Order form placeholder.</p>
-      <button type="submit" className="mt-2 btn">Submit</button>
+    <form onSubmit={(e) => { e.preventDefault(); props.onSubmit && props.onSubmit({}) }} className="space-y-3 card p-4">
+      <p className="muted">Order form placeholder.</p>
+      <div className="flex justify-end">
+        <button type="submit" className="btn-primary">Place order</button>
+      </div>
     </form>
   )
 }

@@ -19,6 +19,33 @@
     }
 }
 
+/* design helpers */
+@layer components {
+    .card {
+            /* soft orange-tinted card background to reflect brand color */
+            @apply bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg shadow-md border border-orange-100;
+        border-radius: var(--radius);
+    }
+
+    .card-strong {
+            /* stronger card variant with slightly deeper orange accent */
+            @apply bg-gradient-to-br from-orange-50 to-orange-200 rounded-xl shadow-lg border border-orange-200;
+        border-radius: calc(var(--radius) * 1.2);
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center px-4 py-2 bg-orange-500 text-white font-medium rounded-md shadow-sm hover:bg-orange-600;
+    }
+
+    .muted {
+        @apply text-sm text-gray-500;
+    }
+
+    .badge-available { @apply bg-green-100 text-green-800 px-2 py-0.5 rounded-full text-xs font-medium; }
+    .badge-busy { @apply bg-orange-100 text-orange-800 px-2 py-0.5 rounded-full text-xs font-medium; }
+    .badge-offline { @apply bg-gray-200 text-gray-700 px-2 py-0.5 rounded-full text-xs font-medium; }
+}
+
 body {
     color: rgb(var(--foreground-rgb));
     background: linear-gradient( to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));

@@ -1,11 +1,61 @@
 {
-    "zones": [{
-        "id": "ZONE001",
-        "name": "Downtown",
-        "zone": "Central",
-        "coordinates": {
-            "lat": 40.7128,
-            "lng": -74.0060
+    "zones": [
+        {
+            "id": "ZONE001",
+            "name": "Downtown",
+            "zone": "Central",
+            "coordinates": {
+                "lat": 26.8467,
+                "lng": 80.9462
+            }
+        },
+        {
+            "id": "ZONE002",
+            "name": "Aliganj",
+            "zone": "Aliganj",
+            "coordinates": { "lat": 26.8540, "lng": 80.9487 }
+        },
+        {
+            "id": "ZONE003",
+            "name": "Hazratganj",
+            "zone": "Hazratganj",
+            "coordinates": { "lat": 26.8483, "lng": 80.9462 }
+        },
+        {
+            "id": "ZONE004",
+            "name": "Gomti Nagar",
+            "zone": "Gomti Nagar",
+            "coordinates": { "lat": 26.8570, "lng": 81.0000 }
+        },
+        {
+            "id": "ZONE005",
+            "name": "Indira Nagar",
+            "zone": "Indira Nagar",
+            "coordinates": { "lat": 26.8548, "lng": 80.9580 }
+        },
+        {
+            "id": "ZONE006",
+            "name": "South Lucknow",
+            "zone": "South Lucknow",
+            "coordinates": { "lat": 26.8220, "lng": 80.9430 }
+        },
+        {
+            "id": "ZONE007",
+            "name": "West Lucknow",
+            "zone": "West Lucknow",
+            "coordinates": { "lat": 26.8400, "lng": 80.9120 }
+        },
+        {
+            "id": "ZONE008",
+            "name": "East Lucknow",
+            "zone": "East Lucknow",
+            "coordinates": { "lat": 26.8600, "lng": 80.9700 }
+        },
+        {
+            "id": "ZONE009",
+            "name": "Central Lucknow",
+            "zone": "Central Lucknow",
+            "coordinates": { "lat": 26.8467, "lng": 80.9462 }
         }
-    }]
+    ]
 }
