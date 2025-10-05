@@ -304,18 +304,60 @@ var card = __webpack_require__(737);
 
 function ActiveOrders({ orders }) {
     return /*#__PURE__*/ jsx_runtime_.jsx("div", {
-        children: orders.length === 0 ? /*#__PURE__*/ jsx_runtime_.jsx("p", {
+        children: !orders || orders.length === 0 ? /*#__PURE__*/ jsx_runtime_.jsx("p", {
             className: "text-sm text-gray-500",
             children: "No active orders."
         }) : /*#__PURE__*/ jsx_runtime_.jsx("ul", {
-            className: "space-y-2",
-            children: orders.map((o, i)=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)("li", {
-                    className: "p-2 border rounded",
+            className: "space-y-3",
+            children: orders.map((o)=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)("li", {
+                    className: "p-4 border rounded-lg bg-white shadow-sm",
                     children: [
-                        "Order ",
-                        o.id ?? i
+                        /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                            className: "flex justify-between",
+                            children: [
+                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                    children: [
+                                        /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                            className: "text-sm text-gray-500",
+                                            children: o.id
+                                        }),
+                                        /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                            className: "font-semibold",
+                                            children: o.customer
+                                        }),
+                                        /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                            className: "text-sm text-gray-500",
+                                            children: o.address
+                                        })
+                                    ]
+                                }),
+                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                    className: "text-right",
+                                    children: [
+                                        /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                            className: "font-medium",
+                                            children: [
+                                                "$",
+                                                o.total?.toFixed(2)
+                                            ]
+                                        }),
+                                        /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                            className: "text-xs text-gray-500",
+                                            children: o.status
+                                        })
+                                    ]
+                                })
+                            ]
+                        }),
+                        /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                            className: "mt-2 text-sm text-gray-600",
+                            children: [
+                                "Items: ",
+                                o.items?.map((it)=>`${it.name} x${it.qty}`).join(", ")
+                            ]
+                        })
                     ]
-                }, i))
+                }, o.id))
         })
     });
 }
@@ -323,21 +365,76 @@ function ActiveOrders({ orders }) {
 ;// CONCATENATED MODULE: ./components/orders/MenuItems.tsx
 /* __next_internal_client_entry_do_not_use__ default auto */ 
 
+const FAMOUS_FOODS = [
+    {
+        id: "f1",
+        name: "Biryani",
+        price: 12.99
+    },
+    {
+        id: "f2",
+        name: "Butter Chicken",
+        price: 14.5
+    },
+    {
+        id: "f3",
+        name: "Masala Dosa",
+        price: 4.0
+    },
+    {
+        id: "f4",
+        name: "Samosa (3 pcs)",
+        price: 3.0
+    },
+    {
+        id: "f5",
+        name: "Margherita Pizza",
+        price: 11.0
+    },
+    {
+        id: "f6",
+        name: "Idli Sambar",
+        price: 3.5
+    },
+    {
+        id: "f7",
+        name: "Peking Duck",
+        price: 25.0
+    },
+    {
+        id: "f8",
+        name: "Sushi Platter",
+        price: 30.0
+    }
+];
 function MenuItems({ onAddToCart }) {
-    return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        children: [
-            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                className: "text-sm text-gray-500",
-                children: "Menu is empty (placeholder)."
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx("button", {
-                className: "mt-2 btn",
-                onClick: ()=>onAddToCart({
-                        id: "sample"
+    return /*#__PURE__*/ jsx_runtime_.jsx("div", {
+        className: "space-y-3",
+        children: FAMOUS_FOODS.map((item)=>/*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                className: "flex justify-between items-center",
+                children: [
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                className: "font-medium",
+                                children: item.name
+                            }),
+                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                className: "text-sm text-gray-500",
+                                children: [
+                                    "$",
+                                    item.price.toFixed(2)
+                                ]
+                            })
+                        ]
                     }),
-                children: "Add sample item"
-            })
-        ]
+                    /*#__PURE__*/ jsx_runtime_.jsx("button", {
+                        className: "btn btn-sm",
+                        onClick: ()=>onAddToCart(item),
+                        children: "Add"
+                    })
+                ]
+            }, item.id))
     });
 }
 
@@ -388,6 +485,112 @@ function SurgeIndicator({ multiplier }) {
 
 
 function Orders() {
+    const sampleOrders = [
+        {
+            id: "ORD001",
+            customer: "Aman Sharma",
+            address: "Bandra, Mumbai",
+            items: [
+                {
+                    name: "Biryani",
+                    qty: 1
+                }
+            ],
+            total: 12.99,
+            status: "preparing"
+        },
+        {
+            id: "ORD002",
+            customer: "Priya Patel",
+            address: "Connaught Place, Delhi",
+            items: [
+                {
+                    name: "Butter Chicken",
+                    qty: 1
+                }
+            ],
+            total: 14.5,
+            status: "out-for-delivery"
+        },
+        {
+            id: "ORD003",
+            customer: "Rohit Singh",
+            address: "Koramangala, Bengaluru",
+            items: [
+                {
+                    name: "Masala Dosa",
+                    qty: 2
+                }
+            ],
+            total: 8.0,
+            status: "accepted"
+        },
+        {
+            id: "ORD004",
+            customer: "Sana Khan",
+            address: "Old Delhi, Delhi",
+            items: [
+                {
+                    name: "Samosa",
+                    qty: 3
+                }
+            ],
+            total: 4.5,
+            status: "delivered"
+        },
+        {
+            id: "ORD005",
+            customer: "Arjun Rao",
+            address: "Colaba, Mumbai",
+            items: [
+                {
+                    name: "Margherita Pizza",
+                    qty: 1
+                }
+            ],
+            total: 11.0,
+            status: "preparing"
+        },
+        {
+            id: "ORD006",
+            customer: "Meera Iyer",
+            address: "Chennai",
+            items: [
+                {
+                    name: "Idli Sambar",
+                    qty: 2
+                }
+            ],
+            total: 6.0,
+            status: "preparing"
+        },
+        {
+            id: "ORD007",
+            customer: "Liu Wei",
+            address: "Beijing",
+            items: [
+                {
+                    name: "Peking Duck",
+                    qty: 1
+                }
+            ],
+            total: 25.0,
+            status: "delivered"
+        },
+        {
+            id: "ORD008",
+            customer: "Hiro Tanaka",
+            address: "Tokyo",
+            items: [
+                {
+                    name: "Sushi Platter",
+                    qty: 1
+                }
+            ],
+            total: 30.0,
+            status: "accepted"
+        }
+    ];
     return /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
         className: "space-y-6",
         children: [
@@ -406,7 +609,7 @@ function Orders() {
                                 children: "Active Orders"
                             }),
                             /*#__PURE__*/ jsx_runtime_.jsx(ActiveOrders, {
-                                orders: []
+                                orders: sampleOrders
                             })
                         ]
                     }),

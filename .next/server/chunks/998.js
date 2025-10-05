@@ -19,7 +19,7 @@ __webpack_require__.d(__webpack_exports__, {
 ;// CONCATENATED MODULE: ./Entities/Order.json
 /* harmony default export */ const Order = ({orders:[{id:'ORD001',customer_name:'Alice Smith',customer_phone:'+1234567890',status:'pending',delivery_zone:'Downtown',items:[{name:'Burger',quantity:2,price:12.99}],total_amount:25.98,surge_multiplier:1}]});
 ;// CONCATENATED MODULE: ./Entities/DeliveryPartner.json
-/* harmony default export */ const DeliveryPartner = ({deliveryPartners:[{id:'DP001',name:'John Doe',phone:'+1234567890',vehicle_type:'bike',current_location:'Downtown',status:'available',active_orders:0,rating:4.5}]});
+/* harmony default export */ const DeliveryPartner = ({deliveryPartners:[{id:'DP001',name:'John Doe',phone:'+1234567890',vehicle_type:'bike',current_location:'Downtown',status:'available',active_orders:0,rating:4.5},{id:'DP_MUM_01',name:'Ravi Kumar',phone:'+91-9876543210',vehicle_type:'bike',current_location:'Bandra, Mumbai',status:'available',active_orders:1,rating:4.7},{id:'DP_DEL_01',name:'Priya Sharma',phone:'+91-9123456780',vehicle_type:'scooter',current_location:'Connaught Place, Delhi',status:'available',active_orders:0,rating:4.6},{id:'DP_BLR_01',name:'Arjun Reddy',phone:'+91-9988776655',vehicle_type:'bike',current_location:'Koramangala, Bengaluru',status:'busy',active_orders:2,rating:4.4},{id:'DP_CHE_01',name:'Meena Iyer',phone:'+91-9445566778',vehicle_type:'car',current_location:'T. Nagar, Chennai',status:'available',active_orders:0,rating:4.8}]});
 ;// CONCATENATED MODULE: ./Entities/Location.json
 /* harmony default export */ const Location = ({zones:[{id:'ZONE001',name:'Downtown',zone:'Central',coordinates:{lat:40.7128,lng:-74.006}}]});
 ;// CONCATENATED MODULE: ./Entities/SurgePolicy.json

@@ -350,86 +350,206 @@ var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
 
 function Home() {
     return /*#__PURE__*/ jsx_runtime_.jsx("div", {
-        className: "min-h-screen",
+        className: "min-h-screen bg-gradient-to-b from-white to-gray-50",
         children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-            className: "max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8",
+            className: "max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8",
             children: [
-                /*#__PURE__*/ jsx_runtime_.jsx("h1", {
-                    className: "text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl text-center mb-8",
-                    children: "Welcome to QuickEats"
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                    className: "text-xl text-gray-500 text-center mb-12",
-                    children: "Fast, reliable, and delicious food delivery at your fingertips"
-                }),
-                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                    className: "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4",
+                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("header", {
+                    className: "text-center mb-12",
                     children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                            href: "/CustomerOrders",
-                            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)(Card, {
-                                className: "p-6 hover:shadow-lg transition-shadow cursor-pointer",
-                                children: [
-                                    /*#__PURE__*/ jsx_runtime_.jsx("h2", {
-                                        className: "text-2xl font-bold mb-4",
-                                        children: "Orders"
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                        className: "text-gray-600",
-                                        children: "Manage and track customer orders in real-time"
-                                    })
-                                ]
-                            })
+                        /*#__PURE__*/ jsx_runtime_.jsx("h1", {
+                            className: "text-4xl font-extrabold text-gray-900 sm:text-5xl lg:text-6xl",
+                            children: "Welcome to QuickEats"
                         }),
-                        /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                            href: "/DeliveryPartners",
-                            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)(Card, {
-                                className: "p-6 hover:shadow-lg transition-shadow cursor-pointer",
-                                children: [
-                                    /*#__PURE__*/ jsx_runtime_.jsx("h2", {
-                                        className: "text-2xl font-bold mb-4",
-                                        children: "Partners"
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                        className: "text-gray-600",
-                                        children: "View and manage delivery partner assignments"
-                                    })
-                                ]
-                            })
+                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                            className: "mt-4 text-lg text-gray-600 max-w-3xl mx-auto",
+                            children: "Fast, reliable, and delicious food delivery at your fingertips — built for operators to manage orders, partners and pricing in real time."
                         }),
-                        /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                            href: "/SurgeControl",
-                            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)(Card, {
-                                className: "p-6 hover:shadow-lg transition-shadow cursor-pointer",
-                                children: [
-                                    /*#__PURE__*/ jsx_runtime_.jsx("h2", {
-                                        className: "text-2xl font-bold mb-4",
-                                        children: "Surge Control"
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                        className: "text-gray-600",
-                                        children: "Monitor and adjust dynamic pricing"
-                                    })
-                                ]
-                            })
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                            href: "/LiveAnalytics",
-                            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)(Card, {
-                                className: "p-6 hover:shadow-lg transition-shadow cursor-pointer",
-                                children: [
-                                    /*#__PURE__*/ jsx_runtime_.jsx("h2", {
-                                        className: "text-2xl font-bold mb-4",
-                                        children: "Analytics"
-                                    }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                        className: "text-gray-600",
-                                        children: "View real-time performance metrics"
-                                    })
-                                ]
+                        /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                            className: "mt-8 flex justify-center",
+                            children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                href: "/orders",
+                                className: "inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-md shadow hover:bg-indigo-700 transition",
+                                children: "Go to Orders"
                             })
                         })
                     ]
+                }),
+                /*#__PURE__*/ jsx_runtime_.jsx("section", {
+                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                        className: "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                href: "/orders",
+                                children: /*#__PURE__*/ jsx_runtime_.jsx(Card, {
+                                    className: "p-6 hover:shadow-xl transform hover:-translate-y-1 transition",
+                                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                        className: "flex items-start",
+                                        children: [
+                                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                                className: "flex-shrink-0",
+                                                children: /*#__PURE__*/ jsx_runtime_.jsx("svg", {
+                                                    className: "w-10 h-10 text-indigo-600",
+                                                    viewBox: "0 0 24 24",
+                                                    fill: "none",
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    children: /*#__PURE__*/ jsx_runtime_.jsx("path", {
+                                                        d: "M3 7h18M5 11h14M7 15h10",
+                                                        stroke: "currentColor",
+                                                        strokeWidth: "1.5",
+                                                        strokeLinecap: "round",
+                                                        strokeLinejoin: "round"
+                                                    })
+                                                })
+                                            }),
+                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                                className: "ml-4",
+                                                children: [
+                                                    /*#__PURE__*/ jsx_runtime_.jsx("h3", {
+                                                        className: "text-2xl font-semibold text-gray-900",
+                                                        children: "Orders"
+                                                    }),
+                                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                                        className: "mt-2 text-sm text-gray-600",
+                                                        children: "Manage and track customer orders in real time."
+                                                    })
+                                                ]
+                                            })
+                                        ]
+                                    })
+                                })
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                href: "/partners",
+                                children: /*#__PURE__*/ jsx_runtime_.jsx(Card, {
+                                    className: "p-6 hover:shadow-xl transform hover:-translate-y-1 transition",
+                                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                        className: "flex items-start",
+                                        children: [
+                                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                                className: "flex-shrink-0",
+                                                children: /*#__PURE__*/ jsx_runtime_.jsx("svg", {
+                                                    className: "w-10 h-10 text-green-600",
+                                                    viewBox: "0 0 24 24",
+                                                    fill: "none",
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    children: /*#__PURE__*/ jsx_runtime_.jsx("path", {
+                                                        d: "M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3 7.5 5 7.5 7.5 9.5 12 12 12zM4 20c0-3.5 3-6 8-6s8 2.5 8 6",
+                                                        stroke: "currentColor",
+                                                        strokeWidth: "1.5",
+                                                        strokeLinecap: "round",
+                                                        strokeLinejoin: "round"
+                                                    })
+                                                })
+                                            }),
+                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                                className: "ml-4",
+                                                children: [
+                                                    /*#__PURE__*/ jsx_runtime_.jsx("h3", {
+                                                        className: "text-2xl font-semibold text-gray-900",
+                                                        children: "Partners"
+                                                    }),
+                                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                                        className: "mt-2 text-sm text-gray-600",
+                                                        children: "View and manage delivery partner assignments and status."
+                                                    })
+                                                ]
+                                            })
+                                        ]
+                                    })
+                                })
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                href: "/surge-control",
+                                children: /*#__PURE__*/ jsx_runtime_.jsx(Card, {
+                                    className: "p-6 hover:shadow-xl transform hover:-translate-y-1 transition",
+                                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                        className: "flex items-start",
+                                        children: [
+                                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                                className: "flex-shrink-0",
+                                                children: /*#__PURE__*/ jsx_runtime_.jsx("svg", {
+                                                    className: "w-10 h-10 text-yellow-600",
+                                                    viewBox: "0 0 24 24",
+                                                    fill: "none",
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    children: /*#__PURE__*/ jsx_runtime_.jsx("path", {
+                                                        d: "M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M18.1 19.1l-4.2-4.2",
+                                                        stroke: "currentColor",
+                                                        strokeWidth: "1.5",
+                                                        strokeLinecap: "round",
+                                                        strokeLinejoin: "round"
+                                                    })
+                                                })
+                                            }),
+                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                                className: "ml-4",
+                                                children: [
+                                                    /*#__PURE__*/ jsx_runtime_.jsx("h3", {
+                                                        className: "text-2xl font-semibold text-gray-900",
+                                                        children: "Surge Control"
+                                                    }),
+                                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                                        className: "mt-2 text-sm text-gray-600",
+                                                        children: "Monitor and adjust dynamic pricing policies quickly."
+                                                    })
+                                                ]
+                                            })
+                                        ]
+                                    })
+                                })
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                href: "/analytics",
+                                children: /*#__PURE__*/ jsx_runtime_.jsx(Card, {
+                                    className: "p-6 hover:shadow-xl transform hover:-translate-y-1 transition",
+                                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                        className: "flex items-start",
+                                        children: [
+                                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                                className: "flex-shrink-0",
+                                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("svg", {
+                                                    className: "w-10 h-10 text-pink-600",
+                                                    viewBox: "0 0 24 24",
+                                                    fill: "none",
+                                                    xmlns: "http://www.w3.org/2000/svg",
+                                                    children: [
+                                                        /*#__PURE__*/ jsx_runtime_.jsx("path", {
+                                                            d: "M3 3v18h18",
+                                                            stroke: "currentColor",
+                                                            strokeWidth: "1.5",
+                                                            strokeLinecap: "round",
+                                                            strokeLinejoin: "round"
+                                                        }),
+                                                        /*#__PURE__*/ jsx_runtime_.jsx("path", {
+                                                            d: "M7 13l4-4 4 4 4-8",
+                                                            stroke: "currentColor",
+                                                            strokeWidth: "1.5",
+                                                            strokeLinecap: "round",
+                                                            strokeLinejoin: "round"
+                                                        })
+                                                    ]
+                                                })
+                                            }),
+                                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
+                                                className: "ml-4",
+                                                children: [
+                                                    /*#__PURE__*/ jsx_runtime_.jsx("h3", {
+                                                        className: "text-2xl font-semibold text-gray-900",
+                                                        children: "Analytics"
+                                                    }),
+                                                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                                        className: "mt-2 text-sm text-gray-600",
+                                                        children: "View real-time performance metrics and trends."
+                                                    })
+                                                ]
+                                            })
+                                        ]
+                                    })
+                                })
+                            })
+                        ]
+                    })
                 })
             ]
         })
