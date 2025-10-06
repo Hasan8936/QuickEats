@@ -50,5 +50,116 @@
             "active_orders": 0,
             "rating": 4.8
         }
+    ,
+        {
+            "id": "DP_LKN_01",
+            "name": "Aman Singh",
+            "phone": "+91-7000000001",
+            "vehicle_type": "bike",
+            "current_location": "Hazratganj, Lucknow",
+            "status": "available",
+            "active_orders": 0,
+            "rating": 4.6,
+            "performance": "excellent"
+        },
+        {
+            "id": "DP_LKN_02",
+            "name": "Neha Verma",
+            "phone": "+91-7000000002",
+            "vehicle_type": "scooter",
+            "current_location": "Gomti Nagar, Lucknow",
+            "status": "busy",
+            "active_orders": 2,
+            "rating": 4.4,
+            "performance": "good"
+        },
+        {
+            "id": "DP_LKN_03",
+            "name": "Vikram Patel",
+            "phone": "+91-7000000003",
+            "vehicle_type": "bike",
+            "current_location": "Alambagh, Lucknow",
+            "status": "available",
+            "active_orders": 1,
+            "rating": 4.2,
+            "performance": "average"
+        },
+        {
+            "id": "DP_LKN_04",
+            "name": "Sakshi Tripathi",
+            "phone": "+91-7000000004",
+            "vehicle_type": "bike",
+            "current_location": "Indira Nagar, Lucknow",
+            "status": "available",
+            "active_orders": 0,
+            "rating": 4.7,
+            "performance": "excellent"
+        },
+        {
+            "id": "DP_LKN_05",
+            "name": "Rohit Yadav",
+            "phone": "+91-7000000005",
+            "vehicle_type": "car",
+            "current_location": "Mahanagar, Lucknow",
+            "status": "offline",
+            "active_orders": 0,
+            "rating": 4.1,
+            "performance": "poor"
+        },
+        {
+            "id": "DP_LKN_06",
+            "name": "Pooja Srivastava",
+            "phone": "+91-7000000006",
+            "vehicle_type": "scooter",
+            "current_location": "Aminabad, Lucknow",
+            "status": "busy",
+            "active_orders": 3,
+            "rating": 4.5,
+            "performance": "good"
+        },
+        {
+            "id": "DP_LKN_07",
+            "name": "Karan Mishra",
+            "phone": "+91-7000000007",
+            "vehicle_type": "bike",
+            "current_location": "Aliganj, Lucknow",
+            "status": "available",
+            "active_orders": 0,
+            "rating": 4.3,
+            "performance": "average"
+        },
+        {
+            "id": "DP_LKN_08",
+            "name": "Shruti Gupta",
+            "phone": "+91-7000000008",
+            "vehicle_type": "bike",
+            "current_location": "Kanpur Road, Lucknow",
+            "status": "available",
+            "active_orders": 1,
+            "rating": 4.6,
+            "performance": "good"
+        },
+        {
+            "id": "DP_LKN_09",
+            "name": "Aftab Khan",
+            "phone": "+91-7000000009",
+            "vehicle_type": "car",
+            "current_location": "Chinhat, Lucknow",
+            "status": "busy",
+            "active_orders": 2,
+            "rating": 4.0,
+            "performance": "average"
+        },
+        {
+            "id": "DP_LKN_10",
+            "name": "Manisha Rana",
+            "phone": "+91-7000000010",
+            "vehicle_type": "scooter",
+            "current_location": "Jankipuram, Lucknow",
+            "status": "available",
+            "active_orders": 0,
+            "rating": 4.8,
+            "performance": "excellent"
+        }
     ]
 }

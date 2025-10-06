@@ -26,5 +26,96 @@
             "max_surge_multiplier": 2.2,
             "active": true
         }
+    ,
+        {
+            "id": "SP_LKN_01",
+            "zone_name": "Hazratganj",
+            "demand_threshold_low": 1.2,
+            "demand_threshold_high": 2.0,
+            "supply_threshold_low": 0.5,
+            "max_surge_multiplier": 2.0,
+            "active": true
+        },
+        {
+            "id": "SP_LKN_02",
+            "zone_name": "Gomti Nagar",
+            "demand_threshold_low": 1.15,
+            "demand_threshold_high": 1.9,
+            "supply_threshold_low": 0.55,
+            "max_surge_multiplier": 1.9,
+            "active": true
+        },
+        {
+            "id": "SP_LKN_03",
+            "zone_name": "Alambagh",
+            "demand_threshold_low": 1.1,
+            "demand_threshold_high": 1.8,
+            "supply_threshold_low": 0.6,
+            "max_surge_multiplier": 1.8,
+            "active": true
+        },
+        {
+            "id": "SP_LKN_04",
+            "zone_name": "Indira Nagar",
+            "demand_threshold_low": 1.2,
+            "demand_threshold_high": 2.1,
+            "supply_threshold_low": 0.5,
+            "max_surge_multiplier": 2.1,
+            "active": true
+        },
+        {
+            "id": "SP_LKN_05",
+            "zone_name": "Mahanagar",
+            "demand_threshold_low": 1.05,
+            "demand_threshold_high": 1.6,
+            "supply_threshold_low": 0.65,
+            "max_surge_multiplier": 1.6,
+            "active": true
+        },
+        {
+            "id": "SP_LKN_06",
+            "zone_name": "Aminabad",
+            "demand_threshold_low": 1.25,
+            "demand_threshold_high": 2.3,
+            "supply_threshold_low": 0.45,
+            "max_surge_multiplier": 2.3,
+            "active": true
+        },
+        {
+            "id": "SP_LKN_07",
+            "zone_name": "Aliganj",
+            "demand_threshold_low": 1.1,
+            "demand_threshold_high": 1.85,
+            "supply_threshold_low": 0.6,
+            "max_surge_multiplier": 1.85,
+            "active": true
+        },
+        {
+            "id": "SP_LKN_08",
+            "zone_name": "Kanpur Road",
+            "demand_threshold_low": 1.15,
+            "demand_threshold_high": 1.95,
+            "supply_threshold_low": 0.55,
+            "max_surge_multiplier": 1.95,
+            "active": true
+        },
+        {
+            "id": "SP_LKN_09",
+            "zone_name": "Chinhat",
+            "demand_threshold_low": 1.05,
+            "demand_threshold_high": 1.7,
+            "supply_threshold_low": 0.7,
+            "max_surge_multiplier": 1.7,
+            "active": true
+        },
+        {
+            "id": "SP_LKN_10",
+            "zone_name": "Jankipuram",
+            "demand_threshold_low": 1.2,
+            "demand_threshold_high": 2.0,
+            "supply_threshold_low": 0.5,
+            "max_surge_multiplier": 2.0,
+            "active": true
+        }
     ]
 }
