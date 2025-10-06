@@ -1,67 +1,38 @@
-'use client';
-
+"use client"
 import React from 'react'
-import { Card } from '@/components/ui/card'
+import { Line } from 'react-chartjs-2'
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js'
 
-export default function Analytics() {
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
+
+const data = {
+  labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+  datasets: [
+    { label: 'Orders', data: [120,200,150,220,300,280,330], borderColor: 'rgb(255,99,71)', backgroundColor: 'rgba(255,99,71,0.2)' }
+  ]
+}
+
+export default function Analytics(){
+  function exportCsv(){
+    const csv = 'day,orders\n' + data.labels.map((l,i)=> `${l},${(data.datasets as any)[0].data[i]}`).join('\n')
+    const blob = new Blob([csv], { type: 'text/csv' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url; a.download = 'orders.csv'; a.click();
+    URL.revokeObjectURL(url)
+  }
+
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold">Live Analytics</h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="p-6">
+        <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
           <h2 className="text-2xl font-semibold mb-4">Order Statistics</h2>
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-sm text-gray-600">Total Orders Today</p>
-                <p className="text-2xl font-bold">157</p>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-sm text-gray-600">Active Orders</p>
-                <p className="text-2xl font-bold">23</p>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-sm text-gray-600">Average Delivery Time</p>
-                <p className="text-2xl font-bold">28m</p>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-sm text-gray-600">Customer Satisfaction</p>
-                <p className="text-2xl font-bold">4.8</p>
-              </div>
-            </div>
+          <Line data={data} />
+          <div className="mt-4">
+            <button className="px-3 py-2 bg-orange-600 text-white rounded" onClick={exportCsv}>Export CSV</button>
           </div>
-        </Card>
-        
-        <Card className="p-6">
-          <h2 className="text-2xl font-semibold mb-4">Revenue Overview</h2>
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-sm text-gray-600">Today's Revenue</p>
-                <p className="text-2xl font-bold">$3,847</p>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-sm text-gray-600">Average Order Value</p>
-                <p className="text-2xl font-bold">$24.50</p>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-sm text-gray-600">Surge Revenue</p>
-                <p className="text-2xl font-bold">$742</p>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-sm text-gray-600">Partner Earnings</p>
-                <p className="text-2xl font-bold">$1,156</p>
-              </div>
-            </div>
-          </div>
-        </Card>
-        
-        <Card className="p-6 lg:col-span-2">
-          <h2 className="text-2xl font-semibold mb-4">Hourly Order Trend</h2>
-          <div className="h-[300px] bg-gray-50 rounded-lg flex items-center justify-center">
-            <p className="text-gray-500">Order trend visualization will appear here</p>
-          </div>
-        </Card>
+        </div>
       </div>
     </div>
   )

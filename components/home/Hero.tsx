@@ -4,6 +4,7 @@ export default function Hero(){
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="flex items-center justify-between">
           <div className="max-w-3xl">
+            <div className="gradient-bar mb-6 w-48" />
             <h1 className="text-5xl font-extrabold tracking-tight">Delicious Food, <span className="text-yellow-300">Smart Pricing</span></h1>
             <p className="mt-4 text-lg text-orange-100">Experience dynamic delivery pricing that adapts to real-time demand across Lucknow</p>
 
@@ -13,14 +14,18 @@ export default function Hero(){
               <button className="px-5 py-3 rounded-full bg-orange-400/20 text-white">Quality Food</button>
             </div>
 
-            <div className="mt-10 grid grid-cols-2 gap-4 sm:w-2/3">
-              <div className="bg-orange-500/20 rounded-lg p-6 text-center">
+            <div className="mt-10 grid grid-cols-3 gap-4 sm:w-full">
+              <div className="bg-white/10 rounded-lg p-6 text-center">
                 <div className="text-sm text-orange-100">Active Orders</div>
                 <div className="text-2xl font-bold">44</div>
               </div>
-              <div className="bg-orange-500/20 rounded-lg p-6 text-center">
+              <div className="bg-white/10 rounded-lg p-6 text-center">
                 <div className="text-sm text-orange-100">Available Partners</div>
                 <div className="text-2xl font-bold">7</div>
+              </div>
+              <div className="bg-white/10 rounded-lg p-6 text-center">
+                <div className="text-sm text-orange-100">Avg Rating</div>
+                <div className="text-2xl font-bold">4.6</div>
               </div>
             </div>
           </div>

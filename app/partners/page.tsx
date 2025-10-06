@@ -1,5 +1,6 @@
-'use client';
-
+"use client"
+import useSWR from 'swr'
+import Link from 'next/link'
 import React from 'react'
 import { Card } from '@/components/ui/card'
 import PartnerCard from '@/components/partners/PartnerCard'
