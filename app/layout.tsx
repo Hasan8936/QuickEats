@@ -63,20 +63,21 @@ export default async function RootLayout({
             <nav className="bg-orange-500 shadow-sm">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
-                  <div className="flex">
-                    <Link href="/" className="flex items-center">
+                  <div className="flex items-center">
+                    <Link href="/" className="flex items-center space-x-3">
+                      <img src="/logo.png" alt="QuickEats" className="h-10 w-10 object-contain" />
                       <span className="text-2xl font-bold text-gray-900">QuickEats</span>
                     </Link>
                   </div>
                   <div className="flex space-x-8">
                     <Link href="/orders" className="inline-flex items-center px-1 pt-1 text-white hover:text-orange-100">
-                      Orders
+                      Order Food
                     </Link>
                     <Link href="/partners" className="inline-flex items-center px-1 pt-1 text-white hover:text-orange-100">
                       Partners
                     </Link>
                     <Link href="/surge-control" className="inline-flex items-center px-1 pt-1 text-white hover:text-orange-100">
-                      Surge Control
+                      Pricing Control
                     </Link>
                     <Link href="/analytics" className="inline-flex items-center px-1 pt-1 text-white hover:text-orange-100">
                       Analytics

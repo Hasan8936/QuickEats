@@ -23,6 +23,46 @@ export default function Home() {
             </div>
 
             <RestaurantGrid />
+
+            {/* Quick action cards with images (Orders / Partners / Surge / Analytics) */}
+            <div className="mt-10">
+              <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <Link href="/orders">
+                  <div className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow cursor-pointer flex items-center space-x-4">
+                    <img src="/food-images/burger.png" alt="Burger" className="h-20 w-20 rounded-md object-cover" onError={(e:any)=>{e.currentTarget.src='/food-images/placeholder.png'}} />
+                    <div>
+                      <h4 className="text-xl font-bold">Orders</h4>
+                      <p className="text-sm text-gray-600">Manage and track customer orders in real-time</p>
+                    </div>
+                  </div>
+                </Link>
+
+                <Link href="/partners">
+                  <div className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow cursor-pointer flex items-center space-x-4">
+                    <img src="/food-images/partners.png" alt="Partners" className="h-20 w-20 rounded-md object-cover" onError={(e:any)=>{e.currentTarget.src='/food-images/placeholder.png'}} />
+                    <div>
+                      <h4 className="text-xl font-bold">Partners</h4>
+                      <p className="text-sm text-gray-600">View and manage delivery partner assignments</p>
+                    </div>
+                  </div>
+                </Link>
+
+                <Link href="/surge-control">
+                  <div className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                    <h4 className="text-xl font-bold">Surge Control</h4>
+                    <p className="text-sm text-gray-600">Monitor and adjust dynamic pricing</p>
+                  </div>
+                </Link>
+
+                <Link href="/analytics">
+                  <div className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow cursor-pointer">
+                    <h4 className="text-xl font-bold">Analytics</h4>
+                    <p className="text-sm text-gray-600">View real-time performance metrics</p>
+                  </div>
+                </Link>
+              </div>
+            </div>
           </div>
 
           <aside>
