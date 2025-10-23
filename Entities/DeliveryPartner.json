@@ -6,6 +6,7 @@
             "vehicle_type": "bike",
             "current_location": "Aminabad, Lucknow",
             "city": "Lucknow",
+            "photo": "/partner-photos/DP001.jpg",
             "status": "available",
             "active_orders": 0,
             "rating": 4.5
@@ -57,6 +58,7 @@
             "vehicle_type": "bike",
             "current_location": "Hazratganj, Lucknow",
             "city": "Lucknow",
+            "photo": "/partner-photos/DP002.jpg",
             "status": "available",
             "active_orders": 1,
             "rating": 4.6
@@ -68,6 +70,7 @@
             "vehicle_type": "scooter",
             "current_location": "Kaiserbagh, Lucknow",
             "city": "Lucknow",
+            "photo": "/partner-photos/DP003.jpg",
             "status": "on_delivery",
             "active_orders": 2,
             "rating": 4.7
@@ -79,6 +82,7 @@
             "vehicle_type": "car",
             "current_location": "Gomti Nagar, Lucknow",
             "city": "Lucknow",
+            "photo": "/partner-photos/DP004.jpg",
             "status": "available",
             "active_orders": 0,
             "rating": 4.4
@@ -90,6 +94,7 @@
             "vehicle_type": "bike",
             "current_location": "Aliganj, Lucknow",
             "city": "Lucknow",
+            "photo": "/partner-photos/DP005.jpg",
             "status": "available",
             "active_orders": 0,
             "rating": 4.8
