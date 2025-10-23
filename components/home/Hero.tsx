@@ -30,7 +30,9 @@ export default function Hero(){
             </div>
           </div>
 
-          <div className="hidden lg:block w-96 h-64 bg-white/10 rounded-lg" />
+          <div className="hidden lg:flex w-96 h-64 bg-white/10 rounded-lg items-center justify-center">
+            <img src="/food-logos/biryani.svg" alt="Biryani" className="w-64 h-48 object-contain p-2" />
+          </div>
         </div>
       </div>
     </section>
