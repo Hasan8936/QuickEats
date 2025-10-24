@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import React from 'react'
 import useCart from '@/components/store/cartStore'
 
 const SAMPLE = [
@@ -16,8 +16,8 @@ export default function RestaurantGrid(){
       {SAMPLE.map(r=> (
         <div key={r.id} className="bg-white rounded-lg shadow p-4 flex space-x-4">
           <div className="w-28 h-20 bg-gray-100 rounded overflow-hidden flex-shrink-0 flex items-center justify-center">
-            <img src={`/images/${r.id}.jpg`} alt="thumb" className="w-full h-full object-cover" onError={(e)=>{(e.target as HTMLImageElement).style.display='none'}} />
-            <div className="text-gray-300">🍛</div>
+            {/* use logo placeholder instead of external images */}
+            <img src="/logo.svg" alt={r.name} className="w-full h-full object-contain p-1" />
           </div>
           <div className="flex-1">
             <div className="flex justify-between items-start">

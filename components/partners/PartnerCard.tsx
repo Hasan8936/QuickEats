@@ -12,11 +12,8 @@ export default function PartnerCard({ partner }: { partner: any }) {
   return (
     <div className="p-3 border rounded flex items-center space-x-4">
       <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center flex-shrink-0">
-        {partner.photo ? (
-          <img src={partner.photo} alt={partner.name} className="w-full h-full object-cover" onError={(e:any)=>{e.currentTarget.src='/food-images/placeholder.png'}} />
-        ) : (
-          <div className="text-sm font-bold text-gray-600">{initials || 'DP'}</div>
-        )}
+        {/* replace partner photo with brand logo placeholder to remove arbitrary images */}
+        <img src="/logo.svg" alt="partner" className="w-full h-full object-contain p-1" />
       </div>
 
       <div className="flex-1">
