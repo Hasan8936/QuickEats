@@ -1,7 +1,7 @@
 # QuickEats - Dynamic Surge Pricing System
 
 A revolutionary food delivery platform with intelligent surge pricing technology that adapts to real-time demand and supply across Lucknow, Uttar Pradesh.
-Website:-https://quick-eats.base44.app/
+Website:-https://quick-eats.base44.app/   https://quick-eats-l8vze1e5b-hasan8936s-projects.vercel.app/
 
 ## 🚀 Features
 
