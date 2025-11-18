@@ -13,7 +13,7 @@ export default function SurgeControl() {
     demand_threshold_low: 1.2,
     demand_threshold_high: 2.0,
     supply_threshold_low: 0.5,
-    max_surge_multiplier: 2.0,
+    max_surge_multiplier: 2.5,
     active: true
   }];
 
@@ -60,15 +60,11 @@ export default function SurgeControl() {
           <h2 className="text-2xl font-semibold mb-4">Demand Simulation</h2>
           <SimulateDemand 
             locations={[
-              { 
-                id: 'ZONE001', 
-                name: 'Downtown', 
-                zone: 'Central',
-                coordinates: {
-                  lat: 40.7128,
-                  lng: -74.0060
-                }
-              }
+                { id: 'ZONE001', name: 'Downtown', zone: 'Central', coordinates: { lat: 26.8467, lng: 80.9462 } },
+                { id: 'ZONE002', name: 'Hazratganj', zone: 'North', coordinates: { lat: 26.8500, lng: 80.9400 } },
+                { id: 'ZONE003', name: 'Gomti Nagar', zone: 'East', coordinates: { lat: 26.8460, lng: 80.9650 } },
+                { id: 'ZONE004', name: 'Aliganj', zone: 'West', coordinates: { lat: 26.8590, lng: 80.9380 } },
+                { id: 'ZONE005', name: 'Kaiserbagh', zone: 'Central', coordinates: { lat: 26.8471, lng: 80.9480 } }
             ]}
             onSimulate={async (locations, duration) => {
               console.log('Simulating demand:', locations, duration);

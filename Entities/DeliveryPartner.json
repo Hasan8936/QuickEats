@@ -1,11 +1,12 @@
 {
-    "deliveryPartners": [
-        {
+    "deliveryPartners": [{
             "id": "DP001",
             "name": "John Doe",
             "phone": "+1234567890",
             "vehicle_type": "bike",
-            "current_location": "Downtown",
+            "current_location": "Aminabad, Lucknow",
+            "city": "Lucknow",
+            "photo": "/partner-photos/DP001.jpg",
             "status": "available",
             "active_orders": 0,
             "rating": 4.5
@@ -48,9 +49,56 @@
             "current_location": "T. Nagar, Chennai",
             "status": "available",
             "active_orders": 0,
+            "rating": 4.3
+        },
+        {
+            "id": "DP002",
+            "name": "Suresh Kumar",
+            "phone": "+919876543210",
+            "vehicle_type": "bike",
+            "current_location": "Hazratganj, Lucknow",
+            "city": "Lucknow",
+            "photo": "/partner-photos/DP002.jpg",
+            "status": "available",
+            "active_orders": 1,
+            "rating": 4.6
+        },
+        {
+            "id": "DP003",
+            "name": "Priya Singh",
+            "phone": "+919812345678",
+            "vehicle_type": "scooter",
+            "current_location": "Kaiserbagh, Lucknow",
+            "city": "Lucknow",
+            "photo": "/partner-photos/DP003.jpg",
+            "status": "on_delivery",
+            "active_orders": 2,
+            "rating": 4.7
+        },
+        {
+            "id": "DP004",
+            "name": "Amit Verma",
+            "phone": "+919701234567",
+            "vehicle_type": "car",
+            "current_location": "Gomti Nagar, Lucknow",
+            "city": "Lucknow",
+            "photo": "/partner-photos/DP004.jpg",
+            "status": "available",
+            "active_orders": 0,
+            "rating": 4.4
+        },
+        {
+            "id": "DP005",
+            "name": "Neha Patel",
+            "phone": "+919601234567",
+            "vehicle_type": "bike",
+            "current_location": "Aliganj, Lucknow",
+            "city": "Lucknow",
+            "photo": "/partner-photos/DP005.jpg",
+            "status": "available",
+            "active_orders": 0,
             "rating": 4.8
-        }
-    ,
+        },
         {
             "id": "DP_LKN_01",
             "name": "Aman Singh",

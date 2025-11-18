@@ -23,6 +23,8 @@ export default function Home() {
             </div>
 
             <RestaurantGrid />
+
+            {/* Quick Actions section removed as requested */}
           </div>
 
           <aside>

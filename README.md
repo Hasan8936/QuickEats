@@ -99,6 +99,7 @@ QuickEats/
 Create a `.env.local` file in the root directory:
 ```env
 NEXT_PUBLIC_APP_URL=http://localhost:3000
+DATABASE_URL=postgresql://user:password@localhost:5432/quickeats
 ```
 
 ### Tailwind Configuration
@@ -183,6 +184,23 @@ Update the color scheme in `tailwind.config.js` and `globals.css`:
   "current_active_orders": "number"
 }
 ```
+
+### PostgreSQL Orders Table
+If you want to persist orders to a Postgres database, create a table like:
+
+```sql
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  customer_name TEXT,
+  items JSONB,
+  total NUMERIC,
+  location TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+```
+
+Install the Postgres client and set the DATABASE_URL environment variable (see above). The app exposes `GET /api/orders` and `POST /api/orders` routes for basic order persistence.
+
 
 ## 🤝 Contributing
 
